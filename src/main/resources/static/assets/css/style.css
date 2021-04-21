@@ -6,7 +6,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 html, body{
     font-size: 100%;
-	background:	#fff;
+	background: #fae4ff;
 	font-family: 'Open Sans', sans-serif;
 }
 p{
@@ -32,7 +32,7 @@ body a:hover{
 }
 .header-grid{
 	padding:2em 0;
-	border-bottom:1px solid #DEDEDE;
+	border-bottom:1px solid #e090f6;
 }
 .logo-nav{
 	padding:2em 0;
@@ -43,7 +43,7 @@ body a:hover{
 .header-grid-left ul li{
 	display:inline-block;
 	font-size:14px;
-	color:#999;
+	color: #242323FF;
 	margin: 0 1em;
 }
 .header-grid-left ul li i{
@@ -51,7 +51,7 @@ body a:hover{
 }
 .header-grid-left ul li a{
 	text-decoration:none;
-	color:#999;
+	color: #242323;
 }
 .header-grid-left ul li a:hover{
 	color:#FFC229;
@@ -63,11 +63,23 @@ ul.social-icons li{
 	display:inline-block;
 	margin: 0px 4px;
 }
+
+.header-grid-right ul li{
+    display:inline-block;
+    font-size:14px;
+    color: #242323FF;
+    margin: 0 1em;
+}
+.header-grid-right ul li i{
+    left:-.5em;
+}
+
 ul.social-icons li a.facebook{
 	background: url(../images/img-sp.png) no-repeat -2px -5px;
     display: block;
     width: 20px;
     height: 20px;
+
 }
 ul.social-icons li a.facebook:hover{
 	background: url(../images/img-sp.png) no-repeat -2px -54px;
@@ -113,12 +125,12 @@ ul.social-icons li a.instagram:hover{
 }
 .logo-nav-left h1 a span{
 	display: block;
-    font-size: .2em;
+    font-size: .19em;
     line-height: 0;
     text-transform: uppercase;
-    letter-spacing: 12px;
+    letter-spacing: 2.7px;
     color: #222222;
-    padding-left: .3em;
+    padding-left: .5em;
 }
 .logo-nav-left1 {
     float: left;
@@ -136,7 +148,7 @@ ul.social-icons li a.instagram:hover{
 	color:#d8703f !important;
 }
 .multi-column-dropdown li a {
-    color: #999 !important;
+    color: #242323FF !important;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
     background-color: transparent;
@@ -170,7 +182,7 @@ ul.multi-column-dropdown h6 {
     display: block;
     clear: both;
     line-height: 1.428571429;
-    color: #999 !important;
+    color: #242323FF !important;
     white-space: normal;
 	font-weight:500 !important;
 }
@@ -321,7 +333,7 @@ a.simpleCart_empty {
 	-moz-background-size:cover;
 	-o-background-size:cover;
 	-ms-background-size:cover;
-	min-height:700px;
+	min-height:500px;
 }
 .banner-info h3{
 	font-size:5em;
@@ -976,7 +988,7 @@ p.est{
 }
 .footer-grid-left{
 	float:left;
-	width:33.33%;
+	width:15.33%;
 	padding:.3em;
 }
 .footer-grid-sub-grid-left{
