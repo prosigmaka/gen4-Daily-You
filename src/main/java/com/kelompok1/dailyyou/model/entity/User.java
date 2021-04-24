@@ -17,7 +17,7 @@ public class User extends CommonEntity {
     @Column(name = "id")
     @GenericGenerator(
             name = "user-generator",
-            strategy = "com.prodemy.prodemyspring.configuration.MyGenerator",
+            strategy = "com.kelompok1.dailyyou.configuration.MyGenerator",
             parameters = {
                     @org.hibernate.annotations.Parameter(
                             name = "prefix", value = "UID")
