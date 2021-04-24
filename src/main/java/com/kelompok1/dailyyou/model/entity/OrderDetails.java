@@ -16,27 +16,25 @@ public class OrderDetails {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "id_pengiriman", insertable = false, updatable = false, nullable = false)
+    @JoinColumn(name = "id_payment", insertable = false, updatable = false, nullable = false)
     private Delivery delivery;
 
-    @Column(name = "id_pengiriman",nullable = false)
-    private Integer idPengiriman;
+    @Column(name = "id_payment",nullable = false)
+    private Integer idPayment;
 
     @ManyToOne
-    @JoinColumn(name = "id_keranjang", insertable = false, updatable = false, nullable = false)
+    @JoinColumn(name = "id_cart", insertable = false, updatable = false, nullable = false)
     private Cart cart;
 
-    @Column(name = "id_keranjang", nullable = false)
-    private Integer idKeranjang;
+    @Column(name = "id_cart", nullable = false)
+    private Integer idCart;
 
-    private Integer jumlahProduk;
+    private Integer productQuantity;
 
-    private Double totalHargaPesanan;
+    private String orderStatus;
 
-    private String statusPembayaran;
+    private Double totalPricePayment;
 
-    private Double totalHargaPembayaran;
-
-    private String batasPembayaran;
+    private String paymentDeadline;
 }
 

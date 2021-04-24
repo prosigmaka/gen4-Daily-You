@@ -8,21 +8,14 @@ import javax.persistence.*;
 @Entity
 @Table(name= Transaction.TABLE_NAME)
 @Data
-public class Transaction {
-    public static final String TABLE_NAME = "t_transaksi";
+public class Transaction extends CommonEntity{
+    public static final String TABLE_NAME = "t_transaction";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
-    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_transaksi_seq")
+    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_transaction_seq")
 
-    @Column(name = "id_transaksi")
+    @Column(name = "id_transaction")
     private Integer id;
-
-    @ManyToOne
-    @JoinColumn(name = "id_pembayaran", insertable = false, updatable = false, nullable = false)
-    private Payment payment;
-
-    @Column(name = "id_pembayaran", nullable = false)
-    private Integer idPembayaran;
 
     @OneToOne
     @JoinColumn(name = "id_detail", insertable = false, updatable = false, nullable = false)
@@ -31,13 +24,13 @@ public class Transaction {
     @Column (name = "id_detail", nullable = false)
     private Integer idDetail;
 
-    private Double totalHargaPesanan;
+    private Double totalPriceOrder;
 
-    private String statusPesanan;
+    private String orderStatus;
 
-    private Double totalHargaPembayaran;
-
-    private String batasPembayaran;
-
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="payment_deadline")
+    private Date paymentDeadline;
 }
 

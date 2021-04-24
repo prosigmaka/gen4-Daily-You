@@ -1,4 +1,4 @@
 package com.kelompok1.dailyyou.controller.restapi;
 
-public class ApiTransaksi {
+public class ApiOrderDetails {
 }

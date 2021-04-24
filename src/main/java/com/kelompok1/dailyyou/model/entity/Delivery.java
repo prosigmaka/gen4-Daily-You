@@ -8,22 +8,22 @@ import javax.persistence.*;
 @Table(name= Delivery.TABLE_NAME)
 @Data
 public class Delivery {
-    public static final String TABLE_NAME = "t_pengiriman";
+    public static final String TABLE_NAME = "t_delivery";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
-    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_pengiriman_seq")
+    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_pdelivery_seq")
 
-    @Column(name = "id_pengiriman")
-    private Integer idPengiriman;
+    @Column(name = "id_delivery")
+    private Integer id;
 
-    private String jenisPengiriman;
+    private String typeDelivery;
 
     @ManyToOne
-    @JoinColumn(name = "id_kategori_alamat", insertable = false, updatable = false, nullable = false)
+    @JoinColumn(name = "id_address_category", insertable = false, updatable = false, nullable = false)
     private AddressCategory addressCategory;
 
-    @Column(name = "id_kategori_alamat", nullable = false)
-    private Integer idKategoriAlamat;
+    @Column(name = "id_address_category", nullable = false)
+    private Integer idCategory;
 
 }
 
