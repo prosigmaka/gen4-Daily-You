@@ -5,9 +5,9 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name=Pengiriman.TABLE_NAME)
+@Table(name= Delivery.TABLE_NAME)
 @Data
-public class Pengiriman {
+public class Delivery {
     public static final String TABLE_NAME = "t_pengiriman";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
@@ -20,7 +20,7 @@ public class Pengiriman {
 
     @ManyToOne
     @JoinColumn(name = "id_kategori_alamat", insertable = false, updatable = false, nullable = false)
-    private KategoriAlamat kategoriAlamat;
+    private AddressCategory addressCategory;
 
     @Column(name = "id_kategori_alamat", nullable = false)
     private Integer idKategoriAlamat;

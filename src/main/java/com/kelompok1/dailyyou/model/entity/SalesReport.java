@@ -6,10 +6,10 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name=LaporanPenjualan.TABLE_NAME)
+@Table(name= SalesReport.TABLE_NAME)
 @Data
 
-public class LaporanPenjualan {
+public class SalesReport {
     public static final String TABLE_NAME = "t_laporan";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
@@ -19,14 +19,14 @@ public class LaporanPenjualan {
 
     @ManyToOne
     @JoinColumn(name = "id_product", insertable = false, updatable = false, nullable = false)
-    private Produk produk;
+    private Product product;
 
     @Column(name = "id_produk",nullable = false)
     private Integer idProduk;
 
     @ManyToOne
     @JoinColumn(name = "id_transaksi", insertable = false, updatable = false, nullable = false)
-    private Transaksi transaksi;
+    private Transaction transaksi;
 
     @Column(name = "id_transaksi",nullable = false)
     private Integer idTransaksi;

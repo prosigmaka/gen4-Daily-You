@@ -6,9 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name=Produk.TABLE_NAME)
+@Table(name= Product.TABLE_NAME)
 @Data
-public class Produk {
+public class Product {
     public static final String TABLE_NAME = "t_produk";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
@@ -25,7 +25,7 @@ public class Produk {
 
     @ManyToOne
     @JoinColumn(name = "id_kategori", insertable = false, updatable = false, nullable = false)
-    private KategoriProduk kategoriProduk;
+    private ProductCategory productCategory;
 
     @Column(name = "id_kategori_produk", nullable = false)
     private Integer idKategori;

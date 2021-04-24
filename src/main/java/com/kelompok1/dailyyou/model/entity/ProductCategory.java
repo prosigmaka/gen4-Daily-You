@@ -5,9 +5,9 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name=KategoriProduk.TABLE_NAME)
+@Table(name= ProductCategory.TABLE_NAME)
 @Data
-public class KategoriProduk {
+public class ProductCategory {
     public static final String TABLE_NAME = "t_kategori_produk";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)

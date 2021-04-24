@@ -1,14 +1,13 @@
 package com.kelompok1.dailyyou.model.entity;
 
 import lombok.Data;
-import org.thymeleaf.spring5.util.DetailedError;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name= DetailPemesanan.TABLE_NAME)
+@Table(name= OrderDetails.TABLE_NAME)
 @Data
-public class DetailPemesanan {
+public class OrderDetails {
     public static final String TABLE_NAME = "t_detail";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
@@ -18,14 +17,14 @@ public class DetailPemesanan {
 
     @ManyToOne
     @JoinColumn(name = "id_pengiriman", insertable = false, updatable = false, nullable = false)
-    private Pengiriman pengiriman;
+    private Delivery delivery;
 
     @Column(name = "id_pengiriman",nullable = false)
     private Integer idPengiriman;
 
     @ManyToOne
     @JoinColumn(name = "id_keranjang", insertable = false, updatable = false, nullable = false)
-    private Keranjang keranjang;
+    private Cart cart;
 
     @Column(name = "id_keranjang", nullable = false)
     private Integer idKeranjang;

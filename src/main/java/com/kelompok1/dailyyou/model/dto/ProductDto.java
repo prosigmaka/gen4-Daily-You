@@ -3,7 +3,7 @@ package com.kelompok1.dailyyou.model.dto;
 import lombok.Data;
 
 @Data
-public class ProdukDto {
+public class ProductDto {
     private Integer id;
     private String namaProduk;
     private Integer stock;

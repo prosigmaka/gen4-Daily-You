@@ -5,9 +5,9 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Entity
-@Table(name=Keranjang.TABLE_NAME)
+@Table(name= Cart.TABLE_NAME)
 @Data
-public class Keranjang {
+public class Cart {
     public static final String TABLE_NAME = "t_keranjang";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
@@ -17,7 +17,7 @@ public class Keranjang {
 
     @ManyToOne
     @JoinColumn(name = "id_product", insertable = false, updatable = false, nullable = false)
-    private Produk produk;
+    private Product product;
 
     @Column(name = "id_produk",nullable = false)
     private Integer idProduk;
