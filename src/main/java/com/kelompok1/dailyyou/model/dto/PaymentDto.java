@@ -3,7 +3,7 @@ package com.kelompok1.dailyyou.model.dto;
 import lombok.Data;
 
 @Data
-public class PembayaranDto {
+public class PaymentDto {
     private Integer id;
     private Integer idCustomer;
     private Integer tanggalUpload;
