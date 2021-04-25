@@ -17,8 +17,8 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 // AppSecurity
 @EnableWebSecurity
 public class AppSecurityConfiguration {
-//    @Autowired
-//    private UserSecurityService userService;
+    @Autowired
+    private UserSecurityService userService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {

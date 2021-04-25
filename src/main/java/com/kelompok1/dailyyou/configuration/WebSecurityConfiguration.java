@@ -13,16 +13,16 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private PasswordEncoder passwordEncoder;
-//    @Autowired
-//    private UserSecurityService userService;
-//    @Autowired
-//    private AuthenticationSuccessHandler myAuthenticationSuccessHandler;
-//
-//    @Override
-//    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(userService)
-//                .passwordEncoder(passwordEncoder);
-//    }
+    @Autowired
+    private UserSecurityService userService;
+    @Autowired
+    private AuthenticationSuccessHandler myAuthenticationSuccessHandler;
+
+    @Override
+    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userService)
+                .passwordEncoder(passwordEncoder);
+    }
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
@@ -40,7 +40,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/perform_login")
-//                .successHandler(myAuthenticationSuccessHandler)
+                .successHandler(myAuthenticationSuccessHandler)
                 .failureUrl("/login?error=true")
                 .and()
                 .logout()
