@@ -36,8 +36,7 @@ public class ApiTransaction {
 
     private TransactionDto mapTransactionToTransactionDto(Transaction transaction) {
         TransactionDto transactionDto = modelMapper.map(transaction, TransactionDto.class);
-
-
+        transactionDto.setIdTransaction(transaction.getId());
 
         return transactionDto;
     }
@@ -56,7 +55,7 @@ public class ApiTransaction {
     public TransactionDto editsaveTransaction(@RequestBody TransactionDto transactionDto) {
         Transaction transaction = modelMapper.map(transactionDto, Transaction.class);
 
-        return transactionDtoDB;
+        return transactionDto;
     }
 
     @DeleteMapping("/{id}")
