@@ -1,6 +1,6 @@
 package com.kelompok1.dailyyou.configuration;
 
-//import com.kelompok1.dailyyou.service.UserSecurityService;
+import com.kelompok1.dailyyou.service.UserSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

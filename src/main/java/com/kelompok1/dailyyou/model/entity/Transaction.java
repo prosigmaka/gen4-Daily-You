@@ -1,9 +1,11 @@
 package com.kelompok1.dailyyou.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name= Transaction.TABLE_NAME)
