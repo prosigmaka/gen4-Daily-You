@@ -10,8 +10,8 @@ public class RegisterController {
 
     //    dashboard
     @GetMapping("register")
-    public String dashboard() {
-        return "dashboard/index";
+    public String register() {
+        return "user/register";
     }
 
 //    @GetMapping(value = "/register")
