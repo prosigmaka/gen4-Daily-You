@@ -24,6 +24,9 @@ body a:hover{
 	text-decoration:none;
 }
 /*-- header --*/
+.header{
+    background-image: linear-gradient(to bottom, #ddaaec, #fae4ff) ;
+}
 .header-grid-left ul li a,.new-collections-grid1-image-pos a,.new-collections-grid1 h4 a,.login a,.register-home a,.checkout-right-basket a,.bootstrap-tab-text-grid-right ul li a,.occasion-cart a,input[type="submit"],.mail-grid-right1 ul li a,.categories ul li a,.new-products-grid-right-add-cart p a,.new-products-grid-right h4 a,.products-right-grid1-add-cart p a,.timer-grid-left h3 a,.new-collections-grid1-left p a,.copy-right p a,.footer-grid-sub-grid-right h4 a,input[type="submit"],.footer-grid ul li a{
 	transition:.5s ease-in-out;
 	-webkit-transition:.5s ease-in-out;
@@ -327,9 +330,10 @@ a.simpleCart_empty {
 /*-- //header --*/
 /*-- banner --*/
 .banner{
-	background:url(../images/banner.jpg) no-repeat 0px 0px;
+	background:url(../images/banner-daily-you.jpg) no-repeat 0px 0px;
 	background-size:cover;
 	-webkit-background-size:cover;
+    opacity: 0.8;
 	-moz-background-size:cover;
 	-o-background-size:cover;
 	-ms-background-size:cover;
@@ -337,7 +341,7 @@ a.simpleCart_empty {
 }
 .banner-info h3{
 	font-size:5em;
-	color:#fff;
+	color: #1f1b1b;
 	margin:0;
 }
 .banner-info {
@@ -346,8 +350,7 @@ a.simpleCart_empty {
 }
 .banner-info h4{
 	font-size: 3em;
-    color: #fff;
-    margin: 0em 0 0 7.5em;
+    color: #1f1b1b;    margin: 0em 0 0 7.5em;
 	font-weight:300;
 	font-family: 'Lato', sans-serif;
 }
@@ -362,8 +365,8 @@ a.simpleCart_empty {
 }
 .banner-info1 p{
 	font-size:2em;
-	color:#fff;
-	margin:0;
+    color: #1f1b1b;
+    margin:0;
 	line-height:1.8em;
 	width:65%;
 }
@@ -737,7 +740,7 @@ p.est{
     font-size:1.2em !important;
 }
 .new-collections {
-    background: #F7F7F9;
+    background: #fae4ff;
 }
 .rating-left{
 	float:left;
