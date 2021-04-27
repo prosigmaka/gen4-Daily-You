@@ -11,18 +11,13 @@ import javax.persistence.*;
 public class ProductCategory {
     public static final String TABLE_NAME = "t_product_category";
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
-    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_product_category_seq")
-
-//    @Column(name = "id")
-//    private Integer id;
-
-    @Column(name = "id_category")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "category_name")
     private @NotBlank String categoryName;
 
-    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY,
+    @OneToMany(mappedBy = "productCategory", fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
     Set<Product> products;
 
