@@ -26,7 +26,7 @@ public class SalesReport {
 
     @ManyToOne
     @JoinColumn(name = "id_transaksi", insertable = false, updatable = false, nullable = false)
-    private Transaction transaksi;
+    private Order transaksi;
 
     @Column(name = "id_transaksi",nullable = false)
     private Integer idTransaksi;

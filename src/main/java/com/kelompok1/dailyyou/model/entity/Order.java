@@ -8,9 +8,9 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name= Transaction.TABLE_NAME)
+@Table(name= Order.TABLE_NAME)
 @Data
-public class Transaction extends CommonEntity{
+public class Order extends CommonEntity{
     public static final String TABLE_NAME = "t_transaction";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
