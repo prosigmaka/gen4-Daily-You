@@ -13,8 +13,9 @@ public class BaseMvcController {
         return "dashboard/index";
     }
 
-    @GetMapping("checkout")
-    public String checkout() {
-        return "dashboard/checkout";
+    @GetMapping("add-product")
+    public String addProduct() {
+        return "product/add";
     }
+
 }

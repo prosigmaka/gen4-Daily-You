@@ -1,7 +1,8 @@
 package com.kelompok1.dailyyou.model.entity;
 
 import lombok.Data;
-
+import javax.validation.constraints.NotBlank;
+import java.util.Set;
 import javax.persistence.*;
 
 @Entity
@@ -11,15 +12,34 @@ public class ProductCategory {
     public static final String TABLE_NAME = "t_product_category";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
-    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_product_category_seq")
+    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_category_product_seq")
+        private Integer id;
 
-//    @Column(name = "id")
-//    private Integer id;
+    @Column(name = "category_name")
+    private @NotBlank String categoryName;
 
-    @Column(name = "id_category")
-    private Integer id;
+//    @OneToMany(mappedBy = "productCategory", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    Set<Product> products;
 
-    private String categoryName;
+    public ProductCategory() {
+    }
+
+    public ProductCategory(@NotBlank String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+//    public Set<Product> getProducts() {
+//        return products;
+//    }
+//
+//    public void setProducts(Set<Product> products) {
+//        this.products = products;
+//    }
+
+    @Override
+    public String toString() {
+        return "User {category id=" + id + ", category name='" + categoryName + "'}";
+    }
 
 }
 
