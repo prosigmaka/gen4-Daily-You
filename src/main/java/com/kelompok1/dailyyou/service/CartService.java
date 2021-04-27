@@ -32,14 +32,13 @@ public class CartService {
         this.cartRepository = cartRepository;
     }
 
-    public void addToCart(AddToCartDto addToCartDto, Product product, User user){
-        Cart cart = new Cart(product, addToCartDto.getProductQuantity(), user);
+    public void addToCart(AddToCartDto addToCartDto, Product product){
+        Cart cart = new Cart(product, addToCartDto.getProductQuantity());
         cartRepository.save(cart);
     }
 
-
-    public CartDto listCartItems(User user) {
-        List<Cart> cartList = cartRepository.findAllByUser(user);
+    public CartDto listCartItems() {
+        List<Cart> cartList = cartRepository.findAll();
         List<CartItemDto> cartItems = new ArrayList<>();
         for (Cart cart:cartList){
             CartItemDto cartItemDto = getDtoFromCart(cart);
@@ -71,11 +70,11 @@ public class CartService {
 
     }
 
-    public void deleteCartItems(int userId) {
-        cartRepository.deleteAll();
-    }
+//    public void deleteCartItems(int userId) {
+//        cartRepository.deleteAll();
+//    }
 
-    public void deleteUserCartItems(User user) {
-        cartRepository.deleteByUser(user);
-    }
+//    public void deleteUserCartItems(User user) {
+//        cartRepository.deleteByUser(user);
+//    }
 }
