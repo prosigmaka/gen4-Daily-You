@@ -3,14 +3,25 @@ package com.kelompok1.dailyyou.model.dto;
 import com.kelompok1.dailyyou.model.entity.Product;
 import lombok.Data;
 
+import java.util.List;
+
 
 @Data
 public class CartDto {
     private Integer id;
-    private Integer idUser;
     private Integer idProduct;
-    private String productName;
+    private Integer userId;
     private Integer productQuantity;
     private Product product;
     private Double totalPrice;
+
+
+    //    private Integer idUser;
+//    private Integer idProduct;
+//    private String productName;
+//    private Integer productQuantity;
+//    private Product product;
+//    private Double totalPrice;
+
 }
+
