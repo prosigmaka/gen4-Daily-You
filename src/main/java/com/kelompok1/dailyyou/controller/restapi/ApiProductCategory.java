@@ -36,7 +36,7 @@ public class ApiProductCategory {
 //    TODO create an UPDATE method Giridhar
 
     @PostMapping("/update/{idCategory}")
-    public ResponseEntity<ApiResponse> updateProductCategory(@PathVariable("idCatefory") int idCategory, @Valid @RequestBody ProductCategory productCategory) {
+    public ResponseEntity<ApiResponse> updateProductCategory(@PathVariable("idCategory") int idCategory, @Valid @RequestBody ProductCategory productCategory) {
         // Check to see if the category exists.
         if (Helper.notNull(productCategoryService.readProductCategory(idCategory))) {
             // If the category exists then update it.

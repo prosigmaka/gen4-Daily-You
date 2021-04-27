@@ -14,7 +14,8 @@ import javax.persistence.*;
 public class Product {
     public static final String TABLE_NAME = "t_product";
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
+    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_product_seq")
     private Integer id;
 
     private @NotNull String productName;
