@@ -17,9 +17,8 @@ public class ProductCategory {
     @Column(name = "category_name")
     private @NotBlank String categoryName;
 
-    @OneToMany(mappedBy = "productCategory", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    Set<Product> products;
+//    @OneToMany(mappedBy = "productCategory", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//    Set<Product> products;
 
     public ProductCategory() {
     }
@@ -28,13 +27,13 @@ public class ProductCategory {
         this.categoryName = categoryName;
     }
 
-    public Set<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<Product> products) {
-        this.products = products;
-    }
+//    public Set<Product> getProducts() {
+//        return products;
+//    }
+//
+//    public void setProducts(Set<Product> products) {
+//        this.products = products;
+//    }
 
     @Override
     public String toString() {
