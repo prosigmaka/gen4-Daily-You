@@ -2947,6 +2947,12 @@ select[multiple].form-group-lg .form-control {
   color: #FFFFFF;
 }
 
+.btn-purple{
+  color: #fff;
+  background-color: #a51dee;
+  border-color: #4e0874;
+}
+
 @media (min-width: 768px) {
   .form-inline .form-group {
     display: inline-block;
