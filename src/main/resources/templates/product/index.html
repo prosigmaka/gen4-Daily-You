@@ -1,0 +1,43 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html layout:decorate="~{base}"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<!-- header -->
+<!-- //header -->
+<!-- banner -->
+<div layout:fragment="content-body">
+
+    <main class="container main">
+        <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">Tutorial Merchandise</h1>
+                    <p class="lead text-muted">The best tutorial guides that money can buy!</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row" id="card-container">
+                    <!--More cards will be add here-->
+                </div>
+            </div>
+        </div>
+    </main>
+
+</div>
+<th:block layout:fragment="add-scripts">
+    <script src="/scripts/utils.js"></script>
+    <script src="/scripts/index.js"></script>
+</th:block>
+
+</html>
