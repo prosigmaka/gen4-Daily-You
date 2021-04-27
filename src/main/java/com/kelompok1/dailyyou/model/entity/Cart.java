@@ -3,6 +3,7 @@ package com.kelompok1.dailyyou.model.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = Cart.TABLE_NAME)
@@ -15,6 +16,9 @@ public class Cart {
     @Column(name = "id_cart")
     private Integer id;
 
+    @Column(name = "created_date")
+    private Date createdDate;
+
     @OneToOne
     @JoinColumn(name = "id", insertable = false, updatable = false, nullable = false)
     private User user;
@@ -26,10 +30,20 @@ public class Cart {
     @JoinColumn(name = "id_product", insertable = false, updatable = false, nullable = false)
     private Product product;
 
-    @Column(name = "id_product",nullable = false)
+    @Column(name = "id_product", nullable = false)
     private Integer idProduct;
 
     private Integer productQuantity;
 
     private Double totalPrice;
+
+    public Cart() {
+    }
+
+    public Cart(Product product, int productQuantity, User user) {
+        this.user = user;
+        this.product = product;
+        this.productQuantity = productQuantity;
+        this.createdDate = new Date();
+    }
 }
