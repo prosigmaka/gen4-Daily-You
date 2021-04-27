@@ -1,5 +1,6 @@
 package com.kelompok1.dailyyou.service;
 
+import com.kelompok1.dailyyou.configuration.exception.ProductNotExistException;
 import com.kelompok1.dailyyou.model.dto.ProductDto;
 import com.kelompok1.dailyyou.model.entity.Product;
 import com.kelompok1.dailyyou.model.entity.ProductCategory;
@@ -44,5 +45,12 @@ public class ProductService {
         Product product = getProductFromDto(productDto, productCategory);
         product.setId(idProduct);
         productRepository.save(product);
+    }
+
+    public Product getProductById(Integer productId) throws ProductNotExistException {
+        Optional<Product> optionalProduct = productRepository.findById(productId);
+        if (!optionalProduct.isPresent())
+            throw new ProductNotExistException("Product id is invalid " + productId);
+        return optionalProduct.get();
     }
 }
