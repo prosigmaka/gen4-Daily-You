@@ -10,7 +10,61 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org">
 
-<body>
+<head>
+    <meta charset="UTF-8">
+    <title>Daily You | Sign Up</title>
+</head>
+
+<body layout:fragment="content-header">
+
+<!-- breadcrumbs -->
+<div class="breadcrumbs">
+    <div class="container">
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+            <li class="active">Register Page</li>
+        </ol>
+    </div>
+</div>
+<!-- //breadcrumbs -->
+<!-- register -->
+<div class="register">
+    <div class="container">
+        <h3 class="animated wow zoomIn" data-wow-delay=".5s">Register Here</h3>
+        <p class="est animated wow zoomIn" data-wow-delay=".5s">Register your account to start your session</p>
+        <div class="login-form-grids">
+<!--            <div class="alert alert-success" role="alert" th:if="${msg}" th:utext="${msg}">-->
+<!--                Successfull Register-->
+<!--            </div>-->
+            <h5 class="animated wow slideInUp" data-wow-delay=".5s">profile information</h5>
+            <form th:action="@{/signup}" method="post">
+                <input type="text" placeholder="First Name..." required=" " >
+                <input type="text" placeholder="Last Name..." required=" " >
+            </form>
+
+            <h6 class="animated wow slideInUp" data-wow-delay=".5s">Login information</h6>
+            <form class="animated wow slideInUp" data-wow-delay=".5s">
+                <input type="email" placeholder="Email Address" required=" " >
+                <input type="password" placeholder="Password" required=" " >
+                <input type="password" placeholder="Password Confirmation" required=" " >
+<!--                <div class="register-check-box">-->
+<!--                    <div class="check">-->
+<!--                        <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>I accept the terms and conditions</label>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <input type="submit" value="Register">
+                <br>
+                <span>Already registered ? <a href="/" th:href="@{/login}">Login here</a></span>
+            </form>
+        </div>
+        <div class="register-home animated wow slideInUp" data-wow-delay=".5s">
+            <a href=" /dashboard">Home</a>
+        </div>
+    </div>
+</div>
+<!-- //register -->
 
 </body>
+<th:block layout:fragment="add-scripts">
+</th:block>
 </html>
