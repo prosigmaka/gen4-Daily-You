@@ -2,31 +2,15 @@ package com.kelompok1.dailyyou.controller.mvc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping(value = "/")
 public class CheckoutController {
-    @GetMapping(value = "/checkout")
-    public ModelAndView register(
-            @RequestParam(value = "error", required = false) String error,
-            @RequestParam(value = "logout", required = false) String logout,
-            @RequestParam(value = "denied", required = false) String denied) {
+//    //    dashboard
+//    @GetMapping("dashboard")
+//    public String dashboard() {
+//        return "dashboard/checkout";
+//    }
 
-        ModelAndView model = new ModelAndView();
-        if (error != null) {
-            model.addObject("msg", "Invalid username or password!");
-        }
-
-        if (logout != null) {
-            model.addObject("msg", "You've been logged out successfully.");
-        }
-
-        if (denied != null) {
-            model.addObject("msg", "Access Denied. Session Time Out");
-        }
-        model.setViewName("checkout");
-
-        return model;
-    }
 }

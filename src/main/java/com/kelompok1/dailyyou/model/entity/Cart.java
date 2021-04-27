@@ -15,6 +15,13 @@ public class Cart {
     @Column(name = "id_cart")
     private Integer id;
 
+    @OneToOne
+    @JoinColumn(name = "id", insertable = false, updatable = false, nullable = false)
+    private User user;
+
+    @Column(name = "id_user", nullable = false)
+    private Integer idUser;
+
     @ManyToOne
     @JoinColumn(name = "id_product", insertable = false, updatable = false, nullable = false)
     private Product product;

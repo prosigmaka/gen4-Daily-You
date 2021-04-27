@@ -15,12 +15,6 @@ public class OrderDetails {
     @Column(name = "id_detail")
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_payment", insertable = false, updatable = false, nullable = false)
-    private Delivery delivery;
-
-    @Column(name = "id_payment",nullable = false)
-    private Integer idPayment;
 
     @ManyToOne
     @JoinColumn(name = "id_cart", insertable = false, updatable = false, nullable = false)

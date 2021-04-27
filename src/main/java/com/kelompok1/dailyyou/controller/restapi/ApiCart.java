@@ -2,6 +2,7 @@ package com.kelompok1.dailyyou.controller.restapi;
 
 import com.kelompok1.dailyyou.model.dto.CartDto;
 import com.kelompok1.dailyyou.model.entity.Cart;
+import com.kelompok1.dailyyou.model.entity.Product;
 import com.kelompok1.dailyyou.repository.CartRepository;
 import com.kelompok1.dailyyou.service.CartService;
 import org.modelmapper.ModelMapper;
@@ -36,8 +37,13 @@ public class ApiCart {
     private CartDto mapCartToCartDto(Cart cart) {
         CartDto cartDto = modelMapper.map(cart, CartDto.class);
         modelMapper.map(cart.getProduct(), cartDto);
-        cartDto.setIdProduct(cart.getProduct().getId());
         cartDto.setId(cart.getId());
+//        cartDto.setProduct(cart.getProduct());
+//        cartDto.setId(cart.getId());
+//        cartDto.setProductQuantity(cart.getProductQuantity());
+//        cartDto.setTotalPrice(cart.getTotalPrice());
+//        cartDto.setIdProduct(cart.getIdProduct());
+//        cartDto.setUserId(cart.getIdUser());
         return cartDto;
     }
 
@@ -46,7 +52,7 @@ public class ApiCart {
         Cart cart = cartRepository.findById(id).get();
         CartDto cartDto = new CartDto();
         modelMapper.map(cart, cartDto);
-        modelMapper.map(cart.getProduct(), cartDto);
+//        modelMapper.map(cart.getProduct(), cartDto);
 
         return cartDto;
     }
@@ -55,15 +61,20 @@ public class ApiCart {
     public CartDto editsaveCart(@RequestBody CartDto cartDto) {
         Cart cart = modelMapper.map(cartDto, Cart.class);
         cart.setIdProduct(cartDto.getIdProduct());
-        cart.setId(cartDto.getId());
-        cart= cartService.save(cart);
-        CartDto cartDtoDB =mapCartToCartDto(cart);
+        cart.setIdUser(cartDto.getUserId());;
+        cart = cartService.save(cart);
+        CartDto cartDtoDB = mapCartToCartDto(cart);
         return cartDtoDB;
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id) {
         cartRepository.deleteById(id);
+    }
+
+    @DeleteMapping("/all")
+    public void deleteAll() {
+        cartRepository.deleteAll();
     }
 
 }
