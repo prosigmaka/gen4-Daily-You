@@ -2936,7 +2936,16 @@ select[multiple].form-group-lg .form-control {
   padding: 1.25rem;
 }
 
+.card-footer {
+  padding: 0.75rem 1.25rem;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-top: 0 solid rgba(0, 0, 0, 0.125);
+}
 
+.card-warning > .card-header{
+  background-color: #a51dee;
+  color: #FFFFFF;
+}
 
 @media (min-width: 768px) {
   .form-inline .form-group {
