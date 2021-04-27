@@ -13,4 +13,9 @@ public class BaseMvcController {
         return "dashboard/index";
     }
 
+    @GetMapping("add-product")
+    public String addProduct() {
+        return "product/add";
+    }
+
 }

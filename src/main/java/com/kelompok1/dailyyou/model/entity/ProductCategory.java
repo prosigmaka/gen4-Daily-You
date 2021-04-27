@@ -11,8 +11,9 @@ import javax.persistence.*;
 public class ProductCategory {
     public static final String TABLE_NAME = "t_product_category";
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
+    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_category_product_seq")
+        private Integer id;
 
     @Column(name = "category_name")
     private @NotBlank String categoryName;
