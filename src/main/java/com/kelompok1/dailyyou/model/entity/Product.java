@@ -14,10 +14,7 @@ import javax.persistence.*;
 public class Product {
     public static final String TABLE_NAME = "t_product";
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
-    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_product_seq")
-
-    @Column(name = "id_product")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private @NotNull String productName;
@@ -29,12 +26,10 @@ public class Product {
     private @NotNull String pictureUrl;
 
     @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "id_category", insertable = false, updatable = false, nullable = false)
-    private ProductCategory productCategory;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_category",  nullable = false)
+     ProductCategory productCategory;
 
-    @Column(name = "id_product_category", nullable = false)
-    private Integer idCategory;
 
     public Product(ProductDto productDto, ProductCategory productCategory) {
         this.productName = productDto.getProductName();
