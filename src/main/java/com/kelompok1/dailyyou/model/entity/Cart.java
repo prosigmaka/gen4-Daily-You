@@ -1,5 +1,6 @@
 package com.kelompok1.dailyyou.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,29 +20,28 @@ public class Cart {
     @Column(name = "created_date")
     private Date createdDate;
 
-    @OneToOne
-    @JoinColumn(name = "id", insertable = false, updatable = false, nullable = false)
-    private User user;
+//    @JsonIgnore
+//    @OneToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "id_user",  nullable = false)
+//    private User user;
 
-    @Column(name = "id_user", nullable = false)
-    private Integer idUser;
+//    @Column(name = "id_user", nullable = false)
+//    private Integer idUser;
 
-    @ManyToOne
-    @JoinColumn(name = "id_product", insertable = false, updatable = false, nullable = false)
-    private Product product;
-
-    @Column(name = "id_product", nullable = false)
-    private Integer idProduct;
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_product",  nullable = false)
+    Product product;
 
     private Integer productQuantity;
 
-    private Double totalPrice;
+    private Double totalCost;
 
     public Cart() {
     }
 
-    public Cart(Product product, int productQuantity, User user) {
-        this.user = user;
+    public Cart(Product product, int productQuantity) {
+//        this.user = user;
         this.product = product;
         this.productQuantity = productQuantity;
         this.createdDate = new Date();

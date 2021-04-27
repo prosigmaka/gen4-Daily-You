@@ -8,6 +8,7 @@ import java.util.List;
 
 @Data
 public class CartDto {
+    private Integer IdCart;
     private List<CartItemDto> cartItems;
     private double totalCost;
 
