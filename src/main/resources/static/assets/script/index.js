@@ -14,25 +14,26 @@ $("#card-container").on("click", "#buy-btn", function() {
 
 
 $("#add-product").on("click", function() {
-    window.location.href = "add-product.html";
+    window.location.href = "/add-product";
 });
 
 
-$("#product-form").submit(async function(form) {
+$("#btn-add-product").click(async function(form) {
     form.preventDefault();
-
+    const id=$("#id");
     const productName = $("#productName").val();
     const pictureUrl = $("#pictureUrl").val();
     const price = $("#price").val();
     const stock = $("#stock").val();
-    const categoryProduct = $("#categoryProduct").val();
+    const categoryName = $("#categoryName").val();
 
     const product = {
+        "id": id,
         "productName": productName,
         "pictureUrl": pictureUrl,
         "price": price,
         "stock": stock,
-        "categoryProduct": categoryProduct
+        "categoryName": categoryName
     };
 
     var result = await createNewProduct(product);

@@ -18,4 +18,9 @@ public class BaseMvcController {
         return "product/add";
     }
 
+    @GetMapping("all-product")
+    public String allProduct() {
+        return "product/index";
+    }
+
 }

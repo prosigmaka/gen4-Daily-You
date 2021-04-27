@@ -4,7 +4,7 @@ async function getAllProducts() {
     var cards = [];
     const errorMessage = "<p>We don't currently have any items in stock, but feel free to add your own product/s </p>";
 
-    await fetch('/api/product/', {
+    await fetch('http://localhost:1111/api/product', {
         method: 'GET',
         mode: 'cors'
     })
@@ -55,7 +55,7 @@ async function getAllProducts() {
 async function createNewProduct(product) {
     var result = false;
 
-    await fetch('/api/product/add/', {
+    await fetch('/api/product/add', {
         method: 'POST',
         body: JSON.stringify(product),
         headers: {
@@ -72,7 +72,7 @@ async function createNewProduct(product) {
 async function updateProduct(id, product) {
     var result = false;
 
-    await fetch(`/api/product/update/${id}`, {
+    await fetch(`http://localhost:1111/api/product/update/${id}`, {
         method: 'POST',
         body: JSON.stringify(product),
         headers: {
@@ -89,7 +89,7 @@ async function updateProduct(id, product) {
 async function getProduct(id) {
     var products = [];
 
-    await fetch('http://remotedevs.org:8080/api/product/', {
+    await fetch('http://localhost:1111/api/product', {
         method: 'GET',
         mode: 'cors'
     })
