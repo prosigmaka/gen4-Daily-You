@@ -1,50 +1,88 @@
 package com.kelompok1.dailyyou.model.entity;
 
-import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
-@Table(name = User.TABLE_NAME)
-@Data
-public class User extends CommonEntity {
-    public static final String TABLE_NAME = "t_user";
-
+@Table(name = "user")
+public class User {
 
     @Id
-    @Column(name = "id")
-    @GenericGenerator(
-            name = "user-generator",
-            strategy = "com.kelompok1.dailyyou.configuration.MyGenerator",
-            parameters = {
-                    @org.hibernate.annotations.Parameter(
-                            name = "prefix", value = "UID")
-            }
-    )
-    @GeneratedValue(generator = "user-generator")
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-    @Column(name = "username", nullable = false, unique = true)
-    private String userName;
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "password", nullable = false)
+    @Column(name = "firstname")
+    private String firstname;
+
+    @Column(name = "lastname")
+    private String lastname;
+
+    @Column(name = "password")
     private String password;
 
-    @Column(name = "enabled")
-    private Boolean enabled;
+    @Column(name = "active")
+    private int active;
 
-    @Column(name = "token_expired")
-    private Boolean tokenExpired;
+    @ManyToMany(cascade=CascadeType.ALL)
+    @JoinTable(name="user_role", joinColumns=@JoinColumn(name="user_id"), inverseJoinColumns=@JoinColumn(name="role_id"))
+    private Set<Role> roles;
 
-    @ManyToMany
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))
-    private List<Role> roles;
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 }
