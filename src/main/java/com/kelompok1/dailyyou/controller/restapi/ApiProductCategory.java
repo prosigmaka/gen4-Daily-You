@@ -2,6 +2,7 @@ package com.kelompok1.dailyyou.controller.restapi;
 
 
 import com.kelompok1.dailyyou.model.entity.ProductCategory;
+import com.kelompok1.dailyyou.repository.ProductCategoryRepository;
 import com.kelompok1.dailyyou.service.ProductCategoryService;
 import com.kelompok1.dailyyou.util.Helper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ import java.util.List;
 public class ApiProductCategory {
     @Autowired
     private ProductCategoryService productCategoryService;
+
+    @Autowired
+    private ProductCategoryRepository productCategoryRepository;
 
     @GetMapping("/")
     public ResponseEntity<List<ProductCategory>> getProductCategories() {
@@ -47,4 +51,10 @@ public class ApiProductCategory {
         // If the category doesn't exist then return a response of unsuccessful.
         return new ResponseEntity<ApiResponse>(new ApiResponse(false, "category does not exist"), HttpStatus.NOT_FOUND);
     }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id) {
+        productCategoryRepository.deleteById(id);
+    }
+
 }
