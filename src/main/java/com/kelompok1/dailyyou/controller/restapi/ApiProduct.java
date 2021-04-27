@@ -1,7 +1,6 @@
 package com.kelompok1.dailyyou.controller.restapi;
 
 import com.kelompok1.dailyyou.model.dto.ProductDto;
-import com.kelompok1.dailyyou.model.entity.Product;
 import com.kelompok1.dailyyou.repository.ProductRepository;
 import com.kelompok1.dailyyou.service.ProductService;
 import org.modelmapper.ModelMapper;

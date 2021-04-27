@@ -19,11 +19,10 @@ public class Cart {
     @JoinColumn(name = "id_product", insertable = false, updatable = false, nullable = false)
     private Product product;
 
-    @Column(name = "id_product", nullable = false)
+    @Column(name = "id_product",nullable = false)
     private Integer idProduct;
 
     private Integer productQuantity;
 
     private Double totalPrice;
-
 }
