@@ -38,7 +38,7 @@ public class ProductCategoryService {
     public void updateProductCategory(Integer idCategory, ProductCategory newProductCategory) {
         ProductCategory productCategory = productCategoryRepository.findById(idCategory).get();
         productCategory.setCategoryName(newProductCategory.getCategoryName());
-        productCategory.setProducts(newProductCategory.getProducts());
+//        productCategory.setProducts(newProductCategory.getProducts());
 
 
         productCategoryRepository.save(productCategory);
