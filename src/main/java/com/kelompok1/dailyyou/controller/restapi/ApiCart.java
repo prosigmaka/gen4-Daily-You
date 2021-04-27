@@ -1,80 +1,55 @@
 package com.kelompok1.dailyyou.controller.restapi;
 
+import com.kelompok1.dailyyou.model.dto.AddToCartDto;
 import com.kelompok1.dailyyou.model.dto.CartDto;
 import com.kelompok1.dailyyou.model.entity.Cart;
 import com.kelompok1.dailyyou.model.entity.Product;
+import com.kelompok1.dailyyou.model.entity.User;
 import com.kelompok1.dailyyou.repository.CartRepository;
 import com.kelompok1.dailyyou.service.CartService;
-import org.modelmapper.ModelMapper;
+import com.kelompok1.dailyyou.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/cart")
 public class ApiCart {
     @Autowired
-    private CartRepository cartRepository;
-
-    @Autowired
-    private ModelMapper modelMapper;
-
-    @Autowired
     private CartService cartService;
 
-    @GetMapping()
-    public List<CartDto> getListCart() {
-        List<Cart> cartList = cartRepository.findAll();
-        List<CartDto> cartDtos =
-                cartList.stream()
-                        .map(cart -> mapCartToCartDto(cart))
-                        .collect(Collectors.toList());
-        return cartDtos;
+    @Autowired
+    private ProductService productService;
+
+
+    @PostMapping("/add")
+    public ResponseEntity<ApiResponse> addToCart(@RequestBody AddToCartDto addToCartDto, User user){
+        Product product = productService.getProductById(addToCartDto.getProductId());
+        System.out.println("product to add"+  product.getProductName());
+        cartService.addToCart(addToCartDto, product, user);
+        return new ResponseEntity<ApiResponse>(new ApiResponse(true, "Added to cart"), HttpStatus.CREATED);
+
+    }
+    @GetMapping("/")
+    public ResponseEntity<CartDto> getCartItems(@RequestBody User user) {
+        CartDto cartDto = cartService.listCartItems(user);
+        return new ResponseEntity<CartDto>(cartDto,HttpStatus.OK);
+    }
+    @PutMapping("/update/{cartItemId}")
+    public ResponseEntity<ApiResponse> updateCartItem(@RequestBody @Valid AddToCartDto cartDto){
+        Product product = productService.getProductById(cartDto.getProductId());
+        cartService.updateCartItem(cartDto,product);
+        return new ResponseEntity<ApiResponse>(new ApiResponse(true, "Product has been updated"), HttpStatus.OK);
     }
 
-    private CartDto mapCartToCartDto(Cart cart) {
-        CartDto cartDto = modelMapper.map(cart, CartDto.class);
-        modelMapper.map(cart.getProduct(), cartDto);
-        cartDto.setId(cart.getId());
-//        cartDto.setProduct(cart.getProduct());
-//        cartDto.setId(cart.getId());
-//        cartDto.setProductQuantity(cart.getProductQuantity());
-//        cartDto.setTotalPrice(cart.getTotalPrice());
-//        cartDto.setIdProduct(cart.getIdProduct());
-//        cartDto.setUserId(cart.getIdUser());
-        return cartDto;
-    }
-
-    @GetMapping("/{id}")
-    public CartDto getCart(@PathVariable Integer id) {
-        Cart cart = cartRepository.findById(id).get();
-        CartDto cartDto = new CartDto();
-        modelMapper.map(cart, cartDto);
-//        modelMapper.map(cart.getProduct(), cartDto);
-
-        return cartDto;
-    }
-
-    @PostMapping
-    public CartDto editsaveCart(@RequestBody CartDto cartDto) {
-        Cart cart = modelMapper.map(cartDto, Cart.class);
-        cart.setIdProduct(cartDto.getIdProduct());
-        cart.setIdUser(cartDto.getUserId());;
-        cart = cartService.save(cart);
-        CartDto cartDtoDB = mapCartToCartDto(cart);
-        return cartDtoDB;
-    }
-
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
-        cartRepository.deleteById(id);
-    }
-
-    @DeleteMapping("/all")
-    public void deleteAll() {
-        cartRepository.deleteAll();
+    @DeleteMapping("/delete/{cartItemId}")
+    public ResponseEntity<ApiResponse> deleteCartItem(@PathVariable("cartItemId") int itemID) {
+        cartService.deleteCartItem(itemID);
+        return new ResponseEntity<ApiResponse>(new ApiResponse(true, "Item has been removed"), HttpStatus.OK);
     }
 
 }

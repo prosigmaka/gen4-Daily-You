@@ -7,4 +7,6 @@ import java.util.Optional;
 public interface ProductService {
 
     Product save(Product product);
+
+    Product getProductById(Integer productId);
 }

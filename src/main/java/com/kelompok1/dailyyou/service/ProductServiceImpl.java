@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 
 @Service
 @Transactional
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl {
     @Autowired
     ProductRepository productRepository;
 
@@ -19,10 +19,10 @@ public class ProductServiceImpl implements ProductService{
     ProductCategoryRepository productCategoryRepository;
 
 
-    @Override
-    public Product save(Product product) {
-        product= productRepository.save(product);
-        product.setProductCategory(productCategoryRepository.findById(product.getIdCategory()).get());
-        return product;
-    }
+//    @Override
+//    public Product save(Product product) {
+//        product= productRepository.save(product);
+//        product.setProductCategory(productCategoryRepository.findById(product.getIdCategory()).get());
+//        return product;
+//    }
 }
