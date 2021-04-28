@@ -10,17 +10,17 @@ import java.util.Date;
 @Table(name= Order.TABLE_NAME)
 @Data
 public class Order extends com.kelompok1.dailyyou.model.entity.CommonEntity {
-    public static final String TABLE_NAME = "t_transaction";
+    public static final String TABLE_NAME = "t_order";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
-    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_transaction_seq")
+    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_order_seq")
 
-    @Column(name = "id_transaction")
+    @Column(name = "id_order")
     private Integer id;
 
     @OneToOne
     @JoinColumn(name = "id_detail", insertable = false, updatable = false, nullable = false)
-    private com.kelompok1.dailyyou.model.entity.OrderDetails orderDetails;
+    private OrderDetails orderDetails;
 
     @Column (name = "id_detail", nullable = false)
     private Integer idDetail;
