@@ -10,17 +10,137 @@ License URL: http://creativecommons.org/licenses/by/3.0/
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Daily You | About Us</title>
-</head>
+<div layout:fragment="content-body">
 
-<body>
-<div class="container">
-    <h2>Hi <span th:utext="${userName}"></span>, this is the home page.</h2>
-    <a th:href="@{/logout}">Sign out</a>
+<!--        <h1> About Us </h1>-->
+<!--        <span class="list-inline"></span>-->
+<!--        <br>-->
+<!--        <div class="visible-lg-inline"></div>-->
+<!--        <p> Daily You is an original Indonesian halal cosmetic brand that was founded in 2012. We always provides the best quality product to support women to look beautiful at all times according to their character. With experience in several industry sectors, a broad-->
+<!--            portfolio and technology platform as well as bringing a dedicated and highly qualified team, enabling the talent we provide to provide fast and responsive services, making it the best choice for companies that want to increase the usability of their businesses.</p>-->
+<!--    </div>-->
+
+    <div class="new-collections">
+        <div class="container">
+            <h3 class="animated wow zoomIn" data-wow-delay=".5s">About Us</h3>
+            <br>
+            <br>
+            <p class="text-justify"> Daily You is an original Indonesian halal cosmetic brand that was founded in 2021. We always provides the best quality product to support women to look beautiful at all times according to their character.
+                With experience in several industry sectors, a broad portfolio and technology platform as well as bringing a dedicated and highly qualified team, enabling the talent we provide to provide fast and responsive services,
+                making it the best choice for companies that want to increase the usability of their businesses.</p>
+        </div>
+    </div>
+
+    <div class="new-collections">
+        <div class="container">
+            <h3 class="animated wow zoomIn" data-wow-delay=".5s">Galeri</h3>
+            <br>
+            <br>
+            <div class="col-md-3 new-collections-grid">
+                <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
+                    <div class="new-collections-grid1-image">
+                        <a href="single.html" class="product-image"><img src="assets/images/photo1.jpg" alt=" "
+                                                                         class="img-responsive"/></a>
+
+                    </div>
+<!--                    <h4><a href="single.html">Pond's White Beauty Facial Foam</a></h4>-->
+
+                </div>
+
+            </div>
+            <div class="col-md-3 new-collections-grid">
+                <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
+                    <div class="new-collections-grid1-image">
+                        <a href="single.html" class="product-image"><img src="assets/images/photo2.jpg" alt=" "
+                                                                         class="img-responsive"/></a>
+
+                    </div>
+<!--                    <h4><a href="single.html">Pond's White Beauty Facial Foam</a></h4>-->
+
+                </div>
+
+            </div>
+            <div class="col-md-3 new-collections-grid">
+                <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
+                    <div class="new-collections-grid1-image">
+                        <a class="product-image"><img src="assets/images/photo3.jpg" alt=" "
+                                                                         class="img-responsive"/></a>
+
+                    </div>
+<!--                    <h4><a href="single.html">Pond's White Beauty Facial Foam</a></h4>-->
+
+                </div>
+
+            </div>
+            <div class="col-md-3 new-collections-grid">
+                <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
+                    <div class="new-collections-grid1-image">
+                        <a href="single.html" class="product-image"><img src="assets/images/photo4.jpg" alt=" "
+                                                                         class="img-responsive"/></a>
+
+                    </div>
+<!--                    <h4><a href="single.html">Pond's White Beauty Facial Foam</a></h4>-->
+
+                </div>
+
+            </div>
+        </div>
+        <div class="container">
+            <br>
+            <br>
+            <div class="col-md-3 new-collections-grid">
+                <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
+                    <div class="new-collections-grid1-image">
+                        <a href="single.html" class="product-image"><img src="assets/images/photo5.jpg" alt=" "
+                                                                         class="img-responsive"/></a>
+
+                    </div>
+                    <!--                    <h4><a href="single.html">Pond's White Beauty Facial Foam</a></h4>-->
+
+                </div>
+
+            </div>
+            <div class="col-md-3 new-collections-grid">
+                <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
+                    <div class="new-collections-grid1-image">
+                        <a href="single.html" class="product-image"><img src="assets/images/photo6.jpg" alt=" "
+                                                                         class="img-responsive"/></a>
+
+                    </div>
+                    <!--                    <h4><a href="single.html">Pond's White Beauty Facial Foam</a></h4>-->
+
+                </div>
+
+            </div>
+            <div class="col-md-3 new-collections-grid">
+                <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
+                    <div class="new-collections-grid1-image">
+                        <a class="product-image"><img src="assets/images/photo7.jpg" alt=" "
+                                                      class="img-responsive"/></a>
+
+                    </div>
+                    <!--                    <h4><a href="single.html">Pond's White Beauty Facial Foam</a></h4>-->
+
+                </div>
+
+            </div>
+            <div class="col-md-3 new-collections-grid">
+                <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
+                    <div class="new-collections-grid1-image">
+                        <a href="single.html" class="product-image"><img src="assets/images/photo8.jpg" alt=" "
+                                                                         class="img-responsive"/></a>
+
+                    </div>
+                    <!--                    <h4><a href="single.html">Pond's White Beauty Facial Foam</a></h4>-->
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 </div>
-</body>
+
 <th:block layout:fragment="add-scripts">
 </th:block>
 </html>
