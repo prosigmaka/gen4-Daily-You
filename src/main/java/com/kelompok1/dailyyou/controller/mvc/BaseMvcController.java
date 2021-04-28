@@ -40,6 +40,26 @@ public class BaseMvcController {
         return "profile/aboutUs";
     }
 
+    @GetMapping("educationPillars")
+    public String educationPillars() {
+        return "activities/page1";
+    }
+
+    @GetMapping("healthPillars")
+    public String healthPillars() {
+        return "activities/page2";
+    }
+
+    @GetMapping("womenPillars")
+    public String womenPillars() {
+        return "activities/page3";
+    }
+
+    @GetMapping("environmentPillars")
+    public String environmentPillars() {
+        return "activities/page4";
+    }
+
     @GetMapping("add-product")
     public String addProduct() {
         return "product/add";
