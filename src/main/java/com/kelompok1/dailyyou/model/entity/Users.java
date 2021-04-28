@@ -2,7 +2,6 @@ package com.kelompok1.dailyyou.model.entity;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Set;
 
 @Entity
 @Table(name =  "users")
