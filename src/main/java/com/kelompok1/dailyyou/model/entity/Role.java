@@ -3,30 +3,35 @@ package com.kelompok1.dailyyou.model.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="role")
+@Table(name = "role")
 public class Role {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="role_id")
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name="role")
-    private String role;
+    @Column(name = "role_name")
+    private String name;
 
-    public int getId() {
+    public Role() {
+
+    }
+
+    public Role(String name) {
+        super();
+        this.name = name;
+    }
+
+    public Long getId() {
         return id;
     }
-
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
-
-    public String getRole() {
-        return role;
+    public String getName() {
+        return name;
     }
-
-    public void setRole(String role) {
-        this.role = role;
+    public void setName(String name) {
+        this.name = name;
     }
 }
