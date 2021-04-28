@@ -1,0 +1,26 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html layout:decorate="~{base}"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Daily You | About Us</title>
+</head>
+
+<body>
+<div class="container">
+    <h2>Hi <span th:utext="${userName}"></span>, this is the home page.</h2>
+    <a th:href="@{/logout}">Sign out</a>
+</div>
+</body>
+<th:block layout:fragment="add-scripts">
+</th:block>
+</html>
