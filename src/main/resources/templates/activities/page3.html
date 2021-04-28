@@ -1,10 +1,42 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html layout:decorate="~{base}"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
 
-</body>
+<div layout:fragment="content-body">
+
+    <div class="new-collections">
+        <div class="container">
+            <h3 class="animated wow zoomIn" data-wow-delay=".5s"> Women's Pillars </h3>
+            <br>
+            <br>
+            <div class="col-lg-5">
+                <p class="text-left"> Women are basically empowered, Daily You is committed to developing the capacity and skills of women in Indonesia to be more empowered together.
+                    In order to grow the spirit of womenpreneur who can support the improvement of quality of life.</p>
+            </div>
+            <div class="col-md-6 new-collections-grid center">
+                <div class="new-collections-grid1 animated wow slideInUp" data-wow-delay=".5s">
+                    <div class="new-collections-grid1-image">
+                        <a href="single.html" class="product-image"><img src="assets/images/photo2.jpg" alt=" "
+                                                                         class="img-responsive"/></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+<th:block layout:fragment="add-scripts">
+</th:block>
 </html>
