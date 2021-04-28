@@ -40,4 +40,19 @@ public class UserController {
         return "profile/aboutUs";
     }
 
+    @GetMapping("add-product")
+    public String addProduct() {
+        return "product/add";
+    }
+
+    @GetMapping("update-product")
+    public String updateProduct() {
+        return "product/update";
+    }
+
+    @GetMapping("all-product")
+    public String allProduct() {
+        return "product/index";
+    }
+
 }
