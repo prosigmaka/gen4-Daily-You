@@ -3,37 +3,41 @@ package com.kelompok1.dailyyou.configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
-import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import javax.sql.DataSource;
+
+import com.kelompok1.dailyyou.service.UserService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
 
     @Autowired
-    private DataSource dataSource;
+    private UserService userService;
 
-    private final String USERS_QUERY = "select email, password, active from user where email=?";
-    private final String ROLES_QUERY = "select u.email, r.role from user u inner join user_role ur on (u.id = ur.user_id) inner join role r on (ur.role_id=r.role_id) where u.email=?";
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
+        auth.setUserDetailsService(userService);
+        auth.setPasswordEncoder(passwordEncoder());
+        return auth;
+    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication()
-                .usersByUsernameQuery(USERS_QUERY)
-                .authoritiesByUsernameQuery(ROLES_QUERY)
-                .dataSource(dataSource)
-                .passwordEncoder(bCryptPasswordEncoder);
+        auth.authenticationProvider(authenticationProvider());
     }
 
     @Override
@@ -44,26 +48,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .antMatchers("/assets/**").permitAll()
                 .antMatchers("/dashboard*").permitAll()
                 .antMatchers("/signup*").permitAll()
-                .antMatchers("/dashboard/**").hasAuthority("USER").anyRequest()
-                .authenticated().and().csrf().disable()
-                .formLogin().loginPage("/login").failureUrl("/login?error=true")
-                .defaultSuccessUrl("/dashboard")
-                .usernameParameter("email")
-                .passwordParameter("password")
-                .and().logout()
+                .antMatchers("/aboutUs*").permitAll()
+                .antMatchers("/dashboard/**").hasAuthority("ROLE_USER")
+
+
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/dashboardUser")
+
+                .and()
+                .logout()
+                .invalidateHttpSession(true)
+                .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/")
-                .and().rememberMe()
-                .tokenRepository(persistentTokenRepository())
-                .tokenValiditySeconds(60*60)
-                .and().exceptionHandling().accessDeniedPage("/access_denied");
-    }
-
-    @Bean
-    public PersistentTokenRepository persistentTokenRepository() {
-        JdbcTokenRepositoryImpl db = new JdbcTokenRepositoryImpl();
-        db.setDataSource(dataSource);
-
-        return db;
+                .logoutSuccessUrl("/login?logout")
+                .permitAll();
     }
 }
