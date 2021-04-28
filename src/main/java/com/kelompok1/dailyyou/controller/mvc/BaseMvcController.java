@@ -28,4 +28,18 @@ public class BaseMvcController {
         return "product/index";
     }
 
+    @GetMapping("make-up")
+    public String makeUp() {
+        return "product/makeup";
+    }
+
+    @GetMapping("body-care")
+    public String bodyCare() {
+        return "product/bodycare";
+    }
+
+    @GetMapping("skin-care")
+    public String skinCare() {
+        return "product/skincare";
+    }
 }

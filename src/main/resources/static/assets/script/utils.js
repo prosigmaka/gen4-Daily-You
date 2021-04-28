@@ -61,25 +61,25 @@ function getAllProducts() {
     var cards = [];
     const errorMessage = "<p>We don't currently have any items in stock, but feel free to add your own product/s </p>";
 
-    fetch('/api/product', {
-        method: 'GET',
-        mode: 'cors',
+    $.ajax({
+        url: '/api/product',
+        method: 'get',
         contentType: 'application/json',
         success: function (res, status, xhr) {
             if (xhr.status == 200 || xhr.status == 201) {
                 console.log(res.length);
                 console.log(cards.length);
                 if (res.length > 0 && cards.length < 1) {
-                    for (const index in products) {
-                        var product = products[index];
+                    for (i = 0; i < res.length; i++) {
+                        // var product = products[index];
 
-                        var productID = product.id;
-                        var productName = product.productName;
-                        var productStock = product.stock;
-                        var productPrice = product.price;
-                        var productPictureURL = product.pictureUrl;
-                        var idCategory = product.idCategory;
-                        // var categoryName = product.categoryName;
+                        var productID = res[i].id;
+                        var productName = res[i].productName;
+                        var productStock = res[i].stock;
+                        var productPrice = res[i].price;
+                        var productPictureURL = res[i].pictureUrl;
+                        var idCategory = res[i].idCategory;
+                        var categoryName = res[i].categoryName;
 
                         var card = `
                 <div class="col-sm" id=${productID}>
@@ -87,7 +87,7 @@ function getAllProducts() {
                         <img class="card-img-top" src=${productPictureURL} alt="Product Image">
                         <div class="card-body text-white">
                             <h5 class="card-title">${productName}</h5>
-                            <p class="card-text">${idCategory}</p>
+                            <p class="card-text">${categoryName}</p>
                             <br />
                             <p>Stock: ${productStock}</p>
                             <br />
@@ -114,43 +114,7 @@ function getAllProducts() {
 }
 
 
-function getProducts() {
-    $.ajax({
-        url: '/api/product',
-        method: 'get',
-        contentType: 'application/json',
-        success: function (res, status, xhr) {
-            if (xhr.status == 200 || xhr.status == 201) {
-                for (i = 0; i < res.length; i++) {
-                    document.getElementById('card-container').innerHtml += `<div class="col-sm" id='res[i].id'>+
-                    "<div class="card bg-dark" style="width: 18rem;">" +
-                    "<img class="card-img-top" src='res[i].pictureUrl' alt="Product Image">"+
-                    "<div class="card-body text-white">"+
-                    "<h5 class="card-title">"+res[i].productName+"</h5>"+
-                    "<p class="card-text">"+res[i].categoryName+"</p>"+
-                    "<br/>"+
-                    "<p>"+ "Stock: "+ res[i].stock+"</p>"+
-                    "<br/>"+
-                    "<p><strong>"+"Price: Rp"+ res[i].price+"</strong></p>"+
-                    "</div>"+
-                    "<div class="card-footer bg-transparent text-center row">"+
-                            "<button type="button" class="btn btn-outline-warning btn-sm col" id="buy-btn">"+"Buy Product"+"</button>"
-                        "</div>"+
-                    "</div>"+
-                "</div>"
-            `;
 
-                    cards.push(card);
-                }
-            } else if (products.length < 1 && cards.length < 1) {
-                cards.push(errorMessage);
-            }
-
-            return cards;
-        }
-
-    })
-}
 
 // new product
 async function createNewProduct(product) {
