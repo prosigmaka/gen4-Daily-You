@@ -26,6 +26,44 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--</div>-->
 
 <body layout:fragment="content-header">
+<!--&lt;!&ndash; breadcrumbs &ndash;&gt;-->
+<!--<div class="breadcrumbs">-->
+<!--    <div class="container">-->
+<!--        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">-->
+<!--            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>-->
+<!--            <li class="active">Login Page</li>-->
+<!--        </ol>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; //breadcrumbs &ndash;&gt;-->
+<!--&lt;!&ndash; login &ndash;&gt;-->
+<!--<div class="login">-->
+<!--    <div class="container">-->
+<!--        <h3 class="animated wow zoomIn" data-wow-delay=".5s">Login Form</h3>-->
+<!--        <p class="est animated wow zoomIn" data-wow-delay=".5s">Sign in to start your session</p>-->
+<!--        <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">-->
+<!--            <div class="alert alert-danger" role="alert" th:if="${param.error}">-->
+<!--                The email or password is incorrect!-->
+<!--            </div>-->
+<!--            <form th:action="@{/login}" method="post">-->
+<!--&lt;!&ndash;                <input type="email" placeholder="Email Address" required=" " >&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="password" placeholder="Password" required=" " >&ndash;&gt;-->
+<!--                <label for="inputEmail" class="sr-only">Email</label>-->
+<!--                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required autofocus>-->
+<!--                <label for="inputPassword" class="sr-only">Password</label>-->
+<!--                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>-->
+<!--                <div class="forgot">-->
+<!--                    <a href="#">Forgot Password?</a>-->
+<!--                </div>-->
+<!--                <input type="submit" value="Login">-->
+<!--            </form>-->
+<!--        </div>-->
+<!--        <h4 class="animated wow slideInUp" data-wow-delay=".5s">For New People</h4>-->
+<!--        <p class="animated wow slideInUp" data-wow-delay=".5s"><a href=" /signup">Register Here</a> (Or) go back to <a href="index.html">Home<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; //login &ndash;&gt;-->
+
 <!-- breadcrumbs -->
 <div class="breadcrumbs">
     <div class="container">
@@ -39,30 +77,54 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- login -->
 <div class="login">
     <div class="container">
+        <!--    <div class = "row">-->
+        <!--        <div class = "col-md-6 col-md-offset-3">-->
         <h3 class="animated wow zoomIn" data-wow-delay=".5s">Login Form</h3>
         <p class="est animated wow zoomIn" data-wow-delay=".5s">Sign in to start your session</p>
         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
-            <div class="alert alert-danger" role="alert" th:if="${param.error}">
-                The email or password is incorrect!
-            </div>
+
             <form th:action="@{/login}" method="post">
-<!--                <input type="email" placeholder="Email Address" required=" " >-->
-<!--                <input type="password" placeholder="Password" required=" " >-->
-                <label for="inputEmail" class="sr-only">Email</label>
-                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required autofocus>
-                <label for="inputPassword" class="sr-only">Password</label>
-                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-                <div class="forgot">
-                    <a href="#">Forgot Password?</a>
+
+                <!-- error message -->
+                <div th:if="${param.error}">
+                    <div class="alert alert-danger">Invalid username or
+                        password.
+                    </div>
                 </div>
-                <input type="submit" value="Login">
+
+                <!-- logout message -->
+                <div th:if="${param.logout}">
+                    <div class="alert alert-info">You have been logged out.</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username"> Username </label> :
+                    <input type="text" class="form-control" id="username" name="username"
+                           placeholder="Enter Email ID" autofocus="autofocus">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>: <input type="password"
+                                                                   id="password" name="password" class="form-control"
+                                                                   placeholder="Enter Password"/>
+                </div>
+
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3">
+                            <input type="submit" name="login-submit" id="login-submit"
+                                   class="form-control btn btn-primary" value="Log In"/>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
         <h4 class="animated wow slideInUp" data-wow-delay=".5s">For New People</h4>
-        <p class="animated wow slideInUp" data-wow-delay=".5s"><a href=" /signup">Register Here</a> (Or) go back to <a href="index.html">Home<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
+        <p class="animated wow slideInUp" data-wow-delay=".5s"><a href=" /signup">Register Here</a> (Or) go back to <a
+                href="index.html">Home<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></a></p>
+
     </div>
 </div>
-<!-- //login -->
 </body>
 
 

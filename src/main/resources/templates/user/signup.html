@@ -17,6 +17,54 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <body layout:fragment="content-header">
 
+<!--&lt;!&ndash; breadcrumbs &ndash;&gt;-->
+<!--<div class="breadcrumbs">-->
+<!--    <div class="container">-->
+<!--        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">-->
+<!--            <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>-->
+<!--            <li class="active">Register Page</li>-->
+<!--        </ol>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; //breadcrumbs &ndash;&gt;-->
+<!--&lt;!&ndash; register &ndash;&gt;-->
+<!--<div class="register">-->
+<!--    <div class="container">-->
+<!--        <h3 class="animated wow zoomIn" data-wow-delay=".5s">Register Here</h3>-->
+<!--        <p class="est animated wow zoomIn" data-wow-delay=".5s">Register your account to start your session</p>-->
+<!--        <div class="login-form-grids">-->
+<!--&lt;!&ndash;            <div class="alert alert-success" role="alert" th:if="${msg}" th:utext="${msg}">&ndash;&gt;-->
+<!--&lt;!&ndash;                Successfull Register&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--            <h5 class="animated wow slideInUp" data-wow-delay=".5s">profile information</h5>-->
+<!--            <form th:action="@{/signup}" method="post">-->
+<!--                <input type="text" placeholder="First Name..." required=" " >-->
+<!--                <input type="text" placeholder="Last Name..." required=" " >-->
+<!--            </form>-->
+
+<!--            <h6 class="animated wow slideInUp" data-wow-delay=".5s">Login information</h6>-->
+<!--            <form class="animated wow slideInUp" data-wow-delay=".5s">-->
+<!--                <input type="email" placeholder="Email Address" required=" " >-->
+<!--                <input type="password" placeholder="Password" required=" " >-->
+<!--                <input type="password" placeholder="Password Confirmation" required=" " >-->
+<!--&lt;!&ndash;                <div class="register-check-box">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <div class="check">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>I accept the terms and conditions</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--                <input type="submit" value="Register">-->
+<!--                <br>-->
+<!--                <span>Already registered ? <a href="/" th:href="@{/login}">Login here</a></span>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--        <div class="register-home animated wow slideInUp" data-wow-delay=".5s">-->
+<!--            <a href=" /dashboard">Home</a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; //register &ndash;&gt;-->
+
+
 <!-- breadcrumbs -->
 <div class="breadcrumbs">
     <div class="container">
@@ -27,42 +75,58 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </div>
 </div>
 <!-- //breadcrumbs -->
-<!-- register -->
+
+<!-- Create HTML registration form -->
 <div class="register">
     <div class="container">
+<!--        <div class="row">-->
+<!--            <div class="col-md-6 col-md-offset-3">-->
         <h3 class="animated wow zoomIn" data-wow-delay=".5s">Register Here</h3>
         <p class="est animated wow zoomIn" data-wow-delay=".5s">Register your account to start your session</p>
-        <div class="login-form-grids">
-<!--            <div class="alert alert-success" role="alert" th:if="${msg}" th:utext="${msg}">-->
-<!--                Successfull Register-->
-<!--            </div>-->
-            <h5 class="animated wow slideInUp" data-wow-delay=".5s">profile information</h5>
-            <form th:action="@{/signup}" method="post">
-                <input type="text" placeholder="First Name..." required=" " >
-                <input type="text" placeholder="Last Name..." required=" " >
-            </form>
 
-            <h6 class="animated wow slideInUp" data-wow-delay=".5s">Login information</h6>
-            <form class="animated wow slideInUp" data-wow-delay=".5s">
-                <input type="email" placeholder="Email Address" required=" " >
-                <input type="password" placeholder="Password" required=" " >
-                <input type="password" placeholder="Password Confirmation" required=" " >
-<!--                <div class="register-check-box">-->
-<!--                    <div class="check">-->
-<!--                        <label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>I accept the terms and conditions</label>-->
-<!--                    </div>-->
-<!--                </div>-->
-                <input type="submit" value="Register">
-                <br>
-                <span>Already registered ? <a href="/" th:href="@{/login}">Login here</a></span>
-            </form>
-        </div>
-        <div class="register-home animated wow slideInUp" data-wow-delay=".5s">
-            <a href=" /dashboard">Home</a>
+        <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
+                <!-- success message -->
+                <div th:if="${param.success}">
+                    <div class="alert alert-info">You've successfully registered
+                        to our awesome app!
+                    </div>
+                </div>
+
+                <form th:action="@{/signup}" method="post" th:object="${user}">
+                    <div class="form-group">
+                        <label class="control-label" for="firstName"> First Name </label>
+                        <input id="firstName" class="form-control" th:field="*{firstName}"
+                               required autofocus="autofocus"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="lastName"> Last Name </label> <input
+                            id="lastName" class="form-control" th:field="*{lastName}"
+                            required autofocus="autofocus"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="email"> Email </label> <input
+                            id="email" class="form-control" th:field="*{email}" required
+                            autofocus="autofocus"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="password"> Password </label> <input
+                            id="password" class="form-control" type="password"
+                            th:field="*{password}" required autofocus="autofocus"/>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success">Register</button>
+                        <span>Already registered? <a href="/" th:href="@{/login}">Login
+								here</a></span>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
-<!-- //register -->
 
 </body>
 <th:block layout:fragment="add-scripts">
