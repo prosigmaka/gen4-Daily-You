@@ -29,10 +29,11 @@ public class Product {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_category",  nullable = false)
-     ProductCategory productCategory;
+    ProductCategory productCategory;
 
 
     public Product(ProductDto productDto, ProductCategory productCategory) {
+        this.id= productDto.getId();
         this.productName = productDto.getProductName();
         this.stock = productDto.getStock();
         this.price = productDto.getPrice();
@@ -40,8 +41,9 @@ public class Product {
         this.productCategory = productCategory;
     }
 
-    public Product(String productName, int stock, String pictureUrl, double price, ProductCategory productCategory) {
+    public Product(Integer id, String productName, int stock, String pictureUrl, double price, ProductCategory productCategory) {
         super();
+        this.id=id;
         this.productName = productName;
         this.stock = stock;
         this.price = price;
@@ -54,11 +56,12 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "id=" + id +
-                ", name='" + productName + '\'' +
+                ", id='" + id + '\'' +
+                ", productName='" + productName + '\'' +
                 ", stock='" + stock + '\'' +
                 ", price=" + price + '\'' +
                 ", pictureURL='" + pictureUrl + '\'' +
+                ", idCategory='" + productCategory + '\'' +
                 '}';
     }
 }

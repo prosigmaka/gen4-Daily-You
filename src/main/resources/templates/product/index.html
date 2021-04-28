@@ -36,8 +36,18 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 </div>
 <th:block layout:fragment="add-scripts">
-    <script src="/scripts/utils.js"></script>
-    <script src="/scripts/index.js"></script>
+    <script th:src="@{assets/script/utils.js}"></script>
+    <script th:src="@{assets/script/index.js}"></script>
+    <script>
+        $("#card-container").ready(function() {
+            var cards = getAllProducts();
+
+            for (const index in cards) {
+                var card = cards[index];
+                $("#card-container").append(card);
+            }
+        });
+    </script>
 </th:block>
 
 </html>
