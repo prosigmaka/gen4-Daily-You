@@ -113,9 +113,6 @@ function getAllProducts() {
     })
 }
 
-
-
-
 // new product
 async function createNewProduct(product) {
     var result = false;
