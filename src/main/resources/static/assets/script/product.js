@@ -45,10 +45,11 @@ var create = {
                         cards.push(errorMessage);
                     }
                 }
-            }})
+            }
+        })
     },
 
-    getMakeUp: function (){
+    getMakeUp: function () {
         $.ajax({
             url: '/api/product/category/1',
             method: 'get',
@@ -87,17 +88,17 @@ var create = {
                     </div>
                 </div>
             `;
-
                             $("#card-container").append(card);
                         }
                     } else if (res.length < 1 && cards.length < 1) {
                         cards.push(errorMessage);
                     }
                 }
-            }})
+            }
+        })
     },
 
-    getBodyCare: function (){
+    getBodyCare: function () {
         $.ajax({
             url: '/api/product/category/2',
             method: 'get',
@@ -143,10 +144,11 @@ var create = {
                         cards.push(errorMessage);
                     }
                 }
-            }})
+            }
+        })
     },
 
-    getSkinCare: function (){
+    getSkinCare: function () {
         $.ajax({
             url: '/api/product/category/3',
             method: 'get',
@@ -192,6 +194,160 @@ var create = {
                         cards.push(errorMessage);
                     }
                 }
-            }})
+            }
+        })
     }
+}
+
+const tableProduct = {
+    create() {
+        // jika table tersebut datatable, maka clear and dostroy
+        if ($.fn.DataTable.isDataTable('#tableProduct')) {
+            // table yg sudah dibentuk menjadi datatable harus d rebuild lagi untuk di instantiasi ulang
+            $('#tableProduct').DataTable().clear()
+            $('#tableProduct').DataTable().destroy()
+        }
+
+        $.ajax({
+            url: '/api/product',
+            method: 'get',
+            contentType: 'application/json',
+            success(res, status, xhr) {
+                if (xhr.status == 200 || xhr.status == 201) {
+                    $('#tableProduct').DataTable({
+                        data: res,
+                        columns: [
+                            {title: 'Product ID', data: 'id'},
+                            {title: 'Product Name', data: 'productName'},
+                            {title: 'Stock', data: 'stock'},
+                            {title: 'Price', data: 'price'},
+                            {title: 'Picture Url', data: 'pictureUrl'},
+                            {title: 'Category ID', data: 'idCategory'},
+                            {title: 'Category Name', data: 'categoryName'},
+                            {
+                                title: 'Action', data: null,
+                                render(data, type, row) {
+                                    return `<button class='btn-primary' onclick=formProduct.setEditData('${data.id}')>Edit</button>` +
+                                        `<button  class='btn-danger' onclick=actionDelete.confirmDelete('${data.id}')>Delete</button>`
+                                }
+                            }
+                        ]
+                    })
+                } else {
+                }
+            },
+            error(err) {
+                console.log(err)
+            }
+        })
+    }
+}
+
+var formProduct = {
+    resetForm() {
+        $('#form-product')[0].reset()
+        $('#id').val('')
+        $('#idCategory').val('')
+    },
+    saveForm() {
+        if ($('#form-product').parsley().validate()) {
+            const dataResult = getJsonForm($('#form-product').serializeArray(), true)
+
+            $.ajax({
+                url: '/api/product',
+                method: 'post',
+                contentType: 'application/json',
+                dataType: 'json',
+                data: JSON.stringify(dataResult),
+                success(res, status, xhr) {
+                    if (xhr.status == 200 || xhr.status == 201) {
+                        tableProduct.create()
+                        $('#modal-product').modal('hide')
+                    } else {
+                    }
+                },
+                erorrr(err) {
+                    console.log(err)
+                }
+            })
+        }
+    }, setEditData(id) {
+        formProduct.resetForm()
+
+        $.ajax({
+            url: `/api/product/${id}`,
+            method: 'get',
+            contentType: 'application/json',
+            dataType: 'json',
+            success(res, status, xhr) {
+                if (xhr.status == 200 || xhr.status == 201) {
+                    $('#form-product').fromJSON(JSON.stringify(res))
+                    $('#modal-product').modal('show')
+                } else {
+                }
+            },
+            erorrr(err) {
+                console.log(err)
+            }
+        })
+    }
+}
+
+const actionDelete = {
+    confirmDelete(idRow) {// kalo ga pake modal, connfirmDelete dicomment aja
+        $.ajax({
+            url: `/api/product/${idRow}`,
+            method: 'get',
+            contentType: 'application/json',
+            dataType: 'json',
+            success(res, status, xhr) {
+                if (xhr.status == 200 || xhr.status == 201) {
+                    $('#form-product').fromJSON(JSON.stringify(res))
+                    $('#modal-delete').modal('show')
+                } else {}
+            },
+            erorrr(err) {
+                console.log(err)
+            }
+        })
+    },
+    // deleteRowData: function (idRow) { //pake ini kalo ga pake modal
+    deleteRowData() {
+        if ($('#form-product').parsley().validate()) {
+            const dataResult = getJsonForm($('#form-product').serializeArray(), true)
+            // var yes= confirm("Hapus data?"); //pake ini kalo ga pake modal
+            // if (yes){
+            $.ajax({
+                    url: `/api/product/${dataResult.id}`, // ditambah idRow kalo pake confirm ga pake modal
+                    method: 'delete',
+                    success() {
+                        tableProduct.create()
+                        $('#modal-delete').modal('hide')
+                    },
+                    erorrr(err) {
+                        console.log(err)
+                    }
+                }
+            )
+        }
+    } // dicomment kalo ga pake modal
+}
+
+const dropdown = {
+    selectCategory() {
+        $.ajax({
+            type: 'GET',
+            url: '/api/productcategory',
+            contentType: 'application/json',
+            dataType: 'json',
+            success(data) {
+                let s = '<option value="-1">Choose Category</option>'
+                for (let i = 0; i < data.length; i++) {
+                    s += `<option value="${data[i].id}">${data[i].categoryName}</option>`
+                }
+
+                $('#categoryName').append(s)
+            }
+        })
+    },
 }

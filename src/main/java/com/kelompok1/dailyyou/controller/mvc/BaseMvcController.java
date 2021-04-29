@@ -28,6 +28,12 @@ public class BaseMvcController {
         return "product/index";
     }
 
+    @GetMapping("manage-product")
+    public String manageProduct() {
+        return "product/product";
+    }
+
+
     @GetMapping("make-up")
     public String makeUp() {
         return "product/makeup";

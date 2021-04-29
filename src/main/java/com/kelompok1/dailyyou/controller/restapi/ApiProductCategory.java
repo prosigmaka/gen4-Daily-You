@@ -22,7 +22,7 @@ public class ApiProductCategory {
     @Autowired
     private ProductCategoryRepository productCategoryRepository;
 
-    @GetMapping("/")
+    @GetMapping()
     public ResponseEntity<List<ProductCategory>> getProductCategories() {
         List<ProductCategory> body = productCategoryService.listProductCategories();
         return new ResponseEntity<List<ProductCategory>>(body, HttpStatus.OK);
