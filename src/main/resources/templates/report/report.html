@@ -26,121 +26,125 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="checkout">
         <div class="container">
             <div class="checkout-right animated wow slideInUp" data-wow-delay=".5s">
-                <table class="timetable_sub">
+                <table class="timetable_sub" id="tb1">
                     <thead>
                     <tr>
-                        <th>SL No.</th>
-                        <th>Product</th>
-                        <th>Quality</th>
+                        <th>No.</th>
+                        <th>Date</th>
+                        <th>ID Transaction</th>
+                        <th>ID Product</th>
                         <th>Product Name</th>
-                        <th>Service Charges</th>
-                        <th>Price</th>
+                        <th>Quality</th>
                         <th>Remove</th>
                     </tr>
                     </thead>
-                    <tr class="rem1">
-                        <td class="invert">1</td>
-                        <td class="invert-image"><a href="single.html"><img src="images/22.jpg" alt=" "
-                                                                            class="img-responsive"/></a></td>
-                        <td class="invert">
-                            <div class="quantity">
-                                <div class="quantity-select">
-                                    <div class="entry value-minus">&nbsp;</div>
-                                    <div class="entry value"><span>1</span></div>
-                                    <div class="entry value-plus active">&nbsp;</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="invert">Black Shoe</td>
-                        <td class="invert">$5.00</td>
-                        <td class="invert">$290.00</td>
-                        <td class="invert">
-                            <div class="rem">
-                                <div class="close1"></div>
-                            </div>
-                            <script>$(document).ready(function (c) {
-                                $('.close1').on('click', function (c) {
-                                    $('.rem1').fadeOut('slow', function (c) {
-                                        $('.rem1').remove();
-                                    });
-                                });
-                            });
-                            </script>
-                        </td>
-                    </tr>
-                    <tr class="rem2">
-                        <td class="invert">2</td>
-                        <td class="invert-image"><a href="single.html"><img src="images/30.jpg" alt=" "
-                                                                            class="img-responsive"/></a></td>
-                        <td class="invert">
-                            <div class="quantity">
-                                <div class="quantity-select">
-                                    <div class="entry value-minus">&nbsp;</div>
-                                    <div class="entry value"><span>1</span></div>
-                                    <div class="entry value-plus active">&nbsp;</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="invert">Centre Table</td>
-                        <td class="invert">$5.00</td>
-                        <td class="invert">$250.00</td>
-                        <td class="invert">
-                            <div class="rem">
-                                <div class="close2"></div>
-                            </div>
-                            <script>$(document).ready(function (c) {
-                                $('.close2').on('click', function (c) {
-                                    $('.rem2').fadeOut('slow', function (c) {
-                                        $('.rem2').remove();
-                                    });
-                                });
-                            });
-                            </script>
-                        </td>
-                    </tr>
-                    <tr class="rem3">
-                        <td class="invert">3</td>
-                        <td class="invert-image"><a href="single.html"><img src="images/11.jpg" alt=" "
-                                                                            class="img-responsive"/></a></td>
-                        <td class="invert">
-                            <div class="quantity">
-                                <div class="quantity-select">
-                                    <div class="entry value-minus">&nbsp;</div>
-                                    <div class="entry value"><span>1</span></div>
-                                    <div class="entry value-plus active">&nbsp;</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="invert">Stone Bangles</td>
-                        <td class="invert">$5.00</td>
-                        <td class="invert">$299.00</td>
-                        <td class="invert">
-                            <div class="rem">
-                                <div class="close3"></div>
-                            </div>
-                            <script>$(document).ready(function (c) {
-                                $('.close3').on('click', function (c) {
-                                    $('.rem3').fadeOut('slow', function (c) {
-                                        $('.rem3').remove();
-                                    });
-                                });
-                            });
-                            </script>
-                        </td>
-                    </tr>
-                    <!--quantity-->
-                    <script>
-                        $('.value-plus').on('click', function () {
-                            var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) + 1;
-                            divUpd.text(newVal);
-                        });
+                    <tbody>
 
-                        $('.value-minus').on('click', function () {
-                            var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) - 1;
-                            if (newVal >= 1) divUpd.text(newVal);
-                        });
-                    </script>
-                    <!--quantity-->
+                    </tbody>
+<!--                    </thead>-->
+<!--                    <tr class="rem1">-->
+<!--                        <td class="invert">1</td>-->
+<!--                        <td class="invert-image"><a href="single.html"><img src="images/22.jpg" alt=" "-->
+<!--                                                                            class="img-responsive"/></a></td>-->
+<!--                        <td class="invert">-->
+<!--                            <div class="quantity">-->
+<!--                                <div class="quantity-select">-->
+<!--                                    <div class="entry value-minus">&nbsp;</div>-->
+<!--                                    <div class="entry value"><span>1</span></div>-->
+<!--                                    <div class="entry value-plus active">&nbsp;</div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </td>-->
+<!--                        <td class="invert">Black Shoe</td>-->
+<!--                        <td class="invert">$5.00</td>-->
+<!--                        <td class="invert">$290.00</td>-->
+<!--                        <td class="invert">-->
+<!--                            <div class="rem">-->
+<!--                                <div class="close1"></div>-->
+<!--                            </div>-->
+<!--                            <script>$(document).ready(function (c) {-->
+<!--                                $('.close1').on('click', function (c) {-->
+<!--                                    $('.rem1').fadeOut('slow', function (c) {-->
+<!--                                        $('.rem1').remove();-->
+<!--                                    });-->
+<!--                                });-->
+<!--                            });-->
+<!--                            </script>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    <tr class="rem2">-->
+<!--                        <td class="invert">2</td>-->
+<!--                        <td class="invert-image"><a href="single.html"><img src="images/30.jpg" alt=" "-->
+<!--                                                                            class="img-responsive"/></a></td>-->
+<!--                        <td class="invert">-->
+<!--                            <div class="quantity">-->
+<!--                                <div class="quantity-select">-->
+<!--                                    <div class="entry value-minus">&nbsp;</div>-->
+<!--                                    <div class="entry value"><span>1</span></div>-->
+<!--                                    <div class="entry value-plus active">&nbsp;</div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </td>-->
+<!--                        <td class="invert">Centre Table</td>-->
+<!--                        <td class="invert">$5.00</td>-->
+<!--                        <td class="invert">$250.00</td>-->
+<!--                        <td class="invert">-->
+<!--                            <div class="rem">-->
+<!--                                <div class="close2"></div>-->
+<!--                            </div>-->
+<!--                            <script>$(document).ready(function (c) {-->
+<!--                                $('.close2').on('click', function (c) {-->
+<!--                                    $('.rem2').fadeOut('slow', function (c) {-->
+<!--                                        $('.rem2').remove();-->
+<!--                                    });-->
+<!--                                });-->
+<!--                            });-->
+<!--                            </script>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    <tr class="rem3">-->
+<!--                        <td class="invert">3</td>-->
+<!--                        <td class="invert-image"><a href="single.html"><img src="images/11.jpg" alt=" "-->
+<!--                                                                            class="img-responsive"/></a></td>-->
+<!--                        <td class="invert">-->
+<!--                            <div class="quantity">-->
+<!--                                <div class="quantity-select">-->
+<!--                                    <div class="entry value-minus">&nbsp;</div>-->
+<!--                                    <div class="entry value"><span>1</span></div>-->
+<!--                                    <div class="entry value-plus active">&nbsp;</div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </td>-->
+<!--                        <td class="invert">Stone Bangles</td>-->
+<!--                        <td class="invert">$5.00</td>-->
+<!--                        <td class="invert">$299.00</td>-->
+<!--                        <td class="invert">-->
+<!--                            <div class="rem">-->
+<!--                                <div class="close3"></div>-->
+<!--                            </div>-->
+<!--                            <script>$(document).ready(function (c) {-->
+<!--                                $('.close3').on('click', function (c) {-->
+<!--                                    $('.rem3').fadeOut('slow', function (c) {-->
+<!--                                        $('.rem3').remove();-->
+<!--                                    });-->
+<!--                                });-->
+<!--                            });-->
+<!--                            </script>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    &lt;!&ndash;quantity&ndash;&gt;-->
+<!--                    <script>-->
+<!--                        $('.value-plus').on('click', function () {-->
+<!--                            var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) + 1;-->
+<!--                            divUpd.text(newVal);-->
+<!--                        });-->
+
+<!--                        $('.value-minus').on('click', function () {-->
+<!--                            var divUpd = $(this).parent().find('.value'), newVal = parseInt(divUpd.text(), 10) - 1;-->
+<!--                            if (newVal >= 1) divUpd.text(newVal);-->
+<!--                        });-->
+<!--                    </script>-->
+<!--                    &lt;!&ndash;quantity&ndash;&gt;-->
                 </table>
             </div>
         </div>
@@ -149,6 +153,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- //checkout -->
 <!-- footer -->
 <th:block layout:fragment="add-scripts">
+    <script>
+        $(function () {
+            var sc = window.location.search;
+            const urlParams = new URLSearchParams(sc);
+            const values = urlParams.values();
+            for (const value of values) $('#tb1 tbody').append('<td>' + value + '</td>');
+
+            $('#tb1 tbody').append('<tr>' + '</tr>');
+        });
+    </script>
 </th:block>
 <!-- //footer -->
 </body>
