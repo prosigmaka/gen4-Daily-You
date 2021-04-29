@@ -3,6 +3,8 @@ package com.kelompok1.dailyyou.model.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Data
@@ -16,14 +18,14 @@ public class Role {
     @Column(name = "role_name")
     private String name;
 
-//    public Role() {
-//
-//    }
-//
-//    public Role(String name) {
-//        super();
-//        this.name = name;
-//    }
+    public Role() {
+
+    }
+
+    public Role(String name) {
+        super();
+        this.name = name;
+    }
 //
 //    public Long getId() {
 //        return id;
