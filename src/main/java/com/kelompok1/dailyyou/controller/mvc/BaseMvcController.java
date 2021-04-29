@@ -18,7 +18,7 @@ public class BaseMvcController {
     public ModelAndView dashboard() {
         ModelAndView model = new ModelAndView();
 
-        model.setViewName("dashboard/index");
+        model.setViewName("dashboardUser/index");
         return model;
     }
 
@@ -83,6 +83,12 @@ public class BaseMvcController {
     @GetMapping("all-product")
     public String allProduct() {
         return "product/index";
+    }
+
+
+    @GetMapping("checkout")
+    public String checkout() {
+        return "dashboardUser/checkout";
     }
 
 }
