@@ -32,7 +32,17 @@ public class BaseMvcController {
 
     @GetMapping("dashboardUser")
     public String dashboardUser() {
-        return "dashboard/index2";
+        return "dashboardUser/user";
+    }
+
+    @GetMapping("dashboardAdm")
+    public String dashboardAdm() {
+        return "dashboardAdmin/admin";
+    }
+
+    @GetMapping("report")
+    public String report() {
+        return "report/report";
     }
 
     @GetMapping("aboutUs")
