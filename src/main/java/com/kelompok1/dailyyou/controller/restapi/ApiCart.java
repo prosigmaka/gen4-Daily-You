@@ -4,7 +4,7 @@ import com.kelompok1.dailyyou.model.dto.AddToCartDto;
 import com.kelompok1.dailyyou.model.dto.CartDto;
 import com.kelompok1.dailyyou.model.entity.Cart;
 import com.kelompok1.dailyyou.model.entity.Product;
-import com.kelompok1.dailyyou.model.entity.User;
+//import com.kelompok1.dailyyou.model.entity.User;
 import com.kelompok1.dailyyou.repository.CartRepository;
 import com.kelompok1.dailyyou.service.CartService;
 import com.kelompok1.dailyyou.service.ProductService;

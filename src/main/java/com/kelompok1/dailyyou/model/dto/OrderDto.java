@@ -1,5 +1,6 @@
 package com.kelompok1.dailyyou.model.dto;
 
+import com.kelompok1.dailyyou.model.entity.Order;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -12,10 +13,10 @@ public class OrderDto {
     public OrderDto() {
     }
 
-//    public OrderDto(Order order) {
-//        this.setId(order.getId());
-//        //this.setUserId(order.getUserId());
-//    }
+    public OrderDto(Order order) {
+        this.setId(order.getId());
+        //this.setUserId(order.getUserId());
+    }
 //    private Integer idTransaction;
 //    private Integer idProduct;
 //    private Integer productQuantity;

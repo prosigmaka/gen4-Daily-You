@@ -6,7 +6,7 @@ import com.kelompok1.dailyyou.model.dto.CartItemDto;
 import com.kelompok1.dailyyou.model.entity.Cart;
 import com.kelompok1.dailyyou.model.dto.CartDto;
 import com.kelompok1.dailyyou.model.entity.Product;
-import com.kelompok1.dailyyou.model.entity.User;
+//import com.kelompok1.dailyyou.model.entity.User;
 import com.kelompok1.dailyyou.repository.CartRepository;
 import com.kelompok1.dailyyou.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +23,8 @@ import java.util.List;
 public class CartService {
     @Autowired
     private  CartRepository cartRepository;
-
-    private User user;
+//
+//    private User user;
 
     public CartService(){}
 
