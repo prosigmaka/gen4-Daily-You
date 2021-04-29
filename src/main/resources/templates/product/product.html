@@ -121,13 +121,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>
 <th:block layout:fragment="add-scripts">
     <script th:src="@{assets/script/product.js}"></script>
+    <script th:src="@{assets/script/utils.js}"></script>
     <script th:src="@{assets/script/default.js}"></script>
     <script>
         tableProduct.create();
 
 
-        $('#btn-add-product').click(function () {
-            formProduct.resetForm();
+        $('#btn-add-product').on("click", function() {
             $('#modal-product').modal('show')
         });
 

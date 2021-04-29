@@ -149,33 +149,56 @@ async function updateProduct(id, product) {
 
 // ambil 1 produk
 async function getProduct(id) {
-    var products = [];
-
-    await fetch('http://localhost:1111/api/product', {
-        method: 'GET',
-        mode: 'cors'
-    })
-        .then(response => response.json())
-        .then(data => products = data)
-        .catch(_ => {
-        });
-
-    if (products.length > 0) {
-        for (const index in products) {
-            var product = products[index];
-
-            if (product.id == id) {
-                console.log("Product match!");
-                return {
-                    "productName": product.name,
-                    "stock": product.stock,
-                    "pictureURL": product.pictureUrl,
-                    "price": product.price,
-                    "idCategory": product.idCategory
-                };
+    // var products = [];
+    //
+    // await fetch('http://localhost:1111/api/product', {
+    //     method: 'GET',
+    //     mode: 'cors'
+    // })
+    //     .then(response => response.json())
+    //     .then(data => products = data)
+    //     .catch(_ => {
+    //     });
+    //
+    // if (products.length > 0) {
+    //     for (const index in products) {
+    //         var product = products[index];
+    //
+    //         if (product.id == id) {
+    //             console.log("Product match!");
+    //             return {
+    //                 "productName": product.name,
+    //                 "stock": product.stock,
+    //                 "pictureURL": product.pictureUrl,
+    //                 "price": product.price,
+    //                 "idCategory": product.idCategory
+    //             };
+    //         }
+    //     }
+    // }
+    $.ajax({
+        url: '/api/product',
+        method: 'get',
+        contentType: 'application/json',
+        success: function (res, status, xhr) {
+            if (xhr.status == 200 || xhr.status == 201) {
+                console.log(id);
+                for (i = 0; i < res.length; i++) {
+                    if (res[i].id == id) {
+                        console.log("Product match!");
+                        return {
+                            "productName": res[i].name,
+                            "stock": res[i].stock,
+                            "pictureURL": res[i].pictureUrl,
+                            "price": res[i].price,
+                            "idCategory": res[i].idCategory
+                        };
+                    }
+                }
             }
         }
-    }
-
+    })
+    console.log({});
     return {};
+
 }

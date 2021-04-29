@@ -19,7 +19,7 @@ var create = {
                             var idCategory = res[i].idCategory;
                             var categoryName = res[i].categoryName;
 
-                            console.log(categoryName);
+                            // console.log(categoryName);
                             var card = `
                 <div class="col-md-3" id=${productID}>
                     <div class="card-body card-product" style="width: 18rem;">
@@ -199,6 +199,78 @@ var create = {
     }
 }
 
+$("#btn-add-product").click(async function (form) {
+    form.preventDefault();
+    const id = $("#id").val();
+    const productName = $("#productName").val();
+    const pictureUrl = $("#pictureUrl").val();
+    const price = $("#price").val();
+    const stock = $("#stock").val();
+    const idCategory = $("#idCategory").val();
+
+    const product = {
+        "id": id,
+        "productName": productName,
+        "price": price,
+        "stock": stock,
+        "pictureUrl": pictureUrl,
+        "idCategory": idCategory
+    };
+
+    var result = await createNewProduct(product);
+
+    if (result) {
+        alert("Product has been added!");
+        window.location.href = "/all-product";
+    } else {
+        alert("Failed to add product, sorry");
+    }
+});
+
+$("#update-form").ready(async function () {
+    const id = window.location.href.split("?id=").pop();
+    console.log("id");
+    console.log("berapa");
+
+    var product = await getProduct(id);
+    console.log(product);
+
+    $("#productName").val(product.productName);
+    $("#pictureUrl").val(product.pictureUrl);
+    $("#price").val(product.price);
+    $("#stock").val(product.stock);
+    $("#idCategory").val(product.idCategory);
+});
+
+$("#btn-update-product").click(async function (form) {
+    form.preventDefault();
+
+    const id = window.location.href.split("?id=").pop();
+    const productName = $("#productName").val();
+    const pictureUrl = $("#pictureUrl").val();
+    const price = $("#price").val();
+    const stock = $("#stock").val();
+    const idCategory = $("#idCategory").val();
+
+    const product = {
+        "id": id,
+        "productName": productName,
+        "pictureUrl": pictureUrl,
+        "price": price,
+        "stock": stock,
+        "idCategory": idCategory
+    };
+
+    var result = await updateProduct(id, product);
+
+    if (result) {
+        alert("Product has been update!");
+        window.location.href = "/manage-product";
+    } else {
+        alert("Failed to update product, sorry");
+    }
+});
+
 const tableProduct = {
     create() {
         // jika table tersebut datatable, maka clear and dostroy
@@ -261,8 +333,9 @@ var formProduct = {
                 data: JSON.stringify(dataResult),
                 success(res, status, xhr) {
                     if (xhr.status == 200 || xhr.status == 201) {
+                        window.location.href = "/add-product";
                         tableProduct.create()
-                        $('#modal-product').modal('hide')
+                        // $('#modal-product').modal('hide')
                     } else {
                     }
                 },
@@ -272,8 +345,9 @@ var formProduct = {
             })
         }
     }, setEditData(id) {
-        formProduct.resetForm()
-
+        // window.location.href = "/update-product";
+        // formProduct.resetForm()
+        console.log("berhasil");
         $.ajax({
             url: `/api/product/${id}`,
             method: 'get',
@@ -281,6 +355,7 @@ var formProduct = {
             dataType: 'json',
             success(res, status, xhr) {
                 if (xhr.status == 200 || xhr.status == 201) {
+                    console.log(res);
                     $('#form-product').fromJSON(JSON.stringify(res))
                     $('#modal-product').modal('show')
                 } else {
@@ -304,7 +379,8 @@ const actionDelete = {
                 if (xhr.status == 200 || xhr.status == 201) {
                     $('#form-product').fromJSON(JSON.stringify(res))
                     $('#modal-delete').modal('show')
-                } else {}
+                } else {
+                }
             },
             erorrr(err) {
                 console.log(err)
