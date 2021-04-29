@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Daily You</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content="Best Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- //for-mobile-apps -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <!-- js -->
+    <script src="assets/js/jquery.min.js"></script>
+    <!-- //js -->
+    <!-- cart -->
+    <script src="assets/js/simpleCart.min.js"></script>
+    <!-- cart -->
+    <!-- for bootstrap working -->
+    <script type="text/javascript" src="assets/js/bootstrap-3.1.1.min.js"></script>
+    <!-- //for bootstrap working -->
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+          rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic'
+          rel='stylesheet' type='text/css'>
+    <!-- timer -->
+    <link rel="stylesheet" href="assets/css/jquery.countdown.css"/>
+    <!-- //timer -->
+    <!-- animation-effect -->
+    <link href="assets/css/animate.min.css" rel="stylesheet">
+    <script src="assets/js/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!-- //animation-effect -->
+</head>
+
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to to the body tag
+to get the desired effect
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
+<body class="hold-transition sidebar-mini layout-fixed">
+
+<div class="wrapper">
+    <!-- Navbar -->
+    <div class="header">
+        <div class="container">
+            <div class="header-grid">
+                <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
+                    <ul>
+                        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
+                            <a href="mailto:info@example.com">contact@dailyyou.com</a></li>
+                        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 892</li>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
+                    <ul>
+                        <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="logo-nav">
+                <div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
+                    <h1><a href="index.html">Daily You <span>Make beauty and wellness</span></a></h1>
+                </div>
+                <div class="logo-nav-left1">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header nav_2">
+                            <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
+                                    data-target="#bs-megadropdown-tabs">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="/aboutUs" class="act">About Us</a></li>
+                                <!-- Mega Menu -->
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b
+                                            class="caret"></b></a>
+                                    <ul class="dropdown-menu multi-column columns-3">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <ul class="multi-column-dropdown">
+                                                    <li><a href="products.html">Make Up</a></li>
+                                                    <li><a href="products.html">Skin Care</a></li>
+                                                    <li><a href="products.html">Body Care</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="activities" class="dropdown-toggle" data-toggle="dropdown">Activities <b
+                                            class="caret"></b></a>
+                                    <ul class="dropdown-menu multi-column columns-3">
+                                        <div class="row">
+                                            <div class="col-sm-9">
+                                                <ul class="multi-column-dropdown">
+                                                    <li><a href="/educationPillars">Education Pillars</a></li>
+                                                    <li><a href="/healthPillars">Health Pillars</a></li>
+                                                    <li><a href="/womenPillars">Women's Empowerment Pillars</a></li>
+                                                    <li><a href="/environmentPillars">Environment Pillars</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="logo-nav-right">
+                    <div class="search-box">
+                        <div id="sb-search" class="sb-search">
+                            <form>
+                                <input class="sb-search-input" placeholder="Find your items here" type="search"
+                                       id="search">
+                                <input class="sb-search-submit" type="submit" value="">
+                                <span class="sb-icon-search"> </span>
+                            </form>
+                        </div>
+                    </div>
+                    <!-- search-scripts -->
+                    <script src="assets/js/classie.js"></script>
+                    <script src="assets/js/uisearch.js"></script>
+                    <script>
+                        new UISearch(document.getElementById('sb-search'));
+                    </script>
+                    <!-- //search-scripts -->
+                </div>
+                <div class="header-right">
+                    <div class="cart box_1">
+                        <a href="/checkout">
+                            <h3>
+                                <div class="total">
+                                    <span class="simpleCart_total"></span> (<span id="simpleCart_quantity"
+                                                                                  class="simpleCart_quantity"></span>
+                                    items)
+                                </div>
+                                <img src="/assets/images/bag.png" alt=""/>
+                            </h3>
+                        </a>
+                        <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                        <div class="header-grid-right animated wow slideInRight" data-wow-delay=".2s">
+                            <ul>
+                                <li><i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i><a
+                                        href="/checkout"></a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!-- /.navbar -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <div class="content">
+            <!--            <div class="container-fluid">-->
+            <div layout:fragment="content-body"/>
+            <!--            </div>-->
+        </div>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    <th:block layout:replace="~{fragment/footer}"></th:block>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+
+
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script th:src="@{/assets/js/jquery.min.js}"></script>
+<script th:src="@{/assets/js/classie.js}"></script>
+<script th:src="@{/assets/js/imagezoom.js}"></script>
+<script th:src="@{/assets/js/jquery.countdown.js}"></script>
+<!--<script th:src="@{/assets/js}"></script>-->
+<script th:src="@{/assets/css/animate.min.css}"></script>
+<!--<script th:src="@{/assets/fonts}"></script>-->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.1/parsley.min.js"></script>
+<!-- Bootstrap -->
+<script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+
+
+<th:block layout:fragment="add-scripts">
+</th:block>
+
+</body>
+</html>
