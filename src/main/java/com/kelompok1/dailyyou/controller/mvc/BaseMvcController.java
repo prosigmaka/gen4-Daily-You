@@ -88,7 +88,7 @@ public class BaseMvcController {
 
     @GetMapping("checkout")
     public String checkout() {
-        return "dashboardUser/checkout";
+        return "checkout/checkout";
     }
 
 }
