@@ -25,6 +25,9 @@ public class ApiCart {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private CartRepository cartRepository;
+
 
     @PostMapping("/add")
     public ResponseEntity<ApiResponse> addToCart(@RequestBody AddToCartDto addToCartDto){
@@ -37,7 +40,7 @@ public class ApiCart {
     @GetMapping("/")
     public ResponseEntity<CartDto> getCartItems() {
         CartDto cartDto = cartService.listCartItems();
-        return new ResponseEntity<CartDto>(cartDto,HttpStatus.OK);
+        return new ResponseEntity<CartDto>(HttpStatus.OK);
     }
     @PutMapping("/update/{cartItemId}")
     public ResponseEntity<ApiResponse> updateCartItem(@RequestBody AddToCartDto cartDto){
@@ -47,9 +50,13 @@ public class ApiCart {
     }
 
     @DeleteMapping("/delete/{cartItemId}")
-    public ResponseEntity<ApiResponse> deleteCartItem(@PathVariable("cartItemId") int itemID) {
-        cartService.deleteCartItem(itemID);
+    public ResponseEntity<ApiResponse> deleteCartItem(@PathVariable("cartItemId") int itemId) {
+        cartService.deleteCartItem(itemId);
         return new ResponseEntity<ApiResponse>(new ApiResponse(true, "Item has been removed"), HttpStatus.OK);
+    }
+    @DeleteMapping("/delete")
+    public void deleteCartItems() {
+        cartRepository.deleteAll();
     }
 
 }

@@ -8,11 +8,11 @@ import java.util.List;
 
 @Data
 public class CartDto {
-    private Integer IdCart;
+//    private Integer IdCart;
     private List<CartItemDto> cartItems;
-    private double totalCost;
+    private Double totalCost;
 
-    public CartDto(List<CartItemDto> cartItemDtoList, double totalCost) {
+    public CartDto(List<CartItemDto> cartItemDtoList, Double totalCost) {
         this.cartItems = cartItemDtoList;
         this.totalCost = totalCost;
     }

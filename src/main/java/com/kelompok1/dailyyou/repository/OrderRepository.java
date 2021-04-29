@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface OrderRepository  extends JpaRepository<Order, Integer> {
-    List<Order> findAllByUserOrderByCreatedDateDesc(User user);
+//    List<Order> findAllByUserOrderByCreatedDateDesc(User user);
 
 }
 
