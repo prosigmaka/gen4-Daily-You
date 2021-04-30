@@ -1,8 +1,10 @@
 package com.kelompok1.dailyyou.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = Cart.TABLE_NAME)
@@ -15,15 +17,33 @@ public class Cart {
     @Column(name = "id_cart")
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_product", insertable = false, updatable = false, nullable = false)
-    private Product product;
+    @Column(name = "created_date")
+    private Date createdDate;
 
-    @Column(name = "id_product", nullable = false)
-    private Integer idProduct;
+//    @JsonIgnore
+//    @OneToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "id_user",  nullable = false)
+//    private User user;
+
+//    @Column(name = "id_user", nullable = false)
+//    private Integer idUser;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_product",  nullable = false)
+    Product product;
 
     private Integer productQuantity;
 
-    private Double totalPrice;
+//    private Double totalCost;
 
+    public Cart() {
+    }
+
+    public Cart(Product product, int productQuantity) {
+//        this.user = user;
+        this.product = product;
+        this.productQuantity = productQuantity;
+        this.createdDate = new Date();
+    }
 }
