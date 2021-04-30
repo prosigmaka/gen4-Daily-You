@@ -54,6 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .antMatchers("/womenPillars*").permitAll()
                 .antMatchers("/environmentPillars*").permitAll()
                 .antMatchers("/checkout/**").permitAll()
+                .antMatchers("/product/**").permitAll()
                 .antMatchers("/dashboard/**").hasAuthority("ROLE_USER")
 //                .antMatchers("/checkout*").hasRole("ROLE_USER")
 
