@@ -1,10 +1,12 @@
 package com.kelompok1.dailyyou.util.exception;
 
+import lombok.Data;
 import org.springframework.http.HttpStatus;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Data
 public class ApiError {
 
     private HttpStatus status;
@@ -33,32 +35,32 @@ public class ApiError {
 
     //
 
-    public HttpStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(final HttpStatus status) {
-        this.status = status;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(final String message) {
-        this.message = message;
-    }
-
-    public List<String> getErrors() {
-        return errors;
-    }
-
-    public void setErrors(final List<String> errors) {
-        this.errors = errors;
-    }
-
-    public void setError(final String error) {
-        errors = Arrays.asList(error);
-    }
+//    public HttpStatus getStatus() {
+//        return status;
+//    }
+//
+//    public void setStatus(final HttpStatus status) {
+//        this.status = status;
+//    }
+//
+//    public String getMessage() {
+//        return message;
+//    }
+//
+//    public void setMessage(final String message) {
+//        this.message = message;
+//    }
+//
+//    public List<String> getErrors() {
+//        return errors;
+//    }
+//
+//    public void setErrors(final List<String> errors) {
+//        this.errors = errors;
+//    }
+//
+//    public void setError(final String error) {
+//        errors = Arrays.asList(error);
+//    }
 
 }
