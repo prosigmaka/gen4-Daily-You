@@ -6,16 +6,16 @@ import javax.validation.constraints.NotNull;
 
 @Data
 public class OrderItemsDto {
-    private @NotNull double price;
-    private @NotNull int quantity;
-    private @NotNull int orderId;
-    private @NotNull int productId;
+    private @NotNull Double price;
+    private @NotNull Integer productQuantity;
+    private @NotNull Integer orderId;
+    private @NotNull Integer productId;
 
     public OrderItemsDto () {}
 
-    public OrderItemsDto(@NotNull double price, @NotNull int quantity, @NotNull int orderId, @NotNull int productId) {
+    public OrderItemsDto(@NotNull double price, @NotNull int productQuantity, @NotNull int orderId, @NotNull int productId) {
         this.price = price;
-        this.quantity = quantity;
+        this.productQuantity = productQuantity;
         this.orderId = orderId;
         this.productId = productId;
     }

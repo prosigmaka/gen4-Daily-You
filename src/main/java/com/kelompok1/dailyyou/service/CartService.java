@@ -51,32 +51,6 @@ public class CartService {
         CartDto cartDto = new CartDto(cartItems,totalCost);
         return cartDto;
     }
-//    public CartDto  listCartItems() {
-//        List<Cart> cartList = cartRepository.findAll();
-//        List<CartItemDto> cartItems = new ArrayList<>();
-//        double totalCost = 0;
-//        for (Cart cart:cartList){
-////            totalCost += (cart.getProduct().getPrice()* cart.getProductQuantity());
-////            cart.setTotalCost(totalCost);
-////            cartRepository.save(cart);
-//
-//            CartItemDto cartItemDto = getDtoFromCart(cart);
-//            cartItems.add(cartItemDto);
-//        }
-//        for (Cart cart:cartList){
-//            cart.setTotalCost(totalCost);
-//            cartRepository.save(cart);
-//
-//        }
-//
-//        for (CartItemDto cartItemDto :cartItems){
-//            totalCost += (cartItemDto.getProduct().getPrice()* cartItemDto.getProductQuantity());
-//        }
-//        CartDto cartDto = new CartDto(cartItems,totalCost);
-//
-//        return cartDto;
-//    }
-
 
     public static CartItemDto getDtoFromCart(Cart cart) {
         CartItemDto cartItemDto = new CartItemDto(cart);

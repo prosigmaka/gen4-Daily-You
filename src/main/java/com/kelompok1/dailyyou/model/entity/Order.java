@@ -51,8 +51,5 @@ public class Order extends CommonEntity{
 //        this.sessionId = sessionId;
     }
 
-    public List<OrderItem> getOrderItems() {
-        return orderItems;
-    }
 }
 
