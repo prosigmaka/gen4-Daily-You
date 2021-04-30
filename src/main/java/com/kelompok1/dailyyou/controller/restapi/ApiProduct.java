@@ -36,6 +36,19 @@ public class ApiProduct {
         return new ResponseEntity<List<ProductDto>>(body, HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductDto> getProduct(@PathVariable Integer id) {
+        Product product = productRepository.findById(id).get();
+        ProductDto productDto= new ProductDto(product);
+        return new ResponseEntity<ProductDto>(productDto, HttpStatus.OK);
+    }
+
+    @GetMapping("/category/{id}")
+    public ResponseEntity<List<ProductDto>> getProducts(@PathVariable Integer id) {
+        List<ProductDto> body = productService.listProductByCategory(id);
+        return new ResponseEntity<List<ProductDto>>(body, HttpStatus.OK);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<ApiResponse> addProduct(@RequestBody ProductDto productDto) {
         Optional<ProductCategory> optionalProductCategory = productCategoryService.readProductCategory(productDto.getIdCategory());

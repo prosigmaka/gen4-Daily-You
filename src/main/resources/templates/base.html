@@ -21,6 +21,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- js -->
     <script src="assets/js/jquery.min.js"></script>
     <!-- //js -->
+    <!-- DataTables -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jq-3.3.1/dt-1.10.24/datatables.min.css"/>
+
     <!-- cart -->
     <script src="assets/js/simpleCart.min.js"></script>
     <!-- cart -->
@@ -97,15 +100,16 @@ to get the desired effect
                                 <li class="active"><a href="index.html" class="act">About Us</a></li>
                                 <!-- Mega Menu -->
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <b
+                                    <a href="/all-product" class="dropdown-toggle" data-toggle="dropdown">Products <b
                                             class="caret"></b></a>
                                     <ul class="dropdown-menu multi-column columns-3">
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <ul class="multi-column-dropdown">
-                                                    <li><a href="products.html">Make Up</a></li>
-                                                    <li><a href="products.html">Skin Care</a></li>
-                                                    <li><a href="products.html">Body Care</a></li>
+                                                    <li><a href="/make-up">Make Up</a></li>
+                                                    <li><a href="/skin-care">Skin Care</a></li>
+                                                    <li><a href="/body-care">Body Care</a></li>
+                                                    <li><a href="/all-product">All Products</a></li>
                                                 </ul>
                                             </div>
                                             <div class="clearfix"></div>
@@ -160,7 +164,7 @@ to get the desired effect
                                     <span class="simpleCart_total"></span> (<span id="simpleCart_quantity"
                                                                                   class="simpleCart_quantity"></span> items)
                                 </div>
-                                <img src="images/bag.png" alt=""/>
+                                <img src="/assets/images/bag.png" alt=""/>
                             </h3>
                         </a>
                         <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
@@ -210,13 +214,15 @@ to get the desired effect
 
 <!-- jQuery -->
 <script th:src="@{/assets/js/jquery.min.js}"></script>
-<script th:src="@{/assets/js/default.js}"></script>
 <script th:src="@{/assets/js/classie.js}"></script>
 <script th:src="@{/assets/js/imagezoom.js}"></script>
 <script th:src="@{/assets/js/jquery.countdown.js}"></script>
-<script th:src="@{/assets/js}"></script>
-<script th:src="@{/assets/css}"></script>
-<script th:src="@{/assets/fonts}"></script>
+<!--<script th:src="@{/assets/js}"></script>-->
+<script th:src="@{/assets/css/animate.min.css}"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs/jq-3.3.1/dt-1.10.24/datatables.min.js"></script>
+<!--<script th:src="@{/assets/js/jquery.dataTables.js}"></script>-->
+<!--<script th:src="@{/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js}"></script>-->
+<!--<script th:src="@{/assets/fonts}"></script>-->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.1/parsley.min.js"></script>
 <!-- Bootstrap -->

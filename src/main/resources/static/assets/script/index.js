@@ -1,45 +1,46 @@
-$("#card-container").ready(async function() {
-    var cards = await getAllProducts();
-
-    for (const index in cards) {
-        var card = cards[index];
-        $("#card-container").append(card);
-    }
-});
+// $("#card-container").ready(async function() {
+//     var cards = await getAllProducts();
+//
+//     for (const index in cards) {
+//         var card = cards[index];
+//         $("#card-container").append(card);
+//     }
+// });
 
 
 $("#card-container").on("click", "#buy-btn", function() {
-    alert("Thank you for supporting https://www.webtutsplus.com");
+    alert("Thank you for trusting Daily You!");
 });
 
 
 $("#add-product").on("click", function() {
-    window.location.href = "add-product.html";
+    window.location.href = "/add-product";
 });
 
 
-$("#product-form").submit(async function(form) {
+$("#btn-add-product").click(async function(form) {
     form.preventDefault();
-
+    const id=$("#id").val();
     const productName = $("#productName").val();
     const pictureUrl = $("#pictureUrl").val();
     const price = $("#price").val();
     const stock = $("#stock").val();
-    const categoryProduct = $("#categoryProduct").val();
+    const idCategory = $("#idCategory").val();
 
     const product = {
+        "id": id,
         "productName": productName,
-        "pictureUrl": pictureUrl,
         "price": price,
         "stock": stock,
-        "categoryProduct": categoryProduct
+        "pictureUrl": pictureUrl,
+        "idCategory": idCategory
     };
 
     var result = await createNewProduct(product);
 
     if (result) {
         alert("Product has been added!");
-        window.location.href = "index.html";
+        window.location.href = "/all-product";
     } else {
         alert("Failed to add product, sorry");
     }
@@ -53,10 +54,10 @@ $("#update-form").ready(async function() {
     $("#pictureUrl").val(product.pictureUrl);
     $("#price").val(product.price);
     $("#stock").val(product.stock);
-    $("#categoryProduct").val(product.categoryProduct);
+    $("#idCategory").val(product.idCategory);
 });
 
-$("#update-form").submit(async function(form) {
+$("#btn-update-product").click(async function(form) {
     form.preventDefault();
 
     const id = window.location.href.split("?id=").pop();
@@ -64,21 +65,22 @@ $("#update-form").submit(async function(form) {
     const pictureUrl = $("#pictureUrl").val();
     const price = $("#price").val();
     const stock = $("#stock").val();
-    const categoryProduct = $("#categoryProduct").val();
+    const idCategory = $("#idCategory").val();
 
     const product = {
+        "id": id,
         "productName": productName,
         "pictureUrl": pictureUrl,
         "price": price,
         "stock": stock,
-        "categoryProduct": categoryProduct
+        "idCategory": idCategory
     };
 
     var result = await updateProduct(id, product);
 
     if (result) {
         alert("Product has been update!");
-        window.location.href = "index.html";
+        window.location.href = "/all-product";
     } else {
         alert("Failed to update product, sorry");
     }
@@ -87,6 +89,6 @@ $("#update-form").submit(async function(form) {
 $("#card-container").on("click", "#edit-btn", function() {
     // Get the id of the product
     var productID = $(this).parent().parent().parent().attr("id");
-    var url = "update.html" + "?id=" + productID;
+    var url = "/update-product" + "?id=" + productID;
     window.location.href = url;
 });

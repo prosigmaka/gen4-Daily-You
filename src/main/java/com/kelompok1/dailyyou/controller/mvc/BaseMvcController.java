@@ -18,9 +18,34 @@ public class BaseMvcController {
         return "product/add";
     }
 
-    @GetMapping("checkout")
-    public String checkout() {
-        return "checkout/checkout";
+    @GetMapping("update-product")
+    public String updateProduct() {
+        return "product/update";
     }
 
+    @GetMapping("all-product")
+    public String allProduct() {
+        return "product/index";
+    }
+
+    @GetMapping("manage-product")
+    public String manageProduct() {
+        return "product/product";
+    }
+
+
+    @GetMapping("make-up")
+    public String makeUp() {
+        return "product/makeup";
+    }
+
+    @GetMapping("body-care")
+    public String bodyCare() {
+        return "product/bodycare";
+    }
+
+    @GetMapping("skin-care")
+    public String skinCare() {
+        return "product/skincare";
+    }
 }
