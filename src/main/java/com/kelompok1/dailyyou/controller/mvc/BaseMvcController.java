@@ -48,4 +48,10 @@ public class BaseMvcController {
     public String skinCare() {
         return "product/skincare";
     }
+
+    @GetMapping("baru")
+    public String baru
+            () {
+        return "baru";
+    }
 }

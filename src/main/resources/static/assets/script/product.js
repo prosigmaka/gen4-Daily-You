@@ -220,8 +220,8 @@ $("#btn-add-product").click(async function (form) {
     var result = await createNewProduct(product);
 
     if (result) {
-        alert("Product has been added!");
-        window.location.href = "/manage-product";
+        // alert("Product has been added!");
+        // window.location.href = "/manage-product";
     } else {
         alert("Failed to add product, sorry");
     }
