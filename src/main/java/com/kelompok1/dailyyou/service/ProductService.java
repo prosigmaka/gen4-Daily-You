@@ -27,6 +27,16 @@ public class ProductService {
         return productDtos;
     }
 
+    public List<ProductDto> listProductByCategory(Integer id) {
+        List<Product> products = productRepository.cariProductCategory(id);
+        List<ProductDto> productDtos = new ArrayList<>();
+        for(Product product : products) {
+            ProductDto productDto = getDtoFromProduct(product);
+            productDtos.add(productDto);
+        }
+        return productDtos;
+    }
+
     public static ProductDto getDtoFromProduct(Product product) {
         ProductDto productDto = new ProductDto(product);
         return productDto;
