@@ -1,6 +1,7 @@
 package com.kelompok1.dailyyou.controller.restapi;
 
 import com.kelompok1.dailyyou.model.dto.ProductDto;
+import com.kelompok1.dailyyou.model.entity.Product;
 import com.kelompok1.dailyyou.model.entity.ProductCategory;
 import com.kelompok1.dailyyou.repository.ProductRepository;
 import com.kelompok1.dailyyou.service.ProductCategoryService;
@@ -30,6 +31,19 @@ public class ApiProduct {
     @GetMapping()
     public ResponseEntity<List<ProductDto>> getProducts() {
         List<ProductDto> body = productService.listProducts();
+        return new ResponseEntity<List<ProductDto>>(body, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductDto> getProduct(@PathVariable Integer id) {
+        Product product = productRepository.findById(id).get();
+        ProductDto productDto= new ProductDto(product);
+        return new ResponseEntity<ProductDto>(productDto, HttpStatus.OK);
+    }
+
+    @GetMapping("/category/{id}")
+    public ResponseEntity<List<ProductDto>> getProducts(@PathVariable Integer id) {
+        List<ProductDto> body = productService.listProductByCategory(id);
         return new ResponseEntity<List<ProductDto>>(body, HttpStatus.OK);
     }
 
