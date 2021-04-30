@@ -1,5 +1,7 @@
 package com.kelompok1.dailyyou.model.dto;
 
+import lombok.Data;
+
 public class UserRegistrationDto {
     private String firstName;
     private String lastName;
