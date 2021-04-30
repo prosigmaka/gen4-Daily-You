@@ -28,7 +28,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="container">
 <!--        <div class="row">-->
 <!--            <div class="col-md-6 col-md-offset-3">-->
-        <h3 class="animated wow zoomIn" data-wow-delay=".5s">Register Here</h3>
+        <h3 class="animated wow zoomIn" data-wow-delay=".5s">Register</h3>
         <p class="est animated wow zoomIn" data-wow-delay=".5s">Register your account to start your session</p>
 
         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
@@ -39,30 +39,46 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
                 </div>
 
-                <form th:action="@{/signup}" method="post" th:object="${user}">
+            <form th:action="@{/signup}" method="post" th:object="${user}">
                     <div class="form-group">
-                        <label class="control-label" for="firstName"> First Name </label>
-                        <input id="firstName" class="form-control" th:field="*{firstName}"
-                               required autofocus="autofocus"/>
+<!--                        <label class="control-label" for="firstName"> First Name </label>-->
+                        <input type="text" id="firstName" class="form-control" placeholder="First Name..." required=" " th:field="*{firstName}">
+
+<!--                        <input id="firstName" class="form-control" th:field="*{firstName}"-->
+<!--                               required autofocus="autofocus"/>-->
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label" for="lastName"> Last Name </label> <input
-                            id="lastName" class="form-control" th:field="*{lastName}"
-                            required autofocus="autofocus"/>
+<!--                        <label class="control-label" for="lastName"> Last Name </label> -->
+                        <input class="form-control" type="text" id="lastName" placeholder="Last Name..." required=" " th:field="*{lastName}">
+
+<!--                        <input-->
+<!--                            id="lastName" class="form-control" th:field="*{lastName}"-->
+<!--                            required autofocus="autofocus"/>-->
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label" for="email"> Email </label> <input
-                            id="email" class="form-control" th:field="*{email}" required
-                            autofocus="autofocus"/>
+<!--                        <label class="control-label" for="email"> Email </label>-->
+                        <input type="email" id="email" class="form-control" placeholder="Email Address" required=" " th:field="*{email}">
+<!--                        <input-->
+<!--                            id="email" class="form-control" th:field="*{email}" required-->
+<!--                            autofocus="autofocus"/>-->
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label" for="password"> Password </label> <input
-                            id="password" class="form-control" type="password"
-                            th:field="*{password}" required autofocus="autofocus"/>
+<!--                        <label class="control-label" for="password"> Password </label>-->
+
+                        <input class="form-control" id="password" type="password" placeholder="Password" required=" " th:field="*{password}">
+
+<!--                        <input-->
+<!--                            id="password" class="form-control" type="password"-->
+<!--                            th:field="*{password}" required autofocus="autofocus"/>-->
                     </div>
+
+<!--                    <div class="form-group">-->
+<!--                        <input class="form-control" id="password" type="password" placeholder="Password Confirmation" required=" " th:field="*{password}">-->
+
+<!--                    </div>-->
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-success">Register</button>
