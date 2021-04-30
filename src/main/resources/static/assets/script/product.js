@@ -335,7 +335,7 @@ var formProduct = {
                     if (xhr.status == 200 || xhr.status == 201) {
                         window.location.href = "/add-product";
                         tableProduct.create()
-                        // $('#modal-product').modal('hide')
+                        $('#modal-product').modal('hide')
                     } else {
                     }
                 },
@@ -357,7 +357,7 @@ var formProduct = {
                 if (xhr.status == 200 || xhr.status == 201) {
                     console.log(res);
                     $('#form-product').fromJSON(JSON.stringify(res))
-                    // $('#modal-product').modal('show')
+                    $('#modal-product').modal('show')
                 } else {
                 }
             },
