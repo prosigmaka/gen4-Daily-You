@@ -221,7 +221,7 @@ $("#btn-add-product").click(async function (form) {
 
     if (result) {
         alert("Product has been added!");
-        window.location.href = "/all-product";
+        window.location.href = "/manage-product";
     } else {
         alert("Failed to add product, sorry");
     }
@@ -427,3 +427,18 @@ const dropdown = {
         })
     },
 }
+
+$("#card-container").on("click", "#buy-btn", function() {
+    $.ajax({
+        url: '/api/cart/add',
+        method: 'post',
+        contentType: 'application/json',
+        success: function (res, status, xhr) {
+            if (xhr.status == 200 || xhr.status == 201) {
+                console.log(res);
+                alert("Thank you for trusting Daily You!");
+                }
+            }
+    })
+
+});
