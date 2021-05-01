@@ -33,7 +33,7 @@ var create = {
                             <p><strong>Price: Rp${productPrice}</strong> </p>
                         </div>
                         <div class="card-footer bg-transparent text-center row">
-                            <button type="button" class="btn btn-outline-warning btn-sm col" id="buy-btn">Add to Cart</button>
+                            <button type="button" class="btn btn-outline-warning btn-sm col my-cart-btn" id="buy-btn" data-id=${res[i].id}>Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -83,7 +83,7 @@ var create = {
                             <p><strong>Price: Rp${productPrice}</strong> </p>
                         </div>
                         <div class="card-footer bg-transparent text-center row">
-                            <button type="button" class="btn btn-outline-warning btn-sm col" id="buy-btn" >Add to Cart</button>
+                            <button type="button" class="btn btn-outline-warning btn-sm col my-cart-btn" id="buy-btn">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -132,7 +132,7 @@ var create = {
                             <p><strong>Price: Rp${productPrice}</strong> </p>
                         </div>
                         <div class="card-footer bg-transparent text-center row">
-                            <button type="button" class="btn btn-outline-warning btn-sm col" id="buy-btn">Add to Cart</button>
+                            <button type="button" class="btn btn-outline-warning btn-sm col my-cart-btn" id="buy-btn" >Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -182,7 +182,7 @@ var create = {
                             <p><strong>Price: Rp${productPrice}</strong> </p>
                         </div>
                         <div class="card-footer bg-transparent text-center row">
-                            <button type="button" class="btn btn-outline-warning btn-sm col" id="buy-btn">Add to Cart</button>
+                            <button type="button" class="btn btn-outline-warning btn-sm col my-cart-btn" id="buy-btn">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -444,3 +444,24 @@ $("#card-container").on("click", "#buy-btn", function () {
         }
     })
 });
+
+
+// $(document).on('click', targetSelector, function () {
+//     var $target = $(this);
+//     options.clickOnAddToCart($target);
+//
+//     var id = $target.data('id');
+//     $.ajax({
+//         url: '/api/cart/add',
+//         method: 'post',
+//         contentType: 'application/json',
+//         data: JSON.stringify(id),
+//         success: function (res, status, xhr) {
+//             if (xhr.status == 200 || xhr.status == 201) {
+//                 console.log(res);
+//                 alert("Thank you for trusting Daily You!");
+//             }
+//         }
+//     })
+//
+// }
