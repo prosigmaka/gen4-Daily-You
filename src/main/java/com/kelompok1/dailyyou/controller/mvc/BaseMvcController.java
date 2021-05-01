@@ -49,4 +49,9 @@ public class BaseMvcController {
         return "product/skincare";
     }
 
+    @GetMapping("baru")
+    public String baru
+            () {
+        return "baru";
+    }
 }
