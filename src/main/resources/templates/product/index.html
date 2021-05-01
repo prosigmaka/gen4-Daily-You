@@ -42,7 +42,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 </div>
 <th:block layout:fragment="add-scripts">
-    <script th:src="@{assets/script/index.js}"></script>
+    <script th:src="@{assets/script/utils.js}"></script>
     <script th:src="@{assets/script/product.js}"></script>
 <!--    <script th:src="@{assets/js/jquery.mycart.js}"></script>-->
     <script>
@@ -58,7 +58,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         });
         // $(function () {
         //     // $(".my-cart-btn").myCart(options);
-        //     $(".my-cart-btn").clickOnAddToCart(options);
+        //     var $target = $(this);
+            $("#card-container").on("click", "#buy-btn",function (){
+                console.log("berhasil")
+                add.clickOnAddToCart($(this));
+            });
         // });
     </script>
 </th:block>

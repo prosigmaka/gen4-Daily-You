@@ -6,12 +6,13 @@ var create = {
             contentType: 'application/json',
             success: function (res, status, xhr) {
                 if (xhr.status == 200 || xhr.status == 201) {
-                    console.log(res.length);
+                    console.log(res);
                     var cards = [];
                     if (res.length > 0 && cards.length < 1) {
                         for (i = 0; i < res.length; i++) {
 
                             var productID = res[i].id;
+                            console.log(productID);
                             var productName = res[i].productName;
                             var productStock = res[i].stock;
                             var productPrice = res[i].price;
@@ -391,24 +392,24 @@ const actionDelete = {
         // deleteRowData() {
         console.log(idRow);
         // if ($('#form-product').parsley().validate()) {
-            // const dataResult = getJsonForm($('#form-product').serializeArray(), true)
-            var yes = confirm("Hapus data?"); //pake ini kalo ga pake modal
-            if (yes) {
-                $.ajax({
-                        url: `/api/product/${idRow}`, // ditambah idRow kalo pake confirm ga pake modal
-                        method: 'delete',
-                        success() {
-                            tableProduct.create()
-                            // $('#modal-delete').modal('hide')
-                        },
-                        erorrr(err) {
-                            console.log(err)
-                        }
+        // const dataResult = getJsonForm($('#form-product').serializeArray(), true)
+        var yes = confirm("Hapus data?"); //pake ini kalo ga pake modal
+        if (yes) {
+            $.ajax({
+                    url: `/api/product/${idRow}`, // ditambah idRow kalo pake confirm ga pake modal
+                    method: 'delete',
+                    success() {
+                        tableProduct.create()
+                        // $('#modal-delete').modal('hide')
+                    },
+                    erorrr(err) {
+                        console.log(err)
                     }
-                )
-            }
-            // } // dicomment kalo ga pake modal
+                }
+            )
         }
+        // } // dicomment kalo ga pake modal
+    }
     // }
 }
 
@@ -431,24 +432,46 @@ const dropdown = {
     },
 }
 
-$("#card-container").on("click", "#buy-btn", function () {
-    $.ajax({
-        url: '/api/cart/add',
-        method: 'post',
-        contentType: 'application/json',
-        success: function (res, status, xhr) {
-            if (xhr.status == 200 || xhr.status == 201) {
-                console.log(res);
-                alert("Thank you for trusting Daily You!");
-            }
-        }
-    })
-});
+// $("#card-container").on("click", "#buy-btn", function () {
+//     $.ajax({
+//         url: '/api/cart/add',
+//         method: 'post',
+//         contentType: 'application/json',
+//         success: function (res, status, xhr) {
+//             if (xhr.status == 200 || xhr.status == 201) {
+//                 console.log(res);
+//                 alert("Thank you for trusting Daily You!");
+//             }
+//         }
+//     })
+// });
 
 
 // $(document).on('click', targetSelector, function () {
 //     var $target = $(this);
-//     options.clickOnAddToCart($target);
+const add = {
+    clickOnAddToCart: function (target) {
+        var id = ${productId} + target.data('id');
+        console.log(id);
+        $.ajax({
+            url: '/api/cart/add',
+            method: 'post',
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify(id),
+            success: function (res, status, xhr) {
+                if (xhr.status == 200 || xhr.status == 201) {
+                    console.log(res);
+                    alert("Thank you for trusting Daily You!");
+                }
+            },
+            erorrr(err) {
+                console.log(err);
+                console.log("intan");
+            }
+        })
+    }
+}
 //
 //     var id = $target.data('id');
 //     $.ajax({

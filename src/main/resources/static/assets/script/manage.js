@@ -98,6 +98,7 @@ var formProduct = {
                 data: JSON.stringify(dataResult),
                 success(res, status, xhr) {
                     if (xhr.status === 200 || xhr.status === 201) {
+                        console.log(dataResult);
                         dataTableProduct.create()
                         // tableProduct.create()
                         $('#modal-product').modal('hide')
@@ -196,13 +197,14 @@ const actionDelete = {
         // deleteRowData() {
         if ($('#form-product').parsley().validate()) {
         const dataResult = getJsonForm($('#form-product').serializeArray(), true)
+            console.log(getJsonForm($('#id').serializeArray(), true));
         // var yes = confirm("Hapus data?"); //pake ini kalo ga pake modal
         // if (yes) {
             $.ajax({
                     url: `/api/product/`+dataResult.id, // ${idRow}ditambah idRow kalo pake confirm ga pake modal
                     method: 'delete',
                     success() {
-                        $("#tableProduct tbody").parent("tr").remove();
+                        // $("#tableProduct tbody").parent("tr").remove();
 
                         dataTableProduct.create();
                         $('#modal-delete').modal('hide')
