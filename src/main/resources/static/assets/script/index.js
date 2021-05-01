@@ -80,7 +80,7 @@ $("#btn-update-product").click(async function(form) {
 
     if (result) {
         alert("Product has been update!");
-        window.location.href = "/all-product";
+        window.location.href = "/manage-product";
     } else {
         alert("Failed to update product, sorry");
     }
