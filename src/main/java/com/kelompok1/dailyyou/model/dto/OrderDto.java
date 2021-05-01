@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 @Data
 public class OrderDto {
     private Integer id;
-//    private @NotNull Integer userId;
+    private @NotNull Integer userId;
 
     public OrderDto() {
     }

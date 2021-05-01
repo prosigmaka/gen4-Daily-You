@@ -9,7 +9,7 @@ public class CheckoutDto {
     private Integer  productQuantity;
     private Double price;
     private Integer productId;
-//    private int userId;
+    private int userId;
 
     public CheckoutDto() {}
 
@@ -18,6 +18,6 @@ public class CheckoutDto {
         this.productQuantity = productQuantity;
         this.price = price;
         this.productId = productId;
-//        this.userId = userId;
+        this.userId = userId;
     }
 }

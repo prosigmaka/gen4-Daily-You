@@ -6,6 +6,7 @@ import com.kelompok1.dailyyou.model.dto.CartItemDto;
 import com.kelompok1.dailyyou.model.dto.PlaceOrderDto;
 import com.kelompok1.dailyyou.model.entity.Order;
 import com.kelompok1.dailyyou.model.entity.OrderItem;
+import com.kelompok1.dailyyou.model.entity.User;
 import com.kelompok1.dailyyou.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,45 +27,45 @@ public class OrderService {
 
     @Autowired
     OrderItemsService orderItemsService;
-//
+
 //    @Value("${BASE_URL}")
 //    private String baseURL;
 //
 //    @Value("${STRIPE_SECRET_KEY}")
 //    private String apiKey;
 
-    public Order saveOrder(PlaceOrderDto orderDto) {
-        Order order = getOrderFromDto(orderDto);
+    public Order saveOrder(PlaceOrderDto orderDto, User user) {
+        Order order = getOrderFromDto(orderDto, user);
         return orderRepository.save(order);
     }
 
-    private Order getOrderFromDto(PlaceOrderDto orderDto) {
+    private Order getOrderFromDto(PlaceOrderDto orderDto, User user) {
         Order order = new Order(orderDto);
         return order;
     }
 
-    public List<Order> listOrders() {
-        List<Order> orderList = orderRepository.findAll();
+    public List<Order> listOrders(User user) {
+        List<Order> orderList = orderRepository.findAllByUser(user);
         return orderList;
     }
 
-//    public Order getOrder(int orderId) throws OrderNotFoundException {
-//        Optional<Order> order = orderRepository.findById(orderId);
-//        if (order.isPresent()) {
-//            return order.get();
-//        }
-//        throw new OrderNotFoundException("Order not found");
-//    }
+    public Order getOrder(int orderId) throws OrderNotFoundException {
+        Optional<Order> order = orderRepository.findById(orderId);
+        if (order.isPresent()) {
+            return order.get();
+        }
+        throw new OrderNotFoundException("Order not found");
+    }
 
 
-    public void placeOrder() {
+    public void placeOrder(User user) {
         CartDto cartDto = cartService.listCartItems();
 
         PlaceOrderDto placeOrderDto = new PlaceOrderDto();
-//        placeOrderDto.setUser(user);
+        placeOrderDto.setUser(user);
         placeOrderDto.setTotalPrice(cartDto.getTotalCost());
 
-        Order newOrder = saveOrder(placeOrderDto);
+        Order newOrder = saveOrder(placeOrderDto, user);
         List<CartItemDto> cartItemDtoList = cartDto.getCartItems();
         for (CartItemDto cartItemDto : cartItemDtoList) {
             OrderItem orderItem = new OrderItem(
@@ -74,6 +75,6 @@ public class OrderService {
                     cartItemDto.getProduct().getPrice());
             orderItemsService.addOrderedProducts(orderItem);
         }
-//        cartService.deleteUserCartItems();
+        cartService.deleteUserCartItems(user);
     }
 }
