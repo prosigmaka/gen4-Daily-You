@@ -232,7 +232,7 @@ to get the desired effect
 
 <th:block layout:fragment="add-scripts">
     <script>
-        $("#cart").onclick(function () {
+        $("#cart").ready(function () {
             create.getAllItemCart();
         });
     </script>

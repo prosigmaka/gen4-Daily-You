@@ -40,7 +40,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</tr>
 					</thead>
 					<tr class="rem1" id="cart">
-						<--Table cart-->
+<!--						<&#45;&#45;Table cart&ndash;&gt;-->
 					</tr>
 								<!--quantity-->
 									<script>
@@ -59,17 +59,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<div class="checkout-left">	
 				<div class="checkout-left-basket animated wow slideInLeft" data-wow-delay=".5s">
-					<h4>Continue to basket</h4>
+					<h4>Make Order</h4>
 					<ul>
-						<li>Product1 <i>-</i> <span>$250.00 </span></li>
-						<li>Product2 <i>-</i> <span>$290.00 </span></li>
-						<li>Product3 <i>-</i> <span>$299.00 </span></li>
 						<li>Total Service Charges <i>-</i> <span>$15.00</span></li>
 						<li>Total <i>-</i> <span>$854.00</span></li>
 					</ul>
 				</div>
 				<div class="checkout-right-basket animated wow slideInRight" data-wow-delay=".5s">
-					<a href="single.html"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
+					<a href="/all-product"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Continue Shopping</a>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
@@ -80,6 +77,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 </div>
 <th:block layout:fragment="add-scripts">
 	<script th:src="@{assets/js/cart.js}"></script>
+	<script th:src="@{assets/js/item.js}"></script>
 	<script>
 		$("#cart").ready(function () {
 			create.getAllItemCart();

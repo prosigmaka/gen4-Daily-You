@@ -2,7 +2,7 @@
 function getAllItemCart() {
 
         var cart = [];
-        const errorMessage = "<p>We don't currently have any items in stock, but feel free to add your own product/s </p>";
+        const errorMessage = "<p>empty cart </p>";
 
         $.ajax({
             url: '/api/cart',
@@ -23,7 +23,7 @@ function getAllItemCart() {
                             var totalCost = res[i].totalCost;
                             // console.log(categoryName);
                             var cartItem = `
-                <tr class="rem1" id="isi">
+                <tr class="rem1" id="cart">
                     <td class="invert">1</td>
                     <td class="invert-image"><a href="single.html"><img src="${productPictureURL}" alt="Product Image " class="img-responsive" /></a></td>
                     <td class="invert">${productName}</td>
@@ -48,7 +48,7 @@ function getAllItemCart() {
 
                             cart.push(cartItem);
                         }
-                    } else if (products.length < 1 && cards.length < 1) {
+                    } else if (products.length < 1 && cart.length < 1) {
                         cart.push(errorMessage);
                     }
 

@@ -14,12 +14,12 @@ var create = {
                             var number = res[i].id;
                             var productPictureURL = res[i].pictureUrl;
                             var productName = res[i].productName;
-                            var productQuantity = res[i].prductQuantity;
+                            var productQuantity = res[i].productQuantity;
                             var productPrice = res[i].price;
                             var totalCost = res[i].totalCost;
                             // console.log(categoryName);
                             var cartItem = `
-                <tr class="rem1" id="isi">
+                <tr class="rem1" id="cart">
                     <td class="invert">1</td>
                     <td class="invert-image"><a href="single.html"><img src="${productPictureURL}" alt="Product Image " class="img-responsive" /></a></td>
                     <td class="invert">${productName}</td>
@@ -45,7 +45,7 @@ var create = {
                             $("#cart").append(cartItem);
                         }
                     } else if (res.length < 1 && cart.length < 1) {
-                        cards.push(errorMessage);
+                        cart.push(errorMessage);
                     }
                 }
             }

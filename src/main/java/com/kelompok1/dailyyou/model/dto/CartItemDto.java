@@ -7,10 +7,6 @@ import lombok.Data;
 import javax.validation.constraints.NotNull;
 @Data
 public class CartItemDto {
-//    private Integer id;
-//    private Integer userId;
-//    private Integer productQuantity;
-//    private Product product;
     private Integer id;
 //    private @NotNull Integer userId;
     private @NotNull Integer productQuantity;
