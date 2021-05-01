@@ -28,16 +28,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="container">
 <!--        <div class="row">-->
 <!--            <div class="col-md-6 col-md-offset-3">-->
+
         <h3 class="animated wow zoomIn" data-wow-delay=".5s">Register</h3>
         <p class="est animated wow zoomIn" data-wow-delay=".5s">Register your account to start your session</p>
 
         <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s">
-                <!-- success message -->
-                <div th:if="${param.success}">
-                    <div class="alert alert-info">You've successfully registered
-                        to our awesome app!
-                    </div>
-                </div>
+
+            <!-- success message -->
+            <div th:if="${param.success}">
+                <div class="alert alert-info">You've successfully registered
+                    to our awesome app!</div>
+            </div>
 
             <form th:action="@{/signup}" method="post" th:object="${user}">
                     <div class="form-group">
