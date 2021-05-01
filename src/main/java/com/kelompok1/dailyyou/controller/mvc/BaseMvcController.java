@@ -48,4 +48,5 @@ public class BaseMvcController {
     public String skinCare() {
         return "product/skincare";
     }
+
 }
