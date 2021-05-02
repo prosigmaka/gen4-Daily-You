@@ -23,7 +23,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         return new BCryptPasswordEncoder();
     }
 
-
     @Autowired
     private UserServiceImpl userServiceImpl;
 
@@ -42,28 +41,36 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
+        // Authorization : Proses yang menentukan resource mana saja yang diperbolehkan untuk diakses
         http.authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/login*").permitAll()
-                .antMatchers("/assets/**").permitAll()
+
                 .antMatchers("/dashboard*").permitAll()
+
+                .antMatchers("/login*").permitAll()
                 .antMatchers("/signup*").permitAll()
+
+                .antMatchers("/assets/**").permitAll()
+
+
                 .antMatchers("/aboutUs*").permitAll()
                 .antMatchers("/educationPillars*").permitAll()
                 .antMatchers("/healthPillars*").permitAll()
                 .antMatchers("/womenPillars*").permitAll()
                 .antMatchers("/environmentPillars*").permitAll()
-                .antMatchers("/checkout/**").permitAll()
+
+
                 .antMatchers("/product/**").permitAll()
-                .antMatchers("/dashboard/**").hasAuthority("ROLE_USER")
+                .antMatchers("/dashboardUser*").hasRole("USER")
+                .antMatchers("/dashboardAdm*").hasRole("ADMIN")
 //                .antMatchers("/checkout*").hasRole("ROLE_USER")
 
-
+                //Mendeskripsikan siapa yang mengakses resource
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
-                .defaultSuccessUrl("/dashboardUser")
+                .loginPage("/login").permitAll()
+//                .defaultSuccessUrl("/dashboardUser")
+//                .defaultSuccessUrl("/dashboardAdm")
 
                 .and()
                 .logout()
