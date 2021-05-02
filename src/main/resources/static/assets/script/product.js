@@ -22,7 +22,7 @@ var create = {
 
                             // console.log(categoryName);
                             var card = `
-                <div class="col-md-3" id=${productID}>
+                <div class="col-md-3" id=${productID} style="margin-bottom: 30px">
                     <div class="card-body card-product" style="width: 18rem;">
                         <img class="card-img-top" src=${productPictureURL} alt="Product Image">
                         <div class="text-dark text-capitalize">
@@ -72,7 +72,7 @@ var create = {
 
                             // console.log(categoryName);
                             var card = `
-                <div class="col-md-3" id=${productID}>
+                <div class="col-md-3" id=${productID} style="margin-bottom: 30px">
                     <div class="card-body card-product" style="width: 18rem;">
                         <img class="card-img-top" src=${productPictureURL} alt="Product Image">
                         <div class="text-dark text-capitalize">
@@ -84,7 +84,7 @@ var create = {
                             <p><strong>Price: Rp${productPrice}</strong> </p>
                         </div>
                         <div class="card-footer bg-transparent text-center row">
-                            <button type="button" class="btn btn-outline-warning btn-sm col my-cart-btn" id="buy-btn" data-id=${res[i].id}>Add to Cart</button>
+                            <button type="button" class="btn btn-outline-warning btn-sm col my-cart-btn" id="buy-btn" data-id=${res[i].id} data-quantity="1">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -121,7 +121,7 @@ var create = {
 
                             console.log(categoryName);
                             var card = `
-                <div class="col-md-3" id=${productID}>
+                <div class="col-md-3" id=${productID} style="margin-bottom: 30px">
                     <div class="card-body card-product" style="width: 18rem;">
                         <img class="card-img-top" src=${productPictureURL} alt="Product Image">
                         <div class="text-dark text-capitalize">
@@ -133,7 +133,7 @@ var create = {
                             <p><strong>Price: Rp${productPrice}</strong> </p>
                         </div>
                         <div class="card-footer bg-transparent text-center row">
-                            <button type="button" class="btn btn-outline-warning btn-sm col my-cart-btn" id="buy-btn" >Add to Cart</button>
+                            <button type="button" class="btn btn-outline-warning btn-sm col my-cart-btn" id="buy-btn" data-id=${res[i].id} data-quantity="1">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -171,7 +171,7 @@ var create = {
 
                             console.log(categoryName);
                             var card = `
-                <div class="col-md-3" id=${productID}>
+                <div class="col-md-3" id=${productID} style="margin-bottom: 30px">
                     <div class="card-body card-product" style="width: 18rem;">
                         <img class="card-img-top" src=${productPictureURL} alt="Product Image">
                         <div class="text-dark text-capitalize">
@@ -183,7 +183,7 @@ var create = {
                             <p><strong>Price: Rp${productPrice}</strong> </p>
                         </div>
                         <div class="card-footer bg-transparent text-center row">
-                            <button type="button" class="btn btn-outline-warning btn-sm col my-cart-btn" id="buy-btn">Add to Cart</button>
+                            <button type="button" class="btn btn-outline-warning btn-sm col my-cart-btn" id="buy-btn" data-id=${res[i].id} data-quantity="1">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -491,16 +491,16 @@ const add = {
 //
 // }
 
-function cari(){
+function cari() {
     // window.location.href="/search.html";
-    var key=$("#apa").val();
+    var key = $("#apa").val();
     console.log(key);
     $.ajax({
-        url: "/api/product/find/" +key,
+        url: "/api/product/find/" + key,
         method: "get",
         contentType: "aplication/json",
-        success: function (res, status, xhr){
-            if (xhr.status===200 || xhr.status===201){
+        success: function (res, status, xhr) {
+            if (xhr.status === 200 || xhr.status === 201) {
                 console.log(res);
                 $("#card-container").empty();
                 var cards = [];
