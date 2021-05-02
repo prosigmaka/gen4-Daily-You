@@ -490,14 +490,18 @@ const add = {
 //
 // }
 
-function cari(key){
-    window.location.href="/search.html";
+function cari(){
+    // window.location.href="/search.html";
+    var key=$("#apa").val();
+    console.log(key);
     $.ajax({
         url: "/api/product/find/" +key,
         method: "get",
         contentType: "aplication/json",
         success: function (res, status, xhr){
             if (xhr.status===200 || xhr.status===201){
+                console.log(res);
+                $("#card-container").empty();
                 var cards = [];
                 if (res.length > 0 && cards.length < 1) {
                     for (i = 0; i < res.length; i++) {

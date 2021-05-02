@@ -25,6 +25,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <div class="album py-5 bg-light">
             <div class="container">
                 <div class="card">
+                    <div id="box cari" class="input-group">
+                        <form method="post" onsubmit="return false">
+                            <input type="text" id="apa" class="fa" placeholder="Find your items here">
+                            <button type="submit" id="sub" onclick="cari()" class="fa"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="card">
                     <div class="card-header text-center">
                         <h1 class="fw-light">All Products You Can Find</h1>
                         <p class="lead text-muted">The best beauty care for you!</p>
@@ -46,16 +54,27 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script th:src="@{assets/script/product.js}"></script>
     <!--    <script th:src="@{assets/js/jquery.mycart.js}"></script>-->
     <script>
-        // $("#card-container").ready(function () {
-        //     create.getAllProducts();
-        // var cards = create.getProducts2();
-        // //
-        // for (const i in cards) {
-        //     var card = cards[i];
-        //     $("#card-container").append(card);
-        // }
-        // create.getProducts();
+
+        $("#card-container").ready(function () {
+            create.getAllProducts().fadeIn(3000);
+            // var cards = create.getProducts2();
+            // //
+            // for (const i in cards) {
+            //     var card = cards[i];
+            //     $("#card-container").append(card);
+            // }
+            // create.getProducts();
+        });
+
+        // new UISearch(document.getElementById('sb-search'));
+        // $("#sub").click(function () {
+        //     console.log("berhasil");
+        //     $("#card-container").ready(function () {
+        //         console.log("name")
+        //         cari();
+        //     });
         // });
+
         $(function () {
             // $(".my-cart-btn").myCart(options);
             // var $target = $(this);

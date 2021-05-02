@@ -50,8 +50,12 @@ public class BaseMvcController {
     }
 
     @GetMapping("baru")
-    public String baru
-            () {
+    public String baru() {
         return "baru";
     }
+    @GetMapping("search")
+    public String search() {
+        return "product/search";
+    }
+
 }

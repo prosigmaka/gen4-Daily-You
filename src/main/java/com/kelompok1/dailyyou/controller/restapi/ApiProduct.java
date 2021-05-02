@@ -51,8 +51,8 @@ public class ApiProduct {
 
     @GetMapping("/find/{product}")
     public ResponseEntity<List<ProductDto>> getProducts(@PathVariable String product) {
-        String search= "\\y" +product+"\\y";
-        List<ProductDto> body = productService.searchProduct(search);
+//        String search= "\\y" +product+"\\y";
+        List<ProductDto> body = productService.searchProduct(product);
         return new ResponseEntity<List<ProductDto>>(body, HttpStatus.OK);
     }
 
