@@ -34,7 +34,7 @@ var create = {
                             <p><strong>Price: Rp${productPrice}</strong> </p>
                         </div>
                         <div class="card-footer bg-transparent text-center row">
-                            <button type="button" class="btn btn-outline-warning btn-sm col my-cart-btn" id="buy-btn" data-id=${res[i].id}>Add to Cart</button>
+                            <button type="button" class="btn btn-outline-warning btn-sm col my-cart-btn" id="buy-btn" data-id=${res[i].id} data-quantity="1">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -452,13 +452,14 @@ const dropdown = {
 const add = {
     clickOnAddToCart: function (target) {
         var id = target.data('id');
-        console.log(id);
+        var qt = target.data('quantity');
+        console.log(JSON.stringify({productId: id, productQuantity: qt}));
         $.ajax({
             url: '/api/cart/add',
             method: 'post',
             contentType: 'application/json',
             dataType: 'json',
-            data: JSON.stringify({productId: id}),
+            data: JSON.stringify({productId: id, productQuantity: qt}),
             success: function (res, status, xhr) {
                 if (xhr.status == 200 || xhr.status == 201) {
 
