@@ -3,7 +3,7 @@ package com.kelompok1.dailyyou.model.entity;
 import com.kelompok1.dailyyou.model.dto.ProductDto;
 import lombok.Data;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.NotNull;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.*;
@@ -18,13 +18,13 @@ public class Product {
     @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_product_seq")
     private Integer id;
 
-    private @NotNull String productName;
+    private  String productName;
 
-    private @NotNull Integer stock;
+    private  Integer stock;
 
-    private @NotNull Double price;
+    private  Double price;
 
-    private @NotNull String pictureUrl;
+    private  String pictureUrl;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

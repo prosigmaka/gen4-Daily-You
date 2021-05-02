@@ -4,13 +4,13 @@ import com.kelompok1.dailyyou.model.entity.Order;
 import com.kelompok1.dailyyou.model.entity.User;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
+
 
 @Data
 public class PlaceOrderDto {
     private Integer id;
-    private @NotNull User user;
-    private @NotNull Double totalPrice;
+    private  User user;
+    private  Double totalPrice;
 
     public PlaceOrderDto() {
     }

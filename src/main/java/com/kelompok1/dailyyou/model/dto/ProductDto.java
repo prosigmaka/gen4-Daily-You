@@ -7,17 +7,17 @@ import lombok.Data;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+
 
 @Data
 public class ProductDto {
     private Integer id;
-    private @NotNull String productName;
-    private @NotNull Integer stock;
-    private @NotNull Double price;
-    private @NotNull String pictureUrl;
-    private @NotNull Integer idCategory;
-    private @NotNull String categoryName;
+    private  String productName;
+    private  Integer stock;
+    private  Double price;
+    private  String pictureUrl;
+    private  Integer idCategory;
+    private  String categoryName;
 
     public ProductDto(Product product) {
         this.setId(product.getId());
@@ -29,7 +29,7 @@ public class ProductDto {
         this.setCategoryName(product.getProductCategory().getCategoryName());
     }
 
-    public ProductDto(@NotNull String productName, @NotNull String pictureUrl,@NotNull int stock, @NotNull double price, @NotNull int idCategory, @NotNull String categoryName) {
+    public ProductDto( String productName,  String pictureUrl, int stock,  double price,  int idCategory,  String categoryName) {
         this.productName = productName;
         this.pictureUrl = pictureUrl;
         this.stock= stock;

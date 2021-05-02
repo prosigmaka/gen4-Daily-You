@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+//import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -29,7 +29,7 @@ public class ApiProductCategory {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ApiResponse> createProductCategory(@Valid @RequestBody ProductCategory productCategory) {
+    public ResponseEntity<ApiResponse> createProductCategory( @RequestBody ProductCategory productCategory) {
         if (Helper.notNull(productCategoryService.readProductCategory(productCategory.getCategoryName()))) {
             return new ResponseEntity<ApiResponse>(new ApiResponse(false, "category already exists"), HttpStatus.CONFLICT);
         }
@@ -40,7 +40,7 @@ public class ApiProductCategory {
 //    TODO create an UPDATE method Giridhar
 
     @PostMapping("/update/{idCategory}")
-    public ResponseEntity<ApiResponse> updateProductCategory(@PathVariable("idCategory") int idCategory, @Valid @RequestBody ProductCategory productCategory) {
+    public ResponseEntity<ApiResponse> updateProductCategory(@PathVariable("idCategory") int idCategory,  @RequestBody ProductCategory productCategory) {
         // Check to see if the category exists.
         if (Helper.notNull(productCategoryService.readProductCategory(idCategory))) {
             // If the category exists then update it.

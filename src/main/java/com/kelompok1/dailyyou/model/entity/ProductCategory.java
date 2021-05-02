@@ -1,7 +1,7 @@
 package com.kelompok1.dailyyou.model.entity;
 
 import lombok.Data;
-import javax.validation.constraints.NotBlank;
+//import javax.validation.constraints.NotBlank;
 import java.util.Set;
 import javax.persistence.*;
 
@@ -16,7 +16,7 @@ public class ProductCategory {
         private Integer id;
 
     @Column(name = "category_name")
-    private @NotBlank String categoryName;
+    private  String categoryName;
 
 //    @OneToMany(mappedBy = "productCategory", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 //    Set<Product> products;
@@ -24,7 +24,7 @@ public class ProductCategory {
     public ProductCategory() {
     }
 
-    public ProductCategory(@NotBlank String categoryName) {
+    public ProductCategory( String categoryName) {
         this.categoryName = categoryName;
     }
 

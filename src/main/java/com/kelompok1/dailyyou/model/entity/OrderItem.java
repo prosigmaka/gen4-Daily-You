@@ -3,7 +3,7 @@ package com.kelompok1.dailyyou.model.entity;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+//import javax.validation.constraints.NotNull;
 import java.util.Date;
 @Data
 @Entity
@@ -19,10 +19,10 @@ public class OrderItem {
     private Integer id;
 
     @Column(name = "product_quantity")
-    private @NotNull Integer productQuantity;
+    private  Integer productQuantity;
 
     @Column(name = "price")
-    private @NotNull Double price;
+    private  Double price;
 
 
     @Column(name = "created_date")
@@ -39,7 +39,7 @@ public class OrderItem {
     public OrderItem() {
     }
 
-    public OrderItem(Order order, @NotNull Product product, @NotNull int productQuantity, @NotNull double price) {
+    public OrderItem(Order order,  Product product,  int productQuantity,  double price) {
         this.product = product;
         this.productQuantity = productQuantity;
         this.price = price;

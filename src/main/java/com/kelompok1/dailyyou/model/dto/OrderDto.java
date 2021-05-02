@@ -1,14 +1,15 @@
 package com.kelompok1.dailyyou.model.dto;
 
 import com.kelompok1.dailyyou.model.entity.Order;
+import com.sun.istack.NotNull;
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
+
 
 @Data
 public class OrderDto {
     private Integer id;
-    private @NotNull Integer userId;
+    private Integer userId;
 
     public OrderDto() {
     }
