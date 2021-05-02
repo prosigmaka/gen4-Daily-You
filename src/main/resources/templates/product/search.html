@@ -46,24 +46,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script th:src="@{assets/script/product.js}"></script>
     <!--    <script th:src="@{assets/js/jquery.mycart.js}"></script>-->
     <script>
-        $("#card-container").ready(function () {
-            create.getAllProducts();
-            // var cards = create.getProducts2();
-            // //
-            // for (const i in cards) {
-            //     var card = cards[i];
-            //     $("#card-container").append(card);
-            // }
-            // create.getProducts();
-        });
-        // $(function () {
-        //     // $(".my-cart-btn").myCart(options);
-        //     var $target = $(this);
-        $("#card-container").on("click", "#buy-btn", function () {
-            console.log("berhasil")
-            add.clickOnAddToCart($(this));
-        });
+        // $("#card-container").ready(function () {
+        //     create.getAllProducts();
+        // var cards = create.getProducts2();
+        // //
+        // for (const i in cards) {
+        //     var card = cards[i];
+        //     $("#card-container").append(card);
+        // }
+        // create.getProducts();
         // });
+        $(function () {
+            // $(".my-cart-btn").myCart(options);
+            // var $target = $(this);
+            $("#card-container").on("click", "#buy-btn", function () {
+                console.log("berhasil")
+                add.clickOnAddToCart($(this));
+            });
+        });
     </script>
 </th:block>
 

@@ -14,4 +14,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     @Query(value = "SELECT * FROM t_product where id_category =?1", nativeQuery = true)
     List<Product> cariProductCategory(Integer id);
+
+    @Query(value = "SELECT * FROM t_product where product_name ~* ?1", nativeQuery = true)
+    List<Product> searchProduct(String search);
 }

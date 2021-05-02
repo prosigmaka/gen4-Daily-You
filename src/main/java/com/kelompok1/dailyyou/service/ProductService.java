@@ -35,6 +35,16 @@ public class ProductService {
         return productDtos;
     }
 
+    public List<ProductDto> searchProduct(String search) {
+        List<Product> products = productRepository.searchProduct(search);
+        List<ProductDto> productDtos = new ArrayList<>();
+        for(Product product : products) {
+            ProductDto productDto = getDtoFromProduct(product);
+            productDtos.add(productDto);
+        }
+        return productDtos;
+    }
+
     public static ProductDto getDtoFromProduct(Product product) {
         ProductDto productDto = new ProductDto(product);
         return productDto;
