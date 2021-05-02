@@ -1,44 +1,43 @@
 package com.kelompok1.dailyyou.controller.mvc;
 
-import com.kelompok1.dailyyou.service.UserServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@RequestMapping(value = "/")
 public class BaseMvcController {
 
-    @Autowired
-    private UserServiceImpl userServiceImpl;
-
-    @RequestMapping(value= {"/dashboard"}, method=RequestMethod.GET)
-    public ModelAndView dashboard() {
-        ModelAndView model = new ModelAndView();
-
-        model.setViewName("dashboardUser/index");
-        return model;
+    @GetMapping("dashboard")
+        public String dashboard() {
+        return "dashboardUser/index";
     }
 
-    @RequestMapping(value= {"/", "/login"}, method= RequestMethod.GET)
-    public ModelAndView login() {
-        ModelAndView model = new ModelAndView();
+    @GetMapping( "login")
+    public String login() {
 
-        model.setViewName("user/login");
-        return model;
+        //Digunakan jika ingin tahu pengguna yang saat ini masuk bisa akses kemana aja.
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String cek = authentication.getAuthorities().toString();
+
+        if(cek.equals("[ROLE_USER]")){
+            return "dashboardUser/user";
+        } else if(cek.equals("[ROLE_ADMIN]")){
+            return "dashboardAdmin/admin";
+        }
+        else {
+            return "user/login";
+        }
     }
 
-    @GetMapping("dashboardUser")
-    public String dashboardUser() {
-        return "dashboardUser/user";
-    }
+//    @GetMapping("dashboardUser")
+//    public String dashboardUser() {
+//        return "dashboardUser/user";
+//    }
 
-    @GetMapping("dashboardAdm")
-    public String dashboardAdm() {
-        return "dashboardAdmin/admin";
-    }
 
     @GetMapping("report")
     public String report() {
