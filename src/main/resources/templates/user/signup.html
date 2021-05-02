@@ -40,53 +40,107 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     to our awesome app!</div>
             </div>
 
-            <form th:action="@{/signup}" method="post" th:object="${user}">
-                    <div class="form-group">
-<!--                        <label class="control-label" for="firstName"> First Name </label>-->
-                        <input type="text" id="firstName" class="form-control" placeholder="First Name..." required=" " th:field="*{firstName}">
-
-<!--                        <input id="firstName" class="form-control" th:field="*{firstName}"-->
-<!--                               required autofocus="autofocus"/>-->
-                    </div>
-
-                    <div class="form-group">
-<!--                        <label class="control-label" for="lastName"> Last Name </label> -->
-                        <input class="form-control" type="text" id="lastName" placeholder="Last Name..." required=" " th:field="*{lastName}">
-
-<!--                        <input-->
-<!--                            id="lastName" class="form-control" th:field="*{lastName}"-->
-<!--                            required autofocus="autofocus"/>-->
-                    </div>
-
-                    <div class="form-group">
-<!--                        <label class="control-label" for="email"> Email </label>-->
-                        <input type="email" id="email" class="form-control" placeholder="Email Address" required=" " th:field="*{email}">
-<!--                        <input-->
-<!--                            id="email" class="form-control" th:field="*{email}" required-->
-<!--                            autofocus="autofocus"/>-->
-                    </div>
-
-                    <div class="form-group">
-<!--                        <label class="control-label" for="password"> Password </label>-->
-
-                        <input class="form-control" id="password" type="password" placeholder="Password" required=" " th:field="*{password}">
-
-<!--                        <input-->
-<!--                            id="password" class="form-control" type="password"-->
-<!--                            th:field="*{password}" required autofocus="autofocus"/>-->
-                    </div>
-
+<!--            <form th:action="@{/signup}" method="post" th:object="${user}">-->
 <!--                    <div class="form-group">-->
-<!--                        <input class="form-control" id="password" type="password" placeholder="Password Confirmation" required=" " th:field="*{password}">-->
+<!--&lt;!&ndash;                        <label class="control-label" for="firstName"> First Name </label>&ndash;&gt;-->
+<!--                        <input type="text" id="firstName" class="form-control" placeholder="First Name..." required=" " th:field="*{firstName}">-->
 
+<!--&lt;!&ndash;                        <input id="firstName" class="form-control" th:field="*{firstName}"&ndash;&gt;-->
+<!--&lt;!&ndash;                               required autofocus="autofocus"/>&ndash;&gt;-->
 <!--                    </div>-->
 
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success">Register</button>
-                        <span>Already registered? <a href="/" th:href="@{/login}">Login
-								here</a></span>
-                    </div>
-                </form>
+<!--                    <div class="form-group">-->
+<!--&lt;!&ndash;                        <label class="control-label" for="lastName"> Last Name </label> &ndash;&gt;-->
+<!--                        <input class="form-control" type="text" id="lastName" placeholder="Last Name..." required=" " th:field="*{lastName}">-->
+
+<!--&lt;!&ndash;                        <input&ndash;&gt;-->
+<!--&lt;!&ndash;                            id="lastName" class="form-control" th:field="*{lastName}"&ndash;&gt;-->
+<!--&lt;!&ndash;                            required autofocus="autofocus"/>&ndash;&gt;-->
+<!--                    </div>-->
+
+<!--&lt;!&ndash;                    <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <label class="control-label" for="email"> Email </label>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                        <input type="email" id="email" class="form-control" placeholder="Email Address" required=" " th:field="*{email}">&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                        <input&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            id="email" class="form-control" th:field="*{email}" required&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                            autofocus="autofocus"/>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--                <div class="form-group">-->
+<!--                    <i class="fa fa-envelope" aria-hidden="true"></i>-->
+<!--                    <label for ="email"> Email : </label>-->
+<!--                    <a th:field="*{email}"></a>-->
+<!--                    <input type="email" class="form-control" name="email" id="email" placeholder="email">-->
+<!--                    <div class="clearfix"></div>-->
+<!--                </div>-->
+
+<!--                    <div class="form-group">-->
+<!--&lt;!&ndash;                        <label class="control-label" for="password"> Password </label>&ndash;&gt;-->
+
+<!--                        <input class="form-control" id="password" type="password" placeholder="Password" required=" " th:field="*{password}">-->
+
+<!--&lt;!&ndash;                        <input&ndash;&gt;-->
+<!--&lt;!&ndash;                            id="password" class="form-control" type="password"&ndash;&gt;-->
+<!--&lt;!&ndash;                            th:field="*{password}" required autofocus="autofocus"/>&ndash;&gt;-->
+<!--                    </div>-->
+
+<!--&lt;!&ndash;                    <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <input class="form-control" id="password" type="password" placeholder="Password Confirmation" required=" " th:field="*{password}">&ndash;&gt;-->
+
+<!--&lt;!&ndash;                    </div>&ndash;&gt;-->
+
+<!--                    <div class="form-group">-->
+<!--                        <button type="submit" class="btn btn-success">Register</button>-->
+<!--                        <span>Already registered? <a href="/" th:href="@{/login}">Login-->
+<!--								here</a></span>-->
+<!--                    </div>-->
+<!--                </form>-->
+
+            <form th:action="@{/signup}" method="post" th:object="${user}">
+
+                <!--                        <p class="error-message" th:if="${#fields.hasGlobalErrors()}"-->
+                <!--                           th:each="error : ${#fields.errors('global')}" th:text="${error}">Validation-->
+                <!--                            error</p>-->
+
+                <div class="form-group">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <label for ="firstName"> First Name : </label>
+                    <a th:field="*{firstName}"></a>
+                    <input type="text" class="form-control" name="firstName" id="firstName" placeholder="first name">
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="form-group">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <label for ="lastName"> Last Name : </label>
+                    <a th:field="*{lastName}"></a>
+                    <input type="text" class="form-control" name="lastName" id="lastName" placeholder="last name">
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="form-group">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <label for ="email"> Email : </label>
+                    <a th:field="*{email}"></a>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="email">
+                </div>
+
+
+
+                <div class="form-group">
+                    <i class="fa fa-lock" aria-hidden="true"></i>
+                    <label for ="password"> Password : </label>
+                    <a th:field="*{password}"></a>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="password">
+                </div>
+
+                <input type="submit" class="btn btn-success"></input>
+
+                <div class="form-group">
+                    <span>Already registered ? <a href="/" th:href="@{/login}">Login here</a></span>
+                </div>
+            </form>
+
             </div>
         </div>
     </div>
