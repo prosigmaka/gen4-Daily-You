@@ -3,6 +3,7 @@ package com.kelompok1.dailyyou.controller.restapi;
 import com.kelompok1.dailyyou.configuration.exception.OrderNotFoundException;
 import com.kelompok1.dailyyou.configuration.exception.ProductNotExistException;
 import com.kelompok1.dailyyou.model.dto.CheckoutDto;
+import com.kelompok1.dailyyou.model.entity.Cart;
 import com.kelompok1.dailyyou.model.entity.Order;
 import com.kelompok1.dailyyou.model.entity.User;
 import com.kelompok1.dailyyou.service.OrderService;
@@ -24,8 +25,7 @@ public class ApiOrder {
 
 
     @PostMapping("/add")
-    public ResponseEntity<ApiResponse> placeOrder(User user)
-            throws ProductNotExistException {
+    public ResponseEntity<ApiResponse> placeOrder(User user) throws ProductNotExistException {
 //        authenticationService.authenticate(token);
 //        User user = authenticationService.getUser(token);
         orderService.placeOrder(user);

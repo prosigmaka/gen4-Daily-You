@@ -17,9 +17,10 @@ public class Order extends CommonEntity{
     public static final String TABLE_NAME = "t_order";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
-    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_order_seq")
+////    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_order_seq")
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_order_seq")
 //    @Column(name = "order_id")
     private Integer id;
 
@@ -45,7 +46,7 @@ public class Order extends CommonEntity{
     }
 
     public Order(PlaceOrderDto orderDto){
-//        this.user = user;
+        this.user = user;
         this.createdDate = new Date();
         this.totalCost = orderDto.getTotalPrice();
 //        this.sessionId = sessionId;

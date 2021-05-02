@@ -12,4 +12,9 @@ public class CartController {
     public String cartItem() {
         return "checkout/checkout";
     }
+
+    @GetMapping("order")
+    public String order() {
+        return "checkout/order";
+    }
 };

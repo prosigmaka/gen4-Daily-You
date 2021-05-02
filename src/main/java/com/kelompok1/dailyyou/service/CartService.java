@@ -61,8 +61,8 @@ public class CartService {
 
     public void updateCartItem(AddToCartDto cartDto,User user,Product product){
         Cart cart = cartRepository.getOne(cartDto.getId());
-        cart.setProductQuantity(cartDto.getProductQuantity());
-        cart.setCreatedDate(new Date());
+        cart.setProductQuantity(cartDto.getProductId());
+//        cart.setCreatedDate(new Date());
         cartRepository.save(cart);
     }
     public void deleteCartItem(int id,int userId) throws CartItemNotExistException {

@@ -25,7 +25,6 @@ public class ApiCart {
     @PostMapping("/add")
     public ResponseEntity<ApiResponse> addToCart(@RequestBody AddToCartDto addToCartDto, User user){
         Product product = productService.getProductById(addToCartDto.getProductId());
-        System.out.println("product to add"+  product.getProductName());
         cartService.addToCart(addToCartDto, product, user);
         return new ResponseEntity<ApiResponse>(new ApiResponse(true, "Added to cart"), HttpStatus.CREATED);
 
@@ -38,7 +37,7 @@ public class ApiCart {
     @PutMapping("/update/{cartItemId}")
     public ResponseEntity<ApiResponse> updateCartItem(@RequestBody AddToCartDto cartDto, User user){
         Product product = productService.getProductById(cartDto.getProductId());
-        cartService.updateCartItem(cartDto, user,product);
+        cartService.updateCartItem(cartDto, user, product);
         return new ResponseEntity<ApiResponse>(new ApiResponse(true, "Product has been updated"), HttpStatus.OK);
     }
 

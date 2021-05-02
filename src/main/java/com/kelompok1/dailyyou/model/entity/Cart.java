@@ -12,9 +12,9 @@ import java.util.Date;
 public class Cart {
     public static final String TABLE_NAME = "t_cart";
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
+    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_cart_seq")
     private Integer id;
-
 
     @Column(name = "created_date")
     private Date createdDate;
@@ -28,7 +28,6 @@ public class Cart {
     @JoinColumn(nullable = false, name = "user_id")
     private User user;
 
-
     private int productQuantity;
 
     public Cart() {
@@ -40,6 +39,8 @@ public class Cart {
         this.productQuantity = productQuantity;
         this.createdDate = new Date();
     }
+
+
 //    @Id
 //    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
 //    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_cart_seq")

@@ -4,6 +4,7 @@ import com.kelompok1.dailyyou.configuration.exception.OrderNotFoundException;
 import com.kelompok1.dailyyou.model.dto.CartDto;
 import com.kelompok1.dailyyou.model.dto.CartItemDto;
 import com.kelompok1.dailyyou.model.dto.PlaceOrderDto;
+import com.kelompok1.dailyyou.model.entity.Cart;
 import com.kelompok1.dailyyou.model.entity.Order;
 import com.kelompok1.dailyyou.model.entity.OrderItem;
 import com.kelompok1.dailyyou.model.entity.User;
@@ -65,7 +66,7 @@ public class OrderService {
         placeOrderDto.setUser(user);
         placeOrderDto.setTotalPrice(cartDto.getTotalCost());
 
-        Order newOrder = saveOrder(placeOrderDto, user);
+        Order newOrder = saveOrder(placeOrderDto,user);
         List<CartItemDto> cartItemDtoList = cartDto.getCartItems();
         for (CartItemDto cartItemDto : cartItemDtoList) {
             OrderItem orderItem = new OrderItem(
