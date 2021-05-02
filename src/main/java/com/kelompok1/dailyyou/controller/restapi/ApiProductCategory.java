@@ -3,7 +3,7 @@ package com.kelompok1.dailyyou.controller.restapi;
 
 import com.kelompok1.dailyyou.model.entity.ProductCategory;
 import com.kelompok1.dailyyou.service.ProductCategoryService;
-import com.kelompok1.dailyyou.util.Helper;
+import com.kelompok1.dailyyou.util.exception.Helper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
