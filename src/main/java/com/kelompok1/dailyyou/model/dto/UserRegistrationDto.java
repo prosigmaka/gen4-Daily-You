@@ -7,6 +7,6 @@ public class UserRegistrationDto {
     //Data yang direpresentasikan untuk komunikasi antara FE dan BE
     private String firstName;
     private String lastName;
-    private String email;
+    private String username;
     private String password;
 }
