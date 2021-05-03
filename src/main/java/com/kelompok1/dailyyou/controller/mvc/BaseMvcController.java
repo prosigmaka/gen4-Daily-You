@@ -32,7 +32,10 @@ public class BaseMvcController {
     public String manageProduct() {
         return "product/product";
     }
-
+    @GetMapping("manage")
+    public String manage() {
+        return "product/manage";
+    }
     @GetMapping("make-up")
     public String makeUp() {
         return "product/makeup";

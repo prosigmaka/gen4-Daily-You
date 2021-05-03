@@ -53,6 +53,16 @@ html, body{
 .header-grid-right{
     float:right;
 }
+
+.header-grid-right ul li{
+    display:inline-block;
+    font-size:14px;
+    color: #242323FF;
+    margin: 0 1em;
+}
+.header-grid-right ul li i{
+    left:-.5em;
+}
 ul.social-icons li{
     display:inline-block;
     margin: 0px 4px;
