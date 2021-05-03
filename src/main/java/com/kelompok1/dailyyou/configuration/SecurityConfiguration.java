@@ -1,42 +1,35 @@
 package com.kelompok1.dailyyou.configuration;
 
+import org.springframework.http.HttpMethod;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-
-import com.kelompok1.dailyyou.service.UserServiceImpl;
+import com.kelompok1.dailyyou.service.UserService;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+    @Autowired
+    private UserService userService;
 
     @Autowired
-    private UserServiceImpl userServiceImpl;
+    private PasswordEncoder passwordEncoder;
 
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-        auth.setUserDetailsService(userServiceImpl);
-        auth.setPasswordEncoder(passwordEncoder());
-        return auth;
-    }
+    @Autowired
+    private AuthenticationSuccessHandler myAuthenticationSuccessHandler;
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
+    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userService)
+                .passwordEncoder(passwordEncoder);
     }
 
     @Override
@@ -51,33 +44,35 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
                 .antMatchers("/assets/**").permitAll()
 
-
                 .antMatchers("/aboutUs*").permitAll()
                 .antMatchers("/educationPillars*").permitAll()
                 .antMatchers("/healthPillars*").permitAll()
                 .antMatchers("/womenPillars*").permitAll()
                 .antMatchers("/environmentPillars*").permitAll()
 
+                .antMatchers("/dashboardUser*").hasAuthority("ROLE_USER")
+                .antMatchers("/dashboardAdm*").hasAuthority("ROLE_ADMIN")
 
-                .antMatchers("/product/**").permitAll()
-                .antMatchers("/dashboardUser*").hasRole("USER")
-                .antMatchers("/dashboardAdm*").hasRole("ADMIN")
-//                .antMatchers("/checkout*").hasRole("ROLE_USER")
+                .antMatchers(HttpMethod.POST, "/controller/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/controller/**").permitAll()
+
 
                 //Mendeskripsikan siapa yang mengakses resource
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
-//                .defaultSuccessUrl("/dashboardUser")
-//                .defaultSuccessUrl("/dashboardAdm")
+                .loginProcessingUrl("/perform_login")
+                .successHandler(myAuthenticationSuccessHandler)
+                .failureUrl("/login?error=true")
 
                 .and()
                 .logout()
+                .logoutUrl("/perform_logout")
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/login?logout")
-                .permitAll();
+                .logoutSuccessUrl("/login?logout=true")
+                .deleteCookies("JSESSIONID");
     }
 }
