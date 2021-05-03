@@ -12,32 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BaseMvcController {
 
     @GetMapping("dashboard")
-        public String dashboard() {
+    public String dashboard() {
         return "dashboardUser/index";
     }
 
-    @GetMapping( "login")
-    public String login() {
-
-        //Digunakan jika ingin tahu pengguna yang saat ini masuk bisa akses kemana aja.
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String cek = authentication.getAuthorities().toString();
-
-        if(cek.equals("[ROLE_USER]")){
-            return "dashboardUser/user";
-        } else if(cek.equals("[ROLE_ADMIN]")){
-            return "dashboardAdmin/admin";
-        }
-        else {
-            return "user/login";
-        }
+    @GetMapping("dashboardUser")
+    public String dashboardUser() {
+        return "dashboardUser/user";
     }
 
-//    @GetMapping("dashboardUser")
-//    public String dashboardUser() {
-//        return "dashboardUser/user";
-//    }
-
+    @GetMapping("dashboardAdm")
+    public String dashboardAdm() {
+        return "dashboardAdmin/admin";
+    }
 
     @GetMapping("report")
     public String report() {
@@ -90,4 +77,20 @@ public class BaseMvcController {
         return "checkout/checkout";
     }
 
+    @GetMapping( "login")
+    public String login() {
+
+        //authenticate the role of someone who logged in
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String check = authentication.getAuthorities().toString();
+
+        if(check.equals("[ROLE_USER]")){
+            return "dashboardUser/user";
+        } else if(check.equals("[ROLE_ADMIN]")){
+            return "dashboardAdmin/admin";
+        }
+        else {
+            return "user/login";
+        }
+    }
 }
