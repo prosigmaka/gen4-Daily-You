@@ -3,6 +3,7 @@ package com.kelompok1.dailyyou.service;
 import com.kelompok1.dailyyou.configuration.exception.OrderNotFoundException;
 import com.kelompok1.dailyyou.model.dto.CartDto;
 import com.kelompok1.dailyyou.model.dto.CartItemDto;
+import com.kelompok1.dailyyou.model.dto.OrderDto;
 import com.kelompok1.dailyyou.model.dto.PlaceOrderDto;
 import com.kelompok1.dailyyou.model.entity.Cart;
 import com.kelompok1.dailyyou.model.entity.Order;
@@ -60,10 +61,11 @@ public class OrderService {
 
 
     public void placeOrder(User user) {
-        CartDto cartDto = cartService.listCartItems();
+        CartDto cartDto = cartService.listCartItems(user);
 
         PlaceOrderDto placeOrderDto = new PlaceOrderDto();
         placeOrderDto.setUser(user);
+        placeOrderDto.setId(user.getId());
         placeOrderDto.setTotalPrice(cartDto.getTotalCost());
 
         Order newOrder = saveOrder(placeOrderDto,user);

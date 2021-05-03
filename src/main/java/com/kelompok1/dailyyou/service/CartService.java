@@ -38,8 +38,8 @@ public class CartService {
         cartRepository.save(cart);
     }
 
-    public CartDto listCartItems() {
-        List<Cart> cartList = cartRepository.findAll();
+    public CartDto listCartItems(User user) {
+        List<Cart> cartList = cartRepository.findAllByUser(user);
         List<CartItemDto> cartItems = new ArrayList<>();
         for (Cart cart:cartList){
             CartItemDto cartItemDto = getDtoFromCart(cart);

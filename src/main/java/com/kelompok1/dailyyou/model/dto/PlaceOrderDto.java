@@ -9,8 +9,8 @@ import lombok.Data;
 @Data
 public class PlaceOrderDto {
     private Integer id;
-    private  User user;
-    private  Double totalPrice;
+    private User user;
+    private Double totalPrice;
 
     public PlaceOrderDto() {
     }

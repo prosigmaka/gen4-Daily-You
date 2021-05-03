@@ -25,8 +25,8 @@ public class OrderItem {
     private  Double price;
 
 
-    @Column(name = "created_date")
-    private Date createdDate;
+//    @Column(name = "created_date")
+//    private Date createdDate;
 
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id")
@@ -44,6 +44,6 @@ public class OrderItem {
         this.productQuantity = productQuantity;
         this.price = price;
         this.order = order;
-        this.createdDate = new Date();
+//        this.createdDate = new Date();
     }
 }

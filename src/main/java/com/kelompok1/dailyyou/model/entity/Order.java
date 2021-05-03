@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 @Table(name= Order.TABLE_NAME)
 @Data
-public class Order extends CommonEntity{
+public class Order{
     public static final String TABLE_NAME = "t_order";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
@@ -24,9 +24,9 @@ public class Order extends CommonEntity{
 //    @Column(name = "order_id")
     private Integer id;
 
-
-    @Column(name = "created_date")
-    private Date createdDate;
+//
+//    @Column(name = "created_date")
+//    private Date createdDate;
 
     @Column(name = "total_cost")
     private Double totalCost;
@@ -47,7 +47,7 @@ public class Order extends CommonEntity{
 
     public Order(PlaceOrderDto orderDto){
         this.user = user;
-        this.createdDate = new Date();
+//        this.createdDate = new Date();
         this.totalCost = orderDto.getTotalPrice();
 //        this.sessionId = sessionId;
     }

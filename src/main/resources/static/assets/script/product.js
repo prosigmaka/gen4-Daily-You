@@ -435,6 +435,7 @@ $("#card-container").on("click", "#buy-btn", function () {
     $.ajax({
         url: '/api/cart/add',
         method: 'post',
+        data: JSON.stringify({'id':Math.random()*10,'productId':2,'productQuantity':1}),
         contentType: 'application/json',
         success: function (res, status, xhr) {
             if (xhr.status == 200 || xhr.status == 201) {

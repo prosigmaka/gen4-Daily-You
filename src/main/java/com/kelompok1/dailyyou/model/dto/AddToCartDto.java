@@ -1,7 +1,7 @@
 package com.kelompok1.dailyyou.model.dto;
 
 import lombok.Data;
-//
+
 //import javax.validation.constraints.NotNull;
 
 @Data

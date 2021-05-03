@@ -16,8 +16,8 @@ public class Cart {
     @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_cart_seq")
     private Integer id;
 
-    @Column(name = "created_date")
-    private Date createdDate;
+//    @Column(name = "created_date")
+//    private Date createdDate;
 
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")
@@ -37,7 +37,7 @@ public class Cart {
         this.user = user;
         this.product = product;
         this.productQuantity = productQuantity;
-        this.createdDate = new Date();
+//        this.createdDate = new Date();
     }
 
 

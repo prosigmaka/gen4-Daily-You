@@ -30,8 +30,8 @@ public class ApiCart {
 
     }
     @GetMapping("/")
-    public ResponseEntity<CartDto> getCartItems() {
-        CartDto cartDto = cartService.listCartItems();
+    public ResponseEntity<CartDto> getCartItems(User user) {
+        CartDto cartDto = cartService.listCartItems(user);
         return new ResponseEntity<CartDto>(cartDto,HttpStatus.OK);
     }
     @PutMapping("/update/{cartItemId}")

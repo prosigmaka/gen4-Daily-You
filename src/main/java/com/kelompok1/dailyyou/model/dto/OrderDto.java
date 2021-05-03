@@ -1,10 +1,8 @@
 package com.kelompok1.dailyyou.model.dto;
 
 import com.kelompok1.dailyyou.model.entity.Order;
-import com.sun.istack.NotNull;
+
 import lombok.Data;
-
-
 
 @Data
 public class OrderDto {
