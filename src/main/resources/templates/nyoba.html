@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html layout:decorate="~{base}"
+<html layout:decorate="~{basebaru}"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org">
@@ -8,161 +8,34 @@
 <!-- //header -->
 <!-- banner -->
 <div layout:fragment="content-body">
+    <div class="container">
+        <h2>Modal Example</h2>
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
 
-    <div class="card-header">
-        <h3 class="card-title">List Transaksi</h3>
-        <button class="float-right btn-primary" id="btn-tambah-bayar" data-toggle="tooltip" title="tambah" data-placement="top" style="border-radius: 20%;" value="upload"><i class="fa fa-plus">Upload</i></button>
-    </div>
-    <div class="modal fade" id="modal-bayar">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header" style="background: #b580ff">
-                    <h4 class="modal-title">Upload Bukti pembayaran</h4>
-                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="card card" style="background: #b580ff">
-                        <div class="card-header">
-                            <h3 class="card-title">Please upload billing receipt here:</h3>
-                        </div>
-                        <div class="card-body">
-                            <form id="form-bayar" role="form">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
 
-                                <input class="form-control" id="id" name="id" type="hidden">
-                                <div class="form-group">
-                                    <label for="idOrder" class="form-label">Id Order</label>
-                                    <input type="text" class="form-control" id="idOrder" name="idOrder"
-                                           placeholder="ID Order"
-                                           required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="fotoBayar" class="form-label">Image URL</label>
-                                    <input type="file" class="form-control" id="fotoBayar" name="fotoBayar"
-                                           placeholder="Upload billing receipt here" required accept="image">
-                                    <div style="margin-top: 30px; border: dashed 1px black">
-                                        <img id="thumbnail" src="#" alt="preview" width="100%">
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Some text in the modal.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </div>
-                <div class="modal-footer justify-content-between">
-                    <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
-                    <button type="button" class="btn btn-purple" id="btn-save-bayar">Upload</button>
-                </div>
+
             </div>
-            <!-- /.modal-content -->
         </div>
-        <!-- /.modal-dialog -->
+
     </div>
 
 </div>
 
-<script>
-    var formBayar = {
-        resetForm: function () {
-            $('#form-bayar')[0].reset();
-            $('#idOrder').val("");
-            $('#thumbnail').removeAttr('src')
-        },
-
-        saveForm : function (event) {
-            event.preventDefault();
-
-            // Get form
-            var form = $('#form-bayar')[0];
-
-            // Create an FormData object
-            var data = new FormData(form);
-
-            // If you want to add an extra field for the FormData
-            data.append('bayar', new Blob([JSON.stringify({
-                "idBayar": document.getElementById("id").value,
-                "idUser": document.getElementById("nama").value
-                // "alamat": document.getElementById("alamat").value
-            })], {
-                type: "application/json"
-            }));
-
-            // disabled the submit button
-            $("#btn-save-bayar").prop("disabled", true);
-
-            $.ajax({
-                type: "POST",
-                enctype: 'multipart/form-data',
-                url: "/api/bayar/",
-                data: data,
-                processData: false,
-                contentType: false,
-                cache: false,
-                timeout: 600000,
-                success: function (data) {
-
-                    // $("#result").text(data);
-                    console.log("SUCCESS : ", data);
-                    $("#btn-save-bayar").prop("disabled", false);
-                    tableTransaksi.create();
-                    $('#modal-bayar').modal('hide')
-                    console.log($('#fileImage').val())
-
-                },
-                error: function (e) {
-
-                    $("#result").text(e.responseText);
-                    console.log("ERROR : ", e);
-                    $("#btn-save-bayar").prop("disabled", false);
-
-                }
-            });
-        },
-
-        setEditData: function (idCabang) {
-            formBayar.resetForm();
-            $.ajax({
-                url: '/api/transaksi/' + idCabang,
-                method: 'get',
-                enctype: 'multipart/form-data',
-                // contentType: 'application/json',
-                dataType: 'json',
-                success: function (res, status, xhr) {
-                    if (xhr.status == 200 || xhr.status == 201) {
-                        $('#form-bayar').fromJSON(JSON.stringify(res));
-                        $('#modal-bayar').modal('show')
-                    } else {
-                    }
-                },
-                erorrr: function (err) {
-                    console.log(err);
-                }
-            });
-        }
-    };
-</script>
-<script>
-    $('#fotoBayar').change(function () {
-        showImageThumbnail(this)
-    });
-    function showImageThumbnail(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#thumbnail').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $('#btn-tambah-bayar').click(function () {
-        formBayar.resetForm();
-        $('#modal-bayar').modal('show')
-    });
-
-    $('#btn-save-bayar').click(function (event) {
-        formBayar.saveForm(event)
-    });
-
-</script>
 </html>
