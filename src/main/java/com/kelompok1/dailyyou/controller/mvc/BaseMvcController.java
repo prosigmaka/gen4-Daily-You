@@ -67,4 +67,8 @@ public class BaseMvcController {
         return "nyoba";
     }
 
+    @GetMapping("newbase")
+    public String newbase() {
+        return "newbase";
+    }
 }

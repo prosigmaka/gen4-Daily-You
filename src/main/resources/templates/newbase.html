@@ -2,57 +2,32 @@
 <html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Daily You</title>
-    <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="keywords" content="Best Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"/>
-    <script type="application/x-javascript"> addEventListener("load", function () {
-        setTimeout(hideURLbar, 0);
-    }, false);
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- IonIcons -->
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!--    Font Awesome-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    } </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- js -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- //js -->
-    <!-- for bootstrap working -->
-    <script type="text/javascript" src="assets/js/bootstrap-3.1.1.min.js"></script>
-    <!-- //for bootstrap working -->
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
-          rel='stylesheet' type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic'
-          rel='stylesheet' type='text/css'>
-    <!-- //for-mobile-apps -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="assets/css/style.css" rel="stylesheet" type="text/css" media="all"/>
-
-    <!-- DataTables -->
-    <link rel="stylesheet" type="text/css"
-          href="https://cdn.datatables.net/v/dt/dt-1.10.24/b-1.7.0/datatables.min.css"/>
-
-    <!-- cart -->
-    <script src="assets/js/simpleCart.min.js"></script>
-    <!-- cart -->
-    <!--    <script src="assets/js/jquery.mycart.js"></script>-->
-    <!-- jQuery Modal -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
-
-    <!-- timer -->
-<!--    <link rel="stylesheet" href="assets/css/jquery.countdown.css"/>-->
-    <!-- //timer -->
+    <link href="assets/css/newbase.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- animation-effect -->
     <link href="assets/css/animate.min.css" rel="stylesheet">
     <script src="assets/js/wow.min.js"></script>
-    <script>
-        new WOW().init();
-    </script>
-    <!-- //animation-effect -->
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
     <style>
         * {
             box-sizing: border-box;
@@ -89,22 +64,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             display: table;
         }
     </style>
+
 </head>
-
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to to the body tag
-to get the desired effect
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
-<body class="hold-transition sidebar-mini layout-fixed">
-
+<body>
 <div class="wrapper">
-    <!-- Navbar -->
     <div class="header">
         <div class="container">
             <div class="header-grid">
@@ -180,9 +143,9 @@ to get the desired effect
                                         </div>
                                     </ul>
                                 </li>
-                                <li class="search-box" style="width: 400px; min-width: auto">
+                                <li class="search-box" style="width: 300px; min-width: auto">
                                     <div class="sb-search-open">
-                                        <form method="post" onsubmit="return false" class="example" style="max-width:400px">
+                                        <form method="post" onsubmit="return false" class="example" style="max-width:300px">
                                             <input placeholder="Find your items here" type="text" id="apa">
                                             <button type="submit" id="sub" onclick="cari()" class="fa"><i
                                                     class="fa fa-search"></i></button>
@@ -212,16 +175,16 @@ to get the desired effect
                 <!--                    &lt;!&ndash; //search-scripts &ndash;&gt;-->
                 <!--                </div>-->
                 <div class="header-right">
-<!--                    <div class="search-box">-->
-<!--                        <div class="sb-search-open">-->
-<!--                            <form method="post" onsubmit="return false" class="example" style="max-width:300px">-->
-<!--                                <input placeholder="Find your items here" type="text" id="apa">-->
-<!--                                <button type="submit" id="sub" onclick="cari()" class="fa"><i class="fa fa-search"></i>-->
-<!--                                </button>-->
-<!--                            </form>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <script th:src="@{assets/script/product.js}"></script>-->
+                    <!--                    <div class="search-box">-->
+                    <!--                        <div class="sb-search-open">-->
+                    <!--                            <form method="post" onsubmit="return false" class="example" style="max-width:300px">-->
+                    <!--                                <input placeholder="Find your items here" type="text" id="apa">-->
+                    <!--                                <button type="submit" id="sub" onclick="cari()" class="fa"><i class="fa fa-search"></i>-->
+                    <!--                                </button>-->
+                    <!--                            </form>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <script th:src="@{assets/script/product.js}"></script>-->
                     <div class="cart box_1">
                         <a href="checkout.html">
                             <h3>
@@ -235,10 +198,10 @@ to get the desired effect
                         </a>
                         <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
                         <div class="header-grid-right animated wow slideInRight" data-wow-delay=".2s">
-<!--                            <ul>-->
-<!--                                <li><i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i><a-->
-<!--                                        href="/checkout"></a></li>-->
-<!--                            </ul>-->
+                            <!--                            <ul>-->
+                            <!--                                <li><i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i><a-->
+                            <!--                                        href="/checkout"></a></li>-->
+                            <!--                            </ul>-->
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -247,58 +210,7 @@ to get the desired effect
             </div>
         </div>
     </div>
-    <!-- /.navbar -->
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-
-        <!-- /.content-header -->
-
-        <!-- Main content -->
-        <div class="content">
-            <!--            <div class="container-fluid">-->
-            <div layout:fragment="content-body"/>
-            <!--            </div>-->
-        </div>
-        <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-
-    <!-- Main Footer -->
-    <th:block layout:replace="~{fragment/footer}"></th:block>
-
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-
 
 </div>
-<!-- ./wrapper -->
-
-<!-- REQUIRED SCRIPTS -->
-
-<!-- jQuery -->
-<!--<script th:src="@{/assets/js/jquery.min.js}"></script>-->
-<!--<script th:src="@{/assets/js/jquery.countdown.js}"></script>-->
-<script th:src="@{/assets/js/classie.js}"></script>
-<script th:src="@{/assets/js/imagezoom.js}"></script>
-
-<!--<script th:src="@{/assets/js}"></script>-->
-<script th:src="@{/assets/css/animate.min.css}"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.24/b-1.7.0/datatables.min.js"></script>
-<!--<script th:src="@{/assets/js/jquery.dataTables.js}"></script>-->
-<!--<script th:src="@{/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js}"></script>-->
-<!--<script th:src="@{/assets/fonts}"></script>-->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.1/parsley.min.js"></script>
-<!-- Bootstrap -->
-<script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-
-<th:block layout:fragment="add-scripts">
-</th:block>
-
 </body>
 </html>
