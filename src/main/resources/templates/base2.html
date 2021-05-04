@@ -71,7 +71,8 @@ to get the desired effect
                 </div>
                 <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
                     <ul>
-                        <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href="/logout" sec:authorize="isAuthenticated()">Logout</a>
+                        <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>
+                            <a href="/logout" sec:authorize="isAuthenticated()">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -96,23 +97,23 @@ to get the desired effect
                         <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                             <ul class="nav navbar-nav">
                                 <li class="active"><a href="/aboutUs" class="act">About Us</a></li>
-                                <!-- Mega Menu -->
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Managed Products <b
-                                            class="caret"></b></a>
-                                    <ul class="dropdown-menu multi-column columns-3">
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <ul class="multi-column-dropdown">
-                                                    <li><a href="products.html">Make Up</a></li>
-                                                    <li><a href="products.html">Skin Care</a></li>
-                                                    <li><a href="products.html">Body Care</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="clearfix"></div>
-                                        </div>
-                                    </ul>
-                                </li>
+                                <li class="flex-active"><a href="/addProduct" class="act">Manage Products </a> </li> <!-- Mega Menu -->
+<!--                                <li class="dropdown">-->
+<!--                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage Products <b-->
+<!--                                            class="caret"></b></a>-->
+<!--                                    <ul class="dropdown-menu multi-column columns-3">-->
+<!--                                        <div class="row">-->
+<!--                                            <div class="col-sm-6">-->
+<!--                                                <ul class="multi-column-dropdown">-->
+<!--                                                    <li><a href="products.html">Make Up</a></li>-->
+<!--                                                    <li><a href="products.html">Skin Care</a></li>-->
+<!--                                                    <li><a href="products.html">Body Care</a></li>-->
+<!--                                                </ul>-->
+<!--                                            </div>-->
+<!--                                            <div class="clearfix"></div>-->
+<!--                                        </div>-->
+<!--                                    </ul>-->
+<!--                                </li>-->
                                 <li class="active"><a href="/report" class="act">Report</a></li>
                             </ul>
                         </div>
