@@ -56,7 +56,7 @@ public class BaseMvcController {
         return "activities/page4";
     }
 
-    @GetMapping("add-product")
+    @GetMapping("addProduct")
     public String addProduct() {
         return "product/add";
     }
@@ -71,11 +71,13 @@ public class BaseMvcController {
         return "product/index";
     }
 
-
     @GetMapping("checkout")
     public String checkout() {
         return "checkout/checkout";
     }
+
+    @GetMapping("shopping")
+    public String shopping() { return "detail/shopping"; }
 
     @GetMapping( "login")
     public String login() {
