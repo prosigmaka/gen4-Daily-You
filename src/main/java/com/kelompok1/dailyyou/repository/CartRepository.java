@@ -11,6 +11,7 @@ import java.util.List;
 public interface CartRepository extends JpaRepository<Cart, Integer> {
 
     List<Cart> findAllByUser(User user);
+    List<Cart> findAll();
 
     List<Cart> deleteByUser(User user);
 

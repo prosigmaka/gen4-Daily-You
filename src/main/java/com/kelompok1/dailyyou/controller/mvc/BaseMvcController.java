@@ -33,7 +33,6 @@ public class BaseMvcController {
         return "product/product";
     }
 
-
     @GetMapping("make-up")
     public String makeUp() {
         return "product/makeup";
@@ -50,8 +49,7 @@ public class BaseMvcController {
     }
 
     @GetMapping("baru")
-    public String baru
-            () {
-        return "baru";
-    }
+    public String baru () { return "baru"; }
+
+
 }
