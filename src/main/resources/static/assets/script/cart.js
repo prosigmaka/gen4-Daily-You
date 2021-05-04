@@ -1,22 +1,22 @@
 var create = {
   getAllItemCart: function () {
     $.ajax({
-      url: '/api/cart',
+      url: '/api/cart/',
       method: 'get',
       contentType: 'application/json',
       success: function (res, status, xhr) {
         console.log(xhr.status)
         if (xhr.status == 200 || xhr.status == 201) {
 
-          console.log(res.length);
+          console.log(res.cartItems.length);
           // var cart = [];
           // if (res.length > 0 && cart.length < 1) {
-            for (i = 0; i < res.length; i++) {
-              var id = res[i].id
-              var pictureUrl = res[i].product.pictureUrl
-              var productName = res[i].product.productName
-              var productQuantity = res[i].productQuantity
-              var price = res[i].product.price
+            for (i = 0; i < res.cartItems.length; i++) {
+              var id = res.cartItems[i].id
+              var pictureUrl = res.cartItems[i].product.pictureUrl
+              var productName = res.cartItems[i].product.productName
+              var productQuantity = res.cartItems[i].productQuantity
+              var price = res.cartItems[i].product.price
 
               document.getElementById("tableCart").innerHTML +=
                 '<tr class="rem1" id="cart">'+
