@@ -74,4 +74,9 @@ public class BaseMvcController {
     public String newbase() {
         return "newbase";
     }
+
+    @GetMapping("cart")
+    public String cart() {
+        return "checkout/checkout";
+    }
 }
