@@ -40,7 +40,10 @@
     <script>
         $("#card-container").ready(function () {
             create.getMakeUp();
-
+        });
+        $("#card-container").on("click", "#buy-btn", function () {
+            console.log("berhasil")
+            add.clickOnAddToCart($(this));
         });
     </script>
 </th:block>

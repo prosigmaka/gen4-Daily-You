@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Daily You</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!--    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap.min.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">-->
+    <!--    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>-->
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js%7Chttps://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>-->
+    <!--    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>-->
+    <!--    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap.min.js"></script>-->
+    <!--    <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js"></script>-->
+    <!--    <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js"></script>-->
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modalmanager.min.js" integrity="sha512-/HL24m2nmyI2+ccX+dSHphAHqLw60Oj5sK8jf59VWtFWZi9vx7jzoxbZmcBeeTeCUc7z1mTs3LfyXGuBU32t+w==" crossorigin="anonymous"></script>-->
+
+
+
+
+    <!-- //for-mobile-apps -->
+    <!--    <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>-->
+    <!--    <link href="assets/css/style.css" rel="stylesheet" type="text/css" media="all"/>-->
+
+    <!--    data table 1.10.1-->
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.1/css/jquery.dataTables.css" integrity="sha512-0cPeyYH+a9m/2DD7JCEDJr4aAjzImZQ6XvBKbwTkgGC0iPFGCtF8vPeResq76ELTx52yfPB9SMO13Q7JevkWCA==" crossorigin="anonymous" />-->
+
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.1/js/jquery.dataTables.min.js" integrity="sha512-oQynQb10NO7N7GoZSnB+ug1sNWjcU9YrydseaXpSyB78JcU8afSGC83m0AnBMiAV/UcCOWzR+SAl1R2GoKqurg==" crossorigin="anonymous"></script>-->
+
+
+    <!--    datatable 1.10.21-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/jquery.dataTables.min.css" integrity="sha512-1k7mWiTNoyx2XtmI96o+hdjP8nn0f3Z2N4oF/9ZZRgijyV4omsKOXEnqL1gKQNPy2MTSP9rIEWGcH/CInulptA==" crossorigin="anonymous" />-->
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/jquery.dataTables_themeroller.min.css" integrity="sha512-5GDdn/BpAGDO+Gfs3idMa0EtMFPrszDv6xz7aQDW58tdO/88JXdXOC1EKPkaQJANldanYURbQ2SiLymWY4Ppmg==" crossorigin="anonymous" />-->
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.uikit.min.css" integrity="sha512-v1si6kCoH7ODQMp4X4TZXOZzDTrhKhWRdd50pRuejFJMSYKrLoW68NQmmTJWjgs1B0VRYaE6oB1CDq6r5r306A==" crossorigin="anonymous" />-->
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.material.min.css" integrity="sha512-xvrm5KqgBtR7kE0ehXfSSkQvzArzm/iBSx6aXcINru5dM0YWCaqrHfsN1PHCQBgL03/7fJHqypWZoA5w0T6lMA==" crossorigin="anonymous" />-->
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.jqueryui.min.css" integrity="sha512-x2AeaPQ8YOMtmWeicVYULhggwMf73vuodGL7GwzRyrPDjOUSABKU7Rw9c3WNFRua9/BvX/ED1IK3VTSsISF6TQ==" crossorigin="anonymous" />-->
+    <!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.foundation.min.css" integrity="sha512-jyhJOXPqmwwlzhhy2/7edoig3tkyTClebiDZsV2zGb5k4nBol09WyZhK7w1KLl11q79UJjPWgybVu1m52cVehw==" crossorigin="anonymous" />-->
+
+
+    <!-- datatable 1.10.21-->
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.24/js/dataTables.semanticui.min.js" integrity="sha512-8B38KJBwxAoS9vVowfY3gU7EAtDzk/9HVK6fo9PKY5yJPWKWuRw+DXOCGOJ2nCFQNvX5VGVz9oSWEUGzk2A4Vg==" crossorigin="anonymous"></script>-->
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/dataTables.material.min.js" integrity="sha512-QlmLkAfo4B1hJMd6K0Z0lFlZbgTrPGKsWp2vi5gDSrKMeDZfYPM02ovNcvs5k/2S84gH1F0VCDCPsSg/p4RX1A==" crossorigin="anonymous"></script>-->
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/dataTables.uikit.min.js" integrity="sha512-bAcEEaYbeDReL5E0ASR5zPLMAd0TX5IVMy75g0QFbOr1Qq0FLl3d8bcM6M7CxEB+N97co3o0AlzqEcacUktvTA==" crossorigin="anonymous"></script>-->
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/dataTables.jqueryui.min.js" integrity="sha512-9u6nki9uD72SzBtp/+7VmFplkUljohfLv2ogiMc1N4EwPAs7jG/3SBM6abgTJAxZdCjF5F9sg5Iis/uriTm1mA==" crossorigin="anonymous"></script>-->
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/dataTables.foundation.min.js" integrity="sha512-MQyHE+GWTjAMTFLWMYn61SMgfAxWjDjbDKEMrzjuKNtLTUQun6KzDTXaQh80zjUCJDlz5/jx91WYR9HqgjjWbg==" crossorigin="anonymous"></script>-->
+    <!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/dataTables.dataTables.min.js" integrity="sha512-fQmyZE5e3plaa6ADOXBM17WshoZzDIvo7sR4GC1VsmSKqm13Ed8cO2kPwFPAOoeF0RcdhuQQlPq46X/HnPmllg==" crossorigin="anonymous"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/dataTables.bootstrap.min.js" integrity="sha512-F0E+jKGaUC90odiinxkfeS3zm9uUT1/lpusNtgXboaMdA3QFMUez0pBmAeXGXtGxoGZg3bLmrkSkbK1quua4/Q==" crossorigin="anonymous"></script>
+    <!--   -->
+
+    <!--    parsley-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.9.2/parsley.min.js" integrity="sha512-eyHL1atYNycXNXZMDndxrDhNAegH2BDWt1TmkXJPoGf1WLlNYt08CSjkqF5lnCRmdm3IrkHid8s2jOUY4NIZVQ==" crossorigin="anonymous"></script>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <!--    Font Awesome-->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+<!--    <link href="assets/css/style.css" rel="stylesheet" type="text/css" media="all"/>-->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        form.example input[type=text] {
+            padding: 10px;
+            font-size: 12px;
+            border: 1px solid grey;
+            float: left;
+            width: 85%;
+            background: #f1f1f1;
+        }
+
+        form.example button {
+            float: left;
+            width: 15%;
+            padding: 10px;
+            background: #b98bee;
+            color: white;
+            font-size: 17px;
+            border: 1px solid grey;
+            border-left: none;
+            cursor: pointer;
+        }
+
+        form.example button:hover {
+            background: #0b7dda;
+        }
+
+        form.example::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+
+</head>
+<body>
+<div class="wrapper">
+    <div class="header">
+        <div class="container">
+            <div class="header-grid">
+                <div class="header-grid-left animated wow slideInLeft" data-wow-delay=".5s">
+                    <ul>
+                        <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
+                            <a href="mailto:info@example.com">contact@dailyyou.com</a></li>
+                        <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+1234 567 892</li>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
+                    <ul>
+                        <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href=" /login">Login</a>
+                        </li>
+                        <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href=" /register">Register</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="logo-nav">
+                <div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
+                    <h1><a href="/dashboard">Daily You <span>Make beauty and wellness</span></a></h1>
+                </div>
+                <div class="logo-nav-left1">
+                    <nav class="navbar navbar-default">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header nav_2">
+                            <button type="button" class="navbar-toggle collapsed navbar-toggle1" data-toggle="collapse"
+                                    data-target="#bs-megadropdown-tabs">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="index.html" class="act">About Us</a></li>
+                                <!-- Mega Menu -->
+                                <li class="dropdown">
+                                    <a href="/all-product" class="dropdown-toggle" data-toggle="dropdown">Products <b
+                                            class="caret"></b></a>
+                                    <ul class="dropdown-menu multi-column columns-3">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <ul class="multi-column-dropdown">
+                                                    <li><a href="/make-up">Make Up</a></li>
+                                                    <li><a href="/skin-care">Skin Care</a></li>
+                                                    <li><a href="/body-care">Body Care</a></li>
+                                                    <li><a href="/all-product">All Products</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="activities" class="dropdown-toggle" data-toggle="dropdown">Activities <b
+                                            class="caret"></b></a>
+                                    <ul class="dropdown-menu multi-column columns-3">
+                                        <div class="row">
+                                            <div class="col-sm-9">
+                                                <ul class="multi-column-dropdown">
+                                                    <li><a href="furniture.html">Education Pillars</a></li>
+                                                    <li><a href="furniture.html">Health Pillars</a></li>
+                                                    <li><a href="furniture.html">Women's Empowerment Pillars</a></li>
+                                                    <li><a href="furniture.html">Environment Pillars</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </ul>
+                                </li>
+                                <li class="search-box" style="width: 300px; min-width: auto">
+                                    <div class="sb-search-open">
+                                        <form method="post" onsubmit="return false" class="example" style="max-width:300px">
+                                            <input placeholder="Find your items here" type="text" id="apa">
+                                            <button type="submit" id="sub" onclick="cari()" class="fa"><i
+                                                    class="fa fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                </li>
+                                <script th:src="@{assets/script/product.js}"></script>
+                            </ul>
+
+                        </div>
+                        <div class="navbar-right">
+
+                        </div>
+                    </nav>
+                </div>
+                <!--                <div class="logo navbar-right">-->
+                <!--                    <div class="search-box">-->
+                <!--                        <div class="sb-search-open">-->
+                <!--                            <form method="post" onsubmit="return false" class="example" style="max-width:300px">-->
+                <!--                                <input placeholder="Find your items here" type="text" id="apa">-->
+                <!--                                <button type="submit" id="sub" onclick="cari()" class="fa"><i class="fa fa-search"></i></button>-->
+                <!--                            </form>-->
+                <!--                        </div>-->
+                <!--                    </div>-->
+                <!--                    &lt;!&ndash; search-scripts &ndash;&gt;-->
+                <!--                    <script th:src="@{assets/script/product.js}"></script>-->
+                <!--                    &lt;!&ndash; //search-scripts &ndash;&gt;-->
+                <!--                </div>-->
+                <div class="header-right">
+                    <!--                    <div class="search-box">-->
+                    <!--                        <div class="sb-search-open">-->
+                    <!--                            <form method="post" onsubmit="return false" class="example" style="max-width:300px">-->
+                    <!--                                <input placeholder="Find your items here" type="text" id="apa">-->
+                    <!--                                <button type="submit" id="sub" onclick="cari()" class="fa"><i class="fa fa-search"></i>-->
+                    <!--                                </button>-->
+                    <!--                            </form>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                    <!--                    <script th:src="@{assets/script/product.js}"></script>-->
+                    <div class="cart box_1">
+                        <a href="checkout.html">
+                            <h3>
+                                <div class="total">
+                                    <span class="simpleCart_total"></span> (<span id="simpleCart_quantity"
+                                                                                  class="simpleCart_quantity"></span>
+                                    items)
+                                </div>
+                                <img src="/assets/images/bag.png" alt=""/>
+                            </h3>
+                        </a>
+                        <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                        <div class="header-grid-right animated wow slideInRight" data-wow-delay=".2s">
+                            <!--                            <ul>-->
+                            <!--                                <li><i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i><a-->
+                            <!--                                        href="/checkout"></a></li>-->
+                            <!--                            </ul>-->
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <div class="content">
+            <!--            <div class="container-fluid">-->
+            <div class="container">
+                <h2>Modal Example</h2>
+                <!-- Trigger the modal with a button -->
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Modal Header</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>Some text in the modal.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div layout:fragment="content-body"/>
+            <!--            </div>-->
+        </div>
+        <!-- /.content -->
+    </div>
+
+</div>
+    <th:block layout:replace="~{fragment/footer}"></th:block>
+
+
+
+    <!--<script th:src="@{/assets/js}"></script>-->
+<!--    <script th:src="@{/assets/css/animate.min.css}"></script>-->
+<th:block layout:fragment="add-scripts">
+</th:block>
+</body>
+</html>

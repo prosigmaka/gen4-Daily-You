@@ -8,9 +8,9 @@
 // });
 
 
-$("#card-container").on("click", "#buy-btn", function() {
-    alert("Thank you for trusting Daily You!");
-});
+// $("#card-container").on("click", "#buy-btn", function() {
+//     alert("Thank you for trusting Daily You!");
+// });
 
 
 $("#add-product").on("click", function() {
@@ -80,7 +80,7 @@ $("#btn-update-product").click(async function(form) {
 
     if (result) {
         alert("Product has been update!");
-        window.location.href = "/all-product";
+        window.location.href = "/manage-product";
     } else {
         alert("Failed to update product, sorry");
     }

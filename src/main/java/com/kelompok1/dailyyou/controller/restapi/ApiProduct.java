@@ -6,6 +6,7 @@ import com.kelompok1.dailyyou.model.entity.ProductCategory;
 import com.kelompok1.dailyyou.repository.ProductRepository;
 import com.kelompok1.dailyyou.service.ProductCategoryService;
 import com.kelompok1.dailyyou.service.ProductService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/product")
@@ -44,6 +46,13 @@ public class ApiProduct {
     @GetMapping("/category/{id}")
     public ResponseEntity<List<ProductDto>> getProducts(@PathVariable Integer id) {
         List<ProductDto> body = productService.listProductByCategory(id);
+        return new ResponseEntity<List<ProductDto>>(body, HttpStatus.OK);
+    }
+
+    @GetMapping("/find/{product}")
+    public ResponseEntity<List<ProductDto>> getProducts(@PathVariable String product) {
+//        String search= "\\y" +product+"\\y";
+        List<ProductDto> body = productService.searchProduct(product);
         return new ResponseEntity<List<ProductDto>>(body, HttpStatus.OK);
     }
 

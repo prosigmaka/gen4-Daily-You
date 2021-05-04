@@ -1,9 +1,11 @@
 package com.kelompok1.dailyyou.model.dto;
 
+import lombok.Data;
+
 import javax.validation.constraints.NotNull;
 
+@Data
 public class OrderItemsDto {
-
     private @NotNull double price;
     private @NotNull int quantity;
     private @NotNull int orderId;
@@ -15,38 +17,6 @@ public class OrderItemsDto {
         this.price = price;
         this.quantity = quantity;
         this.orderId = orderId;
-        this.productId = productId;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public int getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
-
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
         this.productId = productId;
     }
 }

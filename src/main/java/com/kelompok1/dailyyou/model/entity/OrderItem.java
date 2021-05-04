@@ -1,23 +1,28 @@
 package com.kelompok1.dailyyou.model.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
-
+@Data
 @Entity
-@Table(name = "orderitems")
+@Table(name = OrderItem.TABLE_NAME)
+
 public class OrderItem {
+    public static final String TABLE_NAME = "t_order_item";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
+    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_order_item_seq")
+    @Column(name = "id_order_item")
     private Integer id;
 
-
-    @Column(name = "quantity")
-    private @NotNull int quantity;
+    @Column(name = "product_quantity")
+    private @NotNull Integer productQuantity;
 
     @Column(name = "price")
-    private @NotNull double price;
+    private @NotNull Double price;
 
 
     @Column(name = "created_date")
@@ -31,48 +36,14 @@ public class OrderItem {
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 
-    public OrderItem(){}
+    public OrderItem() {
+    }
 
-    public OrderItem(Order order, @NotNull Product product, @NotNull int quantity, @NotNull double price) {
+    public OrderItem(Order order, @NotNull Product product, @NotNull int productQuantity, @NotNull double price) {
         this.product = product;
-        this.quantity = quantity;
+        this.productQuantity = productQuantity;
         this.price = price;
-        this.order= order;
+        this.order = order;
         this.createdDate = new Date();
     }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
-    }
-
-
 }

@@ -1347,6 +1347,16 @@ mark,
 a.text-primary:hover {
   color: #286090;
 }
+.text-dark {
+  color: #4b4848 !important;
+}
+
+a.text-dark:hover, a.text-dark:focus {
+  color: #121416 !important;
+}
+.text-white {
+  color: #fff !important;
+}
 .text-success {
   color: #3c763d;
 }
@@ -1402,6 +1412,26 @@ a.bg-warning:hover {
 a.bg-danger:hover {
   background-color: #e4b9b9;
 }
+.bg-transparent {
+  background-color: transparent !important;
+}
+.bg-dark {
+  background-color: #343a40 !important;
+}
+
+.bg-purple {
+  background-color: #b582e8 !important;
+  color: #050505;
+}
+
+a.bg-dark:hover, a.bg-dark:focus,
+button.bg-dark:hover,
+button.bg-dark:focus {
+  background-color: #1d2124 !important;
+}
+
+
+
 .page-header {
   padding-bottom: 9px;
   margin: 40px 0 20px;
@@ -2916,16 +2946,39 @@ select[multiple].form-group-lg .form-control {
   border: 0 solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
-
+.card-product{
+  position: relative;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  /*background-color: #d69dfa;*/
+  background-clip: border-box;
+  border: 0 solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  background-image: linear-gradient(to top, #bf70f1, #fae4ff)
+}
 .card-header {
   padding: 0.75rem 1.25rem;
   margin-bottom: 0;
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: rgb(255, 255, 255);
   border-bottom: 0 solid rgba(0, 0, 0, 0.125);
 }
 
 .card-title {
   margin-bottom: 0.75rem;
+}
+.card-img,
+.card-img-top,
+.card-img-bottom {
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  width: 100%;
 }
 
 .card-body {

@@ -2,16 +2,18 @@ package com.kelompok1.dailyyou.service;
 
 
 import com.kelompok1.dailyyou.model.dto.AddToCartDto;
-import com.kelompok1.dailyyou.model.dto.CartDto;
 import com.kelompok1.dailyyou.model.dto.CartItemDto;
 import com.kelompok1.dailyyou.model.entity.Cart;
+import com.kelompok1.dailyyou.model.dto.CartDto;
 import com.kelompok1.dailyyou.model.entity.Product;
-import com.kelompok1.dailyyou.model.entity.Users;
+//import com.kelompok1.dailyyou.model.entity.User;
 import com.kelompok1.dailyyou.repository.CartRepository;
+import com.kelompok1.dailyyou.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,8 +23,8 @@ import java.util.List;
 public class CartService {
     @Autowired
     private  CartRepository cartRepository;
-
-    private Users user;
+//
+//    private User user;
 
     public CartService(){}
 
@@ -49,6 +51,31 @@ public class CartService {
         CartDto cartDto = new CartDto(cartItems,totalCost);
         return cartDto;
     }
+//    public CartDto  listCartItems() {
+//        List<Cart> cartList = cartRepository.findAll();
+//        List<CartItemDto> cartItems = new ArrayList<>();
+//        double totalCost = 0;
+//        for (Cart cart:cartList){
+////            totalCost += (cart.getProduct().getPrice()* cart.getProductQuantity());
+////            cart.setTotalCost(totalCost);
+////            cartRepository.save(cart);
+//
+//            CartItemDto cartItemDto = getDtoFromCart(cart);
+//            cartItems.add(cartItemDto);
+//        }
+//        for (Cart cart:cartList){
+//            cart.setTotalCost(totalCost);
+//            cartRepository.save(cart);
+//
+//        }
+//
+//        for (CartItemDto cartItemDto :cartItems){
+//            totalCost += (cartItemDto.getProduct().getPrice()* cartItemDto.getProductQuantity());
+//        }
+//        CartDto cartDto = new CartDto(cartItems,totalCost);
+//
+//        return cartDto;
+//    }
 
 
     public static CartItemDto getDtoFromCart(Cart cart) {
@@ -68,9 +95,9 @@ public class CartService {
 
     }
 
-//    public void deleteCartItems(int userId) {
-//        cartRepository.deleteAll();
-//    }
+    public void deleteCartItems() {
+        cartRepository.deleteAll();
+    }
 
 //    public void deleteUserCartItems(User user) {
 //        cartRepository.deleteByUser(user);

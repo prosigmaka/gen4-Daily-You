@@ -1,8 +1,12 @@
 package com.kelompok1.dailyyou.model.dto;
 
 import com.kelompok1.dailyyou.model.entity.Product;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Data

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 @Service
 public class ProductService {
     @Autowired
@@ -26,9 +25,18 @@ public class ProductService {
         }
         return productDtos;
     }
-
     public List<ProductDto> listProductByCategory(Integer id) {
         List<Product> products = productRepository.cariProductCategory(id);
+        List<ProductDto> productDtos = new ArrayList<>();
+        for(Product product : products) {
+            ProductDto productDto = getDtoFromProduct(product);
+            productDtos.add(productDto);
+        }
+        return productDtos;
+    }
+
+    public List<ProductDto> searchProduct(String search) {
+        List<Product> products = productRepository.searchProduct(search);
         List<ProductDto> productDtos = new ArrayList<>();
         for(Product product : products) {
             ProductDto productDto = getDtoFromProduct(product);

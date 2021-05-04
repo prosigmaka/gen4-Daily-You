@@ -5,7 +5,6 @@ import com.kelompok1.dailyyou.model.entity.Product;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
-
 @Data
 public class CartItemDto {
 //    private Integer id;

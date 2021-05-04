@@ -1,11 +1,12 @@
 package com.kelompok1.dailyyou.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.kelompok1.dailyyou.model.dto.ProductDto;
 import lombok.Data;
-
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 @Table(name= Product.TABLE_NAME)
@@ -32,6 +33,7 @@ public class Product {
 
 
     public Product(ProductDto productDto, ProductCategory productCategory) {
+        this.id= productDto.getId();
         this.productName = productDto.getProductName();
         this.stock = productDto.getStock();
         this.price = productDto.getPrice();
@@ -39,8 +41,9 @@ public class Product {
         this.productCategory = productCategory;
     }
 
-    public Product(String productName, int stock, String pictureUrl, double price, ProductCategory productCategory) {
+    public Product(Integer id, String productName, int stock, String pictureUrl, double price, ProductCategory productCategory) {
         super();
+        this.id=id;
         this.productName = productName;
         this.stock = stock;
         this.price = price;
@@ -53,11 +56,12 @@ public class Product {
     @Override
     public String toString() {
         return "Product{" +
-                "id=" + id +
-                ", name='" + productName + '\'' +
+                ", id='" + id + '\'' +
+                ", productName='" + productName + '\'' +
                 ", stock='" + stock + '\'' +
                 ", price=" + price + '\'' +
                 ", pictureURL='" + pictureUrl + '\'' +
+                ", idCategory='" + productCategory + '\'' +
                 '}';
     }
 }
