@@ -37,6 +37,7 @@ public class UserServiceImpl implements UserService{
         users.setFirstName(registrationDto.getFirstName());
         users.setLastName(registrationDto.getLastName());
         users.setUsername(registrationDto.getUsername());
+        users.setEmail(registrationDto.getEmail());
         users.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
 
         //Setting manual untuk role id 1 dengan tipe data Long adalah sebagai "User"
@@ -44,6 +45,16 @@ public class UserServiceImpl implements UserService{
 
         return userRepository.save(users);
     }
+
+//    @Override
+//    public Users registerNewUserAccount(UserRegistrationDto userDto) throws UserAlreadyExistException {
+//        if (emailExist(userDto.getEmail())) {
+//            throw new UserAlreadyExistException("There is an account with that email address: "
+//                    + userDto.getEmail());
+//        }
+//
+//        // the rest of the registration operation
+//    }
 
     // Proses Login dimana akan dicari usernamenya apakah sesuai apa tidak
     @Override
