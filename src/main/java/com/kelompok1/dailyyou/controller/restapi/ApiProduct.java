@@ -49,6 +49,13 @@ public class ApiProduct {
         return new ResponseEntity<List<ProductDto>>(body, HttpStatus.OK);
     }
 
+    @GetMapping("/find/{product}")
+    public ResponseEntity<List<ProductDto>> getProducts(@PathVariable String product) {
+//        String search= "\\y" +product+"\\y";
+        List<ProductDto> body = productService.searchProduct(product);
+        return new ResponseEntity<List<ProductDto>>(body, HttpStatus.OK);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<ApiResponse> addProduct(@RequestBody ProductDto productDto) {
         Optional<ProductCategory> optionalProductCategory = productCategoryService.readProductCategory(productDto.getIdCategory());

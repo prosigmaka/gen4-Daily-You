@@ -8,9 +8,9 @@
 // });
 
 
-$("#card-container").on("click", "#buy-btn", function() {
-    alert("Thank you for trusting Daily You!");
-});
+// $("#card-container").on("click", "#buy-btn", function() {
+//     alert("Thank you for trusting Daily You!");
+// });
 
 
 $("#add-product").on("click", function() {

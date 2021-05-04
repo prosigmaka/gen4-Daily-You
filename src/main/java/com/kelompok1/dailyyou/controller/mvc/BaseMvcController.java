@@ -32,7 +32,10 @@ public class BaseMvcController {
     public String manageProduct() {
         return "product/product";
     }
-
+    @GetMapping("manage")
+    public String manage() {
+        return "product/manage";
+    }
     @GetMapping("make-up")
     public String makeUp() {
         return "product/makeup";
@@ -49,7 +52,26 @@ public class BaseMvcController {
     }
 
     @GetMapping("baru")
-    public String baru () { return "baru"; }
+    public String baru() {
+        return "baru";
+    }
+    @GetMapping("search")
+    public String search() {
+        return "product/search";
+    }
 
+    @GetMapping("bayar")
+    public String bayar() {
+        return "bayar";
+    }
 
+    @GetMapping("nyoba")
+    public String nyoba() {
+        return "nyoba";
+    }
+
+    @GetMapping("newbase")
+    public String newbase() {
+        return "newbase";
+    }
 }

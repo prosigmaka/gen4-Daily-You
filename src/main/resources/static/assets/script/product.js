@@ -6,12 +6,13 @@ var create = {
             contentType: 'application/json',
             success: function (res, status, xhr) {
                 if (xhr.status == 200 || xhr.status == 201) {
-                    console.log(res.length);
+                    console.log(res);
                     var cards = [];
                     if (res.length > 0 && cards.length < 1) {
                         for (i = 0; i < res.length; i++) {
 
                             var productID = res[i].id;
+                            console.log(productID);
                             var productName = res[i].productName;
                             var productStock = res[i].stock;
                             var productPrice = res[i].price;
@@ -21,7 +22,7 @@ var create = {
 
                             // console.log(categoryName);
                             var card = `
-                <div class="col-md-3" id=${productID}>
+                <div class="col-md-3" id=${productID} style="margin-bottom: 30px">
                     <div class="card-body card-product" style="width: 18rem;">
                         <img class="card-img-top" src=${productPictureURL} alt="Product Image">
                         <div class="text-dark text-capitalize">
@@ -33,7 +34,7 @@ var create = {
                             <p><strong>Price: Rp${productPrice}</strong> </p>
                         </div>
                         <div class="card-footer bg-transparent text-center row">
-                            <button type="button" class="btn btn-outline-warning btn-sm col" id="buy-btn">Add to Cart</button>
+                            <button type="button" class="btn btn-outline-warning btn-sm col my-cart-btn" id="buy-btn" data-id=${res[i].id} data-quantity="1">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -71,7 +72,7 @@ var create = {
 
                             // console.log(categoryName);
                             var card = `
-                <div class="col-md-3" id=${productID}>
+                <div class="col-md-3" id=${productID} style="margin-bottom: 30px">
                     <div class="card-body card-product" style="width: 18rem;">
                         <img class="card-img-top" src=${productPictureURL} alt="Product Image">
                         <div class="text-dark text-capitalize">
@@ -83,7 +84,7 @@ var create = {
                             <p><strong>Price: Rp${productPrice}</strong> </p>
                         </div>
                         <div class="card-footer bg-transparent text-center row">
-                            <button type="button" class="btn btn-outline-warning btn-sm col" id="buy-btn" >Add to Cart</button>
+                            <button type="button" class="btn btn-outline-warning btn-sm col my-cart-btn" id="buy-btn" data-id=${res[i].id} data-quantity="1">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -120,7 +121,7 @@ var create = {
 
                             console.log(categoryName);
                             var card = `
-                <div class="col-md-3" id=${productID}>
+                <div class="col-md-3" id=${productID} style="margin-bottom: 30px">
                     <div class="card-body card-product" style="width: 18rem;">
                         <img class="card-img-top" src=${productPictureURL} alt="Product Image">
                         <div class="text-dark text-capitalize">
@@ -132,7 +133,7 @@ var create = {
                             <p><strong>Price: Rp${productPrice}</strong> </p>
                         </div>
                         <div class="card-footer bg-transparent text-center row">
-                            <button type="button" class="btn btn-outline-warning btn-sm col" id="buy-btn">Add to Cart</button>
+                            <button type="button" class="btn btn-outline-warning btn-sm col my-cart-btn" id="buy-btn" data-id=${res[i].id} data-quantity="1">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -170,7 +171,7 @@ var create = {
 
                             console.log(categoryName);
                             var card = `
-                <div class="col-md-3" id=${productID}>
+                <div class="col-md-3" id=${productID} style="margin-bottom: 30px">
                     <div class="card-body card-product" style="width: 18rem;">
                         <img class="card-img-top" src=${productPictureURL} alt="Product Image">
                         <div class="text-dark text-capitalize">
@@ -182,7 +183,7 @@ var create = {
                             <p><strong>Price: Rp${productPrice}</strong> </p>
                         </div>
                         <div class="card-footer bg-transparent text-center row">
-                            <button type="button" class="btn btn-outline-warning btn-sm col" id="buy-btn">Add to Cart</button>
+                            <button type="button" class="btn btn-outline-warning btn-sm col my-cart-btn" id="buy-btn" data-id=${res[i].id} data-quantity="1">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -391,24 +392,24 @@ const actionDelete = {
         // deleteRowData() {
         console.log(idRow);
         // if ($('#form-product').parsley().validate()) {
-            // const dataResult = getJsonForm($('#form-product').serializeArray(), true)
-            var yes = confirm("Hapus data?"); //pake ini kalo ga pake modal
-            if (yes) {
-                $.ajax({
-                        url: `/api/product/${idRow}`, // ditambah idRow kalo pake confirm ga pake modal
-                        method: 'delete',
-                        success() {
-                            tableProduct.create()
-                            // $('#modal-delete').modal('hide')
-                        },
-                        erorrr(err) {
-                            console.log(err)
-                        }
+        // const dataResult = getJsonForm($('#form-product').serializeArray(), true)
+        var yes = confirm("Hapus data?"); //pake ini kalo ga pake modal
+        if (yes) {
+            $.ajax({
+                    url: `/api/product/${idRow}`, // ditambah idRow kalo pake confirm ga pake modal
+                    method: 'delete',
+                    success() {
+                        tableProduct.create()
+                        // $('#modal-delete').modal('hide')
+                    },
+                    erorrr(err) {
+                        console.log(err)
                     }
-                )
-            }
-            // } // dicomment kalo ga pake modal
+                }
+            )
         }
+        // } // dicomment kalo ga pake modal
+    }
     // }
 }
 
@@ -431,17 +432,115 @@ const dropdown = {
     },
 }
 
-$("#card-container").on("click", "#buy-btn", function () {
+// $("#card-container").on("click", "#buy-btn", function () {
+//     $.ajax({
+//         url: '/api/cart/add',
+//         method: 'post',
+//         contentType: 'application/json',
+//         success: function (res, status, xhr) {
+//             if (xhr.status == 200 || xhr.status == 201) {
+//                 console.log(res);
+//                 alert("Thank you for trusting Daily You!");
+//             }
+//         }
+//     })
+// });
+
+
+// $(document).on('click', targetSelector, function () {
+//     var $target = $(this);
+const add = {
+    clickOnAddToCart: function (target) {
+        var id = target.data('id');
+        var qt = target.data('quantity');
+        console.log(JSON.stringify({productId: id, productQuantity: qt}));
+        $.ajax({
+            url: '/api/cart/add',
+            method: 'post',
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify({productId: id, productQuantity: qt}),
+            success: function (res, status, xhr) {
+                if (xhr.status == 200 || xhr.status == 201) {
+
+                    console.log(this.data);
+                    alert("Thank you for trusting Daily You!");
+                }
+            },
+            erorrr(err) {
+                console.log(err);
+                console.log("intan");
+            }
+        })
+    }
+}
+//
+//     var id = $target.data('id');
+//     $.ajax({
+//         url: '/api/cart/add',
+//         method: 'post',
+//         contentType: 'application/json',
+//         data: JSON.stringify(id),
+//         success: function (res, status, xhr) {
+//             if (xhr.status == 200 || xhr.status == 201) {
+//                 console.log(res);
+//                 alert("Thank you for trusting Daily You!");
+//             }
+//         }
+//     })
+//
+// }
+
+function cari() {
+    // window.location.href="/search.html";
+    var key = $("#apa").val();
+    console.log(key);
     $.ajax({
-        url: '/api/cart/add',
-        method: 'post',
-        data: JSON.stringify({'id':Math.random()*10,'productId':2,'productQuantity':1}),
-        contentType: 'application/json',
+        url: "/api/product/find/" + key,
+        method: "get",
+        contentType: "aplication/json",
         success: function (res, status, xhr) {
-            if (xhr.status == 200 || xhr.status == 201) {
+            if (xhr.status === 200 || xhr.status === 201) {
                 console.log(res);
-                alert("Thank you for trusting Daily You!");
+                $("#card-container").empty();
+                var cards = [];
+                if (res.length > 0 && cards.length < 1) {
+                    for (i = 0; i < res.length; i++) {
+                        var productID = res[i].id;
+                        console.log(productID);
+                        var productName = res[i].productName;
+                        var productStock = res[i].stock;
+                        var productPrice = res[i].price;
+                        var productPictureURL = res[i].pictureUrl;
+                        var idCategory = res[i].idCategory;
+                        var categoryName = res[i].categoryName;
+
+                        // console.log(categoryName);
+                        var card = `
+                <div class="col-md-3" id=${productID}>
+                    <div class="card-body card-product" style="width: 18rem;">
+                        <img class="card-img-top" src=${productPictureURL} alt="Product Image">
+                        <div class="text-dark text-capitalize">
+                            <p class="card-title" style="line-height: 2"><strong>${productName}</strong></p>
+                            <h5 class="card-text">${categoryName}</h5>
+                           
+                            <h5 style="line-height: 2">Stock: ${productStock}</h5>
+                            <br>
+                            <p><strong>Price: Rp${productPrice}</strong> </p>
+                        </div>
+                        <div class="card-footer bg-transparent text-center row">
+                            <button type="button" class="btn btn-outline-warning btn-sm col my-cart-btn" id="buy-btn" data-id=${res[i].id}>Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+                        $("#card-container").append(card);
+                    }
+                } else if (res.length < 1 && cards.length < 1) {
+                    cards.push(errorMessage);
+                }
             }
         }
     })
-});
+}
