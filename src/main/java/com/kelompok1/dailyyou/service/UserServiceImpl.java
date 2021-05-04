@@ -66,8 +66,7 @@ public class UserServiceImpl implements UserService{
         if(users == null) {
             //maka akan akan dilemparkan ke "UsernameNotFoundException"
             throw new UsernameNotFoundException("Invalid username or password.");
-//            users loginDto = new LoginDto();
-//            loginDto.getIdUserLogin();
+//
         }
 
         //Setelah itu akan di return nilainya ke user.
