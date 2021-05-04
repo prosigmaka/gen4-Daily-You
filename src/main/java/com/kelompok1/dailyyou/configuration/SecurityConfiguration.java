@@ -44,11 +44,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
                 .antMatchers("/assets/**").permitAll()
 
-                .antMatchers("/aboutUs*").permitAll()
-                .antMatchers("/educationPillars*").permitAll()
-                .antMatchers("/healthPillars*").permitAll()
-                .antMatchers("/womenPillars*").permitAll()
-                .antMatchers("/environmentPillars*").permitAll()
+//                .antMatchers("/aboutUs*").permitAll()
+//                .antMatchers("/educationPillars*").permitAll()
+//                .antMatchers("/healthPillars*").permitAll()
+//                .antMatchers("/womenPillars*").permitAll()
+//                .antMatchers("/environmentPillars*").permitAll()
 
                 .antMatchers("/dashboardUser*").hasAuthority("ROLE_USER")
                 .antMatchers("/dashboardAdm*").hasAuthority("ROLE_ADMIN")
@@ -68,10 +68,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
                 .and()
                 .logout()
-                .logoutUrl("/perform_logout")
-                .invalidateHttpSession(true)
-                .clearAuthentication(true)
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+
+
+                //once user click logout button, user will go to login page with "logout" page
+				.logoutUrl("/perform_logout")
                 .logoutSuccessUrl("/login?logout=true")
                 .deleteCookies("JSESSIONID");
     }
