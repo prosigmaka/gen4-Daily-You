@@ -34,6 +34,7 @@ var create = {
                     '</td>'+
                     '<td class="invert">'+price+'<td>'+
                     '<div class="rem">'+
+                        '<button  class="btn-primary" onclick="editRow('+id+')">Edit</button>'+
                         '<button  class="btn-danger" onclick="deleteRow('+id+')">Delete</button>'+
                     '</div>'+
                     '</td>'+
@@ -48,6 +49,10 @@ var create = {
     })
   }
 }
+
+$('.table tbody').on('click','btn-danger',function () {
+  $(this).closest('tr')
+})
 
 // $("#deleteRow").on("click", "#btn-danger",
 function deleteRow (id) {

@@ -40,59 +40,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!--	</div>-->
     <!-- /.col -->
 
-
-    <div class="modal fade" id="modal-cart">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">My Cart</h4>
-                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="card-header">
-
-                    </div>
-                    <form id="form-cart" role="form">
-                        <input name="id" type="hidden"/>
-
-                        <div class="form-group">
-                            <label>Product : </label>
-                            <input class="form-control" id="pictureUrl" name="pictureUrl"
-                                   placeholder="picturUrl" required type="text">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Product Name : </label>
-                            <input class="form-control" id="productName" name="productName"
-                                   placeholder="productName" required type="text">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Unit Price : </label>
-                            <input class="form-control" id="unitPrice" name="unitPrice"
-                                   placeholder="unitPrice" required type="text">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Quantity : </label>
-                            <input class="form-control" id="quantity" name="quantity"
-                                   placeholder="Quantity" required type="text">
-                        </div>
-
-
-                    </form>
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button class="btn btn-default" data-dismiss="modal" type="button">Close</button>
-                    <button class="btn btn-primary" id="btn-save-cart" type="button">Save</button>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
     <div class="checkout">
         <div class="container">
             <h3 class="animated wow slideInLeft" data-wow-delay=".5s">Your shopping cart contains:
@@ -106,8 +53,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         <th>Product Name</th>
                         <th>Quantity</th>
                         <th>Price</th>
-<!--                        <th>Total Cost</th>-->
-                        <th>Remove</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody id="tableCart"></tbody>
