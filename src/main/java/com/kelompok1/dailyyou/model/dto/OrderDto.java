@@ -13,7 +13,7 @@ public class OrderDto {
     private Integer tipePayment;
     private Double totalCost;
     private Date batasPayment;
-//    private Enum statusPesanan;
+    private Enum statusPesanan;
 
     private List<OrderItemsDto> items;
 }
