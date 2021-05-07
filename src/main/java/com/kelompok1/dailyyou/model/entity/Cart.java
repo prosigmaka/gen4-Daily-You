@@ -1,8 +1,10 @@
 package com.kelompok1.dailyyou.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = Cart.TABLE_NAME)
@@ -12,18 +14,18 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
     @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_cart_seq")
-    @Column(name = "id_cart")
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "id_product", insertable = false, updatable = false, nullable = false)
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 
-    @Column(name = "id_product", nullable = false)
-    private Integer idProduct;
+//    @JsonIgnore
+//    @OneToOne(targetEntity = Users.class, fetch = FetchType.EAGER)
+//    @JoinColumn(nullable = false, name = "user_id")
+//    private Users user;
 
-    private Integer productQuantity;
+    private int productQuantity;
 
-    private Double totalPrice;
 
 }
