@@ -13,7 +13,7 @@ public class Users {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     // Nullable fungsinya untuk memastikan bahwa nilai pada kolom tersebut tidak boleh kosong.
     // Karena nilai nya false, maka nilai pada kolom tersebut boleh kosong

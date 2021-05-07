@@ -35,10 +35,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         // Authorization : Proses yang menentukan resource mana saja yang diperbolehkan untuk diakses
-        http.authorizeRequests()
-
+        http
+                .csrf().disable()
+                .authorizeRequests()
                 .antMatchers("/dashboard*").permitAll()
-
                 .antMatchers("/login*").permitAll()
                 .antMatchers("/signup*").permitAll()
 
@@ -50,11 +50,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 //                .antMatchers("/womenPillars*").permitAll()
 //                .antMatchers("/environmentPillars*").permitAll()
 
+                .antMatchers("/baru*").permitAll()
+
                 .antMatchers("/dashboardUser*").hasAuthority("ROLE_USER")
                 .antMatchers("/dashboardAdm*").hasAuthority("ROLE_ADMIN")
 
-                .antMatchers(HttpMethod.POST, "/controller/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/controller/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/api/**").permitAll()
 
 
                 //Mendeskripsikan siapa yang mengakses resource
@@ -68,8 +70,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
                 .and()
                 .logout()
-
-
                 //once user click logout button, user will go to login page with "logout" page
 				.logoutUrl("/perform_logout")
                 .logoutSuccessUrl("/login?logout=true")

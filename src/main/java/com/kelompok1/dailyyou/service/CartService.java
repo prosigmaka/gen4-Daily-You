@@ -6,9 +6,10 @@ import com.kelompok1.dailyyou.model.dto.CartItemDto;
 import com.kelompok1.dailyyou.model.entity.Cart;
 import com.kelompok1.dailyyou.model.dto.CartDto;
 import com.kelompok1.dailyyou.model.entity.Product;
-//import com.kelompok1.dailyyou.model.entity.User;
+import com.kelompok1.dailyyou.model.entity.Users;
 import com.kelompok1.dailyyou.repository.CartRepository;
 import com.kelompok1.dailyyou.repository.ProductRepository;
+import com.kelompok1.dailyyou.configuration.exception.CartItemNotExistException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +24,8 @@ import java.util.List;
 public class CartService {
     @Autowired
     private  CartRepository cartRepository;
-//
-//    private User user;
+
+    private Users user;
 
     public CartService(){}
 
@@ -32,13 +33,13 @@ public class CartService {
         this.cartRepository = cartRepository;
     }
 
-    public void addToCart(AddToCartDto addToCartDto, Product product){
-        Cart cart = new Cart(product, addToCartDto.getProductQuantity());
+    public void addToCart(AddToCartDto addToCartDto, Product product, Users user){
+        Cart cart = new Cart(product, addToCartDto.getProductQuantity(),user);
         cartRepository.save(cart);
     }
 
-    public CartDto listCartItems() {
-        List<Cart> cartList = cartRepository.findAll();
+    public CartDto listCartItems(Users user) {
+        List<Cart> cartList = cartRepository.findAllByUser(user);
         List<CartItemDto> cartItems = new ArrayList<>();
         for (Cart cart:cartList){
             CartItemDto cartItemDto = getDtoFromCart(cart);
@@ -51,32 +52,6 @@ public class CartService {
         CartDto cartDto = new CartDto(cartItems,totalCost);
         return cartDto;
     }
-//    public CartDto  listCartItems() {
-//        List<Cart> cartList = cartRepository.findAll();
-//        List<CartItemDto> cartItems = new ArrayList<>();
-//        double totalCost = 0;
-//        for (Cart cart:cartList){
-////            totalCost += (cart.getProduct().getPrice()* cart.getProductQuantity());
-////            cart.setTotalCost(totalCost);
-////            cartRepository.save(cart);
-//
-//            CartItemDto cartItemDto = getDtoFromCart(cart);
-//            cartItems.add(cartItemDto);
-//        }
-//        for (Cart cart:cartList){
-//            cart.setTotalCost(totalCost);
-//            cartRepository.save(cart);
-//
-//        }
-//
-//        for (CartItemDto cartItemDto :cartItems){
-//            totalCost += (cartItemDto.getProduct().getPrice()* cartItemDto.getProductQuantity());
-//        }
-//        CartDto cartDto = new CartDto(cartItems,totalCost);
-//
-//        return cartDto;
-//    }
-
 
     public static CartItemDto getDtoFromCart(Cart cart) {
         CartItemDto cartItemDto = new CartItemDto(cart);
@@ -84,22 +59,24 @@ public class CartService {
     }
 
 
-    public void updateCartItem(AddToCartDto cartDto,Product product){
+    public void updateCartItem(AddToCartDto cartDto,Users user,Product product){
         Cart cart = cartRepository.getOne(cartDto.getId());
-        cart.setProductQuantity(cartDto.getProductQuantity());
-        cart.setCreatedDate(new Date());
+        cart.setProductQuantity(cartDto.getProductId());
+//        cart.setCreatedDate(new Date());
         cartRepository.save(cart);
     }
-    public void deleteCartItem(int id) {
+    public void deleteCartItem(int id,int userId) throws CartItemNotExistException {
+        if (!cartRepository.existsById(id))
+            throw new CartItemNotExistException("Cart id is invalid : " + id);
         cartRepository.deleteById(id);
 
     }
 
-    public void deleteCartItems() {
+    public void deleteCartItems(int userId) {
         cartRepository.deleteAll();
     }
 
-//    public void deleteUserCartItems(User user) {
-//        cartRepository.deleteByUser(user);
-//    }
+    public void deleteUserCartItems(Users user) {
+        cartRepository.deleteByUser(user);
+    }
 }

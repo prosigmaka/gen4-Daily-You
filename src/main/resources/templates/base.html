@@ -69,29 +69,24 @@ to get the desired effect
                         </li>
                     </ul>
                 </div>
-                <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
-                    <ul>
-                        <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href=" /login"
-                                                                                            sec:authorize="!isAuthenticated()">Login</a>
-                        </li>
-                        <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href=" /signup"
-                                                                                          sec:authorize="!isAuthenticated()">Register</a>
-                        </li>
-                    </ul>
-                </div>
+<!--                <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">-->
+<!--                    <ul>-->
+<!--                        <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href=" /login" sec:authorize="!isAuthenticated()">Login</a>-->
+<!--                        </li>-->
+<!--                        <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href=" /signup" sec:authorize="!isAuthenticated()">Register</a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
 
-<!--                <sec:authorize access="!hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_ANONYMOUS')">-->
-<!--                    <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href=" /login"-->
-<!--                                                                                        sec:authorize="!isAuthenticated()">Login</a>-->
-<!--                    </li>-->
-<!--                    <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href=" /signup"-->
-<!--                                                                                      sec:authorize="!isAuthenticated()">Register</a>-->
-<!--                    </li>-->
-<!--                </sec:authorize>-->
+
+                <sec:authorize access="!hasAnyRole('ROLE_ADMIN','ROLE_SUPERADMIN','ROLE_USER')">
+                    <a data-toggle="modal" href="/login"><i class="fa fa-sign-in"></i><span> Login</span></a>
+                </sec:authorize>
 
                 <div class="clearfix"></div>
 
             </div>
+
             <div class="logo-nav">
                 <div class="logo-nav-left animated wow zoomIn" data-wow-delay=".5s">
                     <h1><a href="/dashboard">Daily You <span>Make beauty and wellness</span></a></h1>

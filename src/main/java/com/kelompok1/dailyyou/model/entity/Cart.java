@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -20,13 +21,13 @@ public class Cart {
     @Column(name = "created_date")
     private Date createdDate;
 
-//    @JsonIgnore
-//    @OneToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "id_user",  nullable = false)
-//    private User user;
+    @JsonIgnore
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "id_user",  nullable = false)
+    private Users user;
 
-//    @Column(name = "id_user", nullable = false)
-//    private Integer idUser;
+    @Column(name = "id_user", nullable = false, insertable = false, updatable = false)
+    private Integer idUser;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -37,7 +38,7 @@ public class Cart {
 
 //    private Double totalCost;
 
-    public Cart() {
+    public Cart(Product product, @NotNull Integer productQuantity, Users user) {
     }
 
     public Cart(Product product, int productQuantity) {

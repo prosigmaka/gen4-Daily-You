@@ -13,7 +13,7 @@ public class BaseMvcController {
 
     @GetMapping("dashboard")
     public String dashboard() {
-        return "dashboardUser/index";
+        return "dashboardUser/user";
     }
 
     @GetMapping("dashboardUser")
@@ -56,10 +56,28 @@ public class BaseMvcController {
         return "activities/page4";
     }
 
-    @GetMapping("addProduct")
-    public String addProduct() {
-        return "product/add";
-    }
+//    @GetMapping("addProduct")
+//    public String addProduct() {
+//        return "product/add";
+//    }
+//
+//    @GetMapping("update-product")
+//    public String updateProduct() {
+//        return "product/update";
+//    }
+//
+//    @GetMapping("all-product")
+//    public String allProduct() {
+//        return "product/index";
+//    }
+//
+//    @GetMapping("checkout")
+//    public String checkout() {
+//        return "checkout/checkout";
+//    }
+//
+//    @GetMapping("shopping")
+//    public String shopping() { return "detail/shopping"; }
 
     @GetMapping("update-product")
     public String updateProduct() {
@@ -71,13 +89,52 @@ public class BaseMvcController {
         return "product/index";
     }
 
-    @GetMapping("checkout")
-    public String checkout() {
-        return "checkout/checkout";
+    @GetMapping("manage-product")
+    public String manageProduct() {
+        return "product/product";
+    }
+    @GetMapping("manage")
+    public String manage() {
+        return "product/manage";
+    }
+    @GetMapping("make-up")
+    public String makeUp() {
+        return "product/makeup";
     }
 
-    @GetMapping("shopping")
-    public String shopping() { return "detail/shopping"; }
+    @GetMapping("body-care")
+    public String bodyCare() {
+        return "product/bodycare";
+    }
+
+    @GetMapping("skin-care")
+    public String skinCare() {
+        return "product/skincare";
+    }
+
+    @GetMapping("baru")
+    public String baru() {
+        return "baru";
+    }
+    @GetMapping("search")
+    public String search() {
+        return "product/search";
+    }
+
+    @GetMapping("bayar")
+    public String bayar() {
+        return "bayar";
+    }
+
+    @GetMapping("nyoba")
+    public String nyoba() {
+        return "nyoba";
+    }
+
+    @GetMapping("newbase")
+    public String newbase() {
+        return "newbase";
+    }
 
     @GetMapping( "login")
     public String login() {
