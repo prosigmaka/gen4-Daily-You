@@ -1,56 +1,52 @@
 package com.kelompok1.dailyyou.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.kelompok1.dailyyou.model.dto.PlaceOrderDto;
 import lombok.Data;
 
-import javax.persistence.Entity;
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name= Order.TABLE_NAME)
+@Table(name = Order.TABLE_NAME)
 @Data
-public class Order{
+public class Order {
     public static final String TABLE_NAME = "t_order";
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
-////    @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_order_seq")
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_order_seq")
-//    @Column(name = "order_id")
     private Integer id;
 
-//
-//    @Column(name = "created_date")
-//    private Date createdDate;
+//        @ManyToOne
+//    @JoinColumn(name = "id_user", updatable = false, insertable = false)
+//    private User user;
+//    @Column(name="id_user", nullable = false)
+//    private Integer idUser;
 
-    @Column(name = "total_cost")
+//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+//    @Column(name="tanggal_ci", nullable = false)
+//    private Date tanggalCi;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="payment_status", nullable = false)
+    private PaymentStatus paymentStatus;
+
+    @Column(name="total_cost", nullable = false)
     private Double totalCost;
 
-//    @Column(name = "session_id")
-//    private String sessionId;
+//    @Column(name="payment_type", nullable = false)
+//    private String tipePayment;
+//
 
-    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
-    private List<OrderItem> orderItems;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+//    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="batas_tanggal_pembayaran", nullable = false)
+    private Date batasTanggalPembayaran;
 
-    @ManyToOne()
-    @JsonIgnore
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
 
-    public Order() {
-    }
-
-    public Order(PlaceOrderDto orderDto){
-        this.user = user;
-//        this.createdDate = new Date();
-        this.totalCost = orderDto.getTotalPrice();
-//        this.sessionId = sessionId;
-    }
+    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "id_user", updatable = false, insertable = false)
+    private List<OrderItems> items;
 
 }
-

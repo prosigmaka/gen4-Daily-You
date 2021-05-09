@@ -1,28 +1,19 @@
 package com.kelompok1.dailyyou.model.dto;
 
-import com.kelompok1.dailyyou.model.entity.Order;
-
 import lombok.Data;
+
+import java.util.List;
+import java.time.LocalDateTime;
+import java.util.Date;
+
 
 @Data
 public class OrderDto {
     private Integer id;
-    private Integer userId;
+    private Integer tipePayment;
+    private Double totalCost;
+    private Date batasPayment;
+    private Enum statusPesanan;
 
-    public OrderDto() {
-    }
-
-    public OrderDto(Order order) {
-        this.setId(order.getId());
-        //this.setUserId(order.getUserId());
-    }
-//    private Integer idTransaction;
-//    private Integer idProduct;
-//    private Integer productQuantity;
-//    private Double totalPrice;
-//    private Double totalPricePayment;
-//    private Integer idPayment;
-//    private Integer idCustomer;
-//    private Integer idAddress;
-
+    private List<OrderItemsDto> items;
 }
