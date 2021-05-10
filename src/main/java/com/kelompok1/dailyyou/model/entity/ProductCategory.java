@@ -13,9 +13,6 @@ public class ProductCategory {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TABLE_NAME)
     @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_product_category_seq")
 
-//    @Column(name = "id")
-//    private Integer id;
-
     @Column(name = "id_category")
     private Integer id;
 

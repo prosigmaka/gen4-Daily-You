@@ -16,6 +16,7 @@ public class OrderItems {
     @OneToOne
     @JoinColumn(name = "id_cart", updatable = false, insertable = false)
     private Cart cart;
+
     @Column(name="id_cart", nullable = false)
     private Integer idCart;
 

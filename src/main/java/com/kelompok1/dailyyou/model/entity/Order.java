@@ -24,16 +24,15 @@ public class Order {
 //    @Column(name="id_user", nullable = false)
 //    private Integer idUser;
 
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-//    @Column(name="tanggal_ci", nullable = false)
-//    private Date tanggalCi;
+
+    @Column(name="total_cost", nullable = false)
+    private Double totalCost;
 
     @Enumerated(EnumType.STRING)
     @Column(name="payment_status", nullable = false)
     private PaymentStatus paymentStatus;
 
-    @Column(name="total_cost", nullable = false)
-    private Double totalCost;
+
 
 //    @Column(name="payment_type", nullable = false)
 //    private String tipePayment;
