@@ -44,7 +44,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
                 .antMatchers("/assets/**").permitAll()
 
-//                .antMatchers("/aboutUs*").permitAll()
+                .antMatchers("/aboutUs*").permitAll()
 //                .antMatchers("/educationPillars*").permitAll()
 //                .antMatchers("/healthPillars*").permitAll()
 //                .antMatchers("/womenPillars*").permitAll()

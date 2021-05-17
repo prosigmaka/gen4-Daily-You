@@ -3,7 +3,7 @@ package com.kelompok1.dailyyou.model.entity;
 import lombok.Data;
 import javax.persistence.*;
 
-//Annotation untuk Representasi data di database
+//Annotation Entity menunjukkan bahwa berfungsi untuk Representasi data di database
 @Entity
 //Annotation Lombok untuk setter getter manual
 @Data

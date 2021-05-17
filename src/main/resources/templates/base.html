@@ -69,19 +69,39 @@ to get the desired effect
                         </li>
                     </ul>
                 </div>
-<!--                <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">-->
-<!--                    <ul>-->
-<!--                        <li><i class="glyphicon glyphicon-log-in" aria-hidden="true"></i><a href=" /login" sec:authorize="!isAuthenticated()">Login</a>-->
-<!--                        </li>-->
-<!--                        <li><i class="glyphicon glyphicon-book" aria-hidden="true"></i><a href=" /signup" sec:authorize="!isAuthenticated()">Register</a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div>-->
+                <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">
+                    <ul>
+                        <li sec:authorize="!isAuthenticated">
+<!--                            <div class="header-grid-right animated wow slideInRight" data-wow-delay=".5s">-->
+<!--                                <ul>-->
+<!--                                    <li sec:authorize="isAuthenticated()">-->
+<!--&lt;!&ndash;                                        <i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>&ndash;&gt;-->
+<!--                                        <a th:action="@{/perform_logout}">Logout</a>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                                    <li sec:authorize="!isAuthenticated">-->
+                                        <i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>
+                                        <a href=" /login" >Login</a>
+<!--                                    </li>-->
+                        </li>
+                        <li sec:authorize="!isAuthenticated()">
+                            <i class="glyphicon glyphicon-book" aria-hidden="true"></i>
+                            <a href=" /signup" >Register</a>
+                        </li>
+                    </ul>
+                </div>
 
 
-                <sec:authorize access="!hasAnyRole('ROLE_ADMIN','ROLE_SUPERADMIN','ROLE_USER')">
-                    <a data-toggle="modal" href="/login"><i class="fa fa-sign-in"></i><span> Login</span></a>
-                </sec:authorize>
+<!--                /* sec:authorize="!isAuthenticated()"-->
+<!--                diletakkan didalam div atau li-->
+
+
+
+
+<!--                <sec:authorize access="!hasAnyRole('ROLE_ADMIN','ROLE_SUPERADMIN','ROLE_USER')">-->
+<!--                    <a data-toggle="modal" href="/login"><i class="fa fa-sign-in"></i><span> Login</span></a>-->
+<!--                </sec:authorize>-->
 
                 <div class="clearfix"></div>
 

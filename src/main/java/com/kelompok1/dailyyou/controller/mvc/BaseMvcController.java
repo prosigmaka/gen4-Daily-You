@@ -116,6 +116,7 @@ public class BaseMvcController {
     public String baru() {
         return "baru";
     }
+
     @GetMapping("search")
     public String search() {
         return "product/search";
