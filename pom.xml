@@ -14,14 +14,11 @@
 	<name>daily-you</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 	</properties>
+
 	<dependencies>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.7.30</version>
-		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -29,6 +26,15 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -45,16 +51,36 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+
+		<!--		keycloack-->
+		<dependency>
+			<groupId>org.keycloak</groupId>
+			<artifactId>keycloak-spring-boot-starter</artifactId>
+			<version>12.0.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.keycloak</groupId>
+			<artifactId>keycloak-admin-client</artifactId>
+			<version>12.0.2</version>
+		</dependency>
+
+		<!--		spring data + database-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
@@ -80,15 +106,9 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.4.30.Final</version>
 		</dependency>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-<!--				spring security-->
+
+
+		<!--		spring security-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
@@ -98,20 +118,8 @@
 			<artifactId>jakarta.validation-api</artifactId>
 			<version>2.0.1</version>
 		</dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.18</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
+
+
     </dependencies>
 
 	<build>
