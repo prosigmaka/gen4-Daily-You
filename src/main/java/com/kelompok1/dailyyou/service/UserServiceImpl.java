@@ -1,80 +1,67 @@
 package com.kelompok1.dailyyou.service;
 
-import com.kelompok1.dailyyou.model.entity.Users;
-import com.kelompok1.dailyyou.model.entity.Role;
+import com.kelompok1.dailyyou.configuration.exception.CommonException;
+import com.kelompok1.dailyyou.mapper.UserMapper;
+import com.kelompok1.dailyyou.model.dto.RegisterDto;
+import com.kelompok1.dailyyou.model.dto.UserDto;
+import com.kelompok1.dailyyou.model.entity.User;
 import com.kelompok1.dailyyou.repository.UserRepository;
-import com.kelompok1.dailyyou.model.dto.UserRegistrationDto;
-import com.kelompok1.dailyyou.configuration.exception.CustomException;
+import com.kelompok1.dailyyou.service.UserService;
+import com.kelompok1.dailyyou.webclient.KeyCloakWebClient;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.keycloak.admin.client.CreatedResponseUtil;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.stream.Collectors;
+import javax.ws.rs.core.Response;
+import java.util.Date;
 
-@Service("userService")
-public class UserServiceImpl implements UserService{
+@Service
+@Transactional
+public class UserServiceImpl implements UserService {
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
+    private final KeyCloakWebClient keyCloakWebClient;
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-
-    //Untuk proses save data saat proses registrasi
-    @Override
-    public Users save(UserRegistrationDto registrationDto) throws CustomException {
-
-        //Setting manual
-        Users users = new Users();
-        users.setFirstName(registrationDto.getFirstName());
-        users.setLastName(registrationDto.getLastName());
-        users.setUsername(registrationDto.getUsername());
-        users.setEmail(registrationDto.getEmail());
-        users.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
-
-        //Setting manual untuk role id 1 dengan tipe data Long adalah sebagai "User"
-        users.setRoleId(1L);
-
-        return userRepository.save(users);
+    public UserServiceImpl(UserRepository repository, UserMapper userMapper, KeyCloakWebClient keyCloakWebClient) {
+        this.userRepository = repository;
+        this.userMapper = userMapper;
+        this.keyCloakWebClient = keyCloakWebClient;
     }
 
-//    @Override
-//    public Users registerNewUserAccount(UserRegistrationDto userDto) throws UserAlreadyExistException {
-//        if (emailExist(userDto.getEmail())) {
-//            throw new UserAlreadyExistException("There is an account with that email address: "
-//                    + userDto.getEmail());
-//        }
-//
-//        // the rest of the registration operation
-//    }
-
-    // Proses Login dimana akan dicari usernamenya apakah sesuai apa tidak
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDto findByUsername(String username) {
+        return userMapper.toUserDto(userRepository.findByUsername(username).get());
+    }
 
-        Users users = userRepository.findByUsername(username);
+    @Override
+    public RegisterDto saveRegister(RegisterDto registerDto) {
+        /* Ada Kemungkinan terdaftar di keycloak tapi gagal simpen ke table biodata
+         * abaikan dulu*/
+        //lower case email
+        registerDto.setEmail(registerDto.getEmail().toLowerCase());
+        User user = userMapper.fromRegisterDto(registerDto);
+//        validateRegister(biodata);
+        user.setCreatedBy(registerDto.getEmail());
+        user.setCreatedOn(new Date());
 
-        //Jika usernya tidak ada di database atau null
-        if(users == null) {
-            //maka akan akan dilemparkan ke "UsernameNotFoundException"
-            throw new UsernameNotFoundException("Invalid username or password.");
-//
+        Response response = keyCloakWebClient.doRegister(registerDto);
+        if (response.getStatus() == HttpStatus.CREATED.value()) {
+            try {
+                String userId = CreatedResponseUtil.getCreatedId(response);
+                user.setUserKeyId(userId);
+                registerDto = userMapper.toRegisterDto(userRepository.save(user));
+                // sendSuccessRegistrationMail(biodata.getEmail(), biodata.getNama());
+                return registerDto;
+            } catch (Exception e) {
+                keyCloakWebClient.deleteUser(response);
+                throw new RuntimeException(e);
+            }
+        } else {
+            throw new CommonException("Gagal Register");
+
         }
-
-        //Setelah itu akan di return nilainya ke user.
-        return new org.springframework.security.core.userdetails.User(users.getUsername(), users.getPassword(), mapRolesToAuthorities(Arrays.asList(users.getRoles())));
-    }
-
-    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){
-        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
 
 }
