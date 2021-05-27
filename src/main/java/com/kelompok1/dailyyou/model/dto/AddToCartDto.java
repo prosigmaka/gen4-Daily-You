@@ -7,8 +7,8 @@ import lombok.Data;
 @Data
 public class AddToCartDto {
     private Integer id;
-    private  Integer productId;
-    private  Integer productQuantity;
+    private Integer productId;
+    private Integer productQuantity;
 
     public AddToCartDto() {
     }

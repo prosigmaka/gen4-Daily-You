@@ -20,4 +20,11 @@ public class OrderItems {
     @Column(name="id_cart", nullable = false)
     private Integer idCart;
 
+    @ManyToOne
+    @JoinColumn(name = "id_order", updatable = false, insertable = false)
+    private Order order;
+
+    @Column(name="id_order", nullable = false)
+    private Integer idOrder;
+
 }

@@ -11,13 +11,13 @@ public class CheckoutDto {
     private Integer productId;
     private int userId;
 
-    public CheckoutDto() {}
-
-    public CheckoutDto(String productName, Integer productQuantity, Double price, Integer productId) {
-        this.productName = productName;
-        this.productQuantity = productQuantity;
-        this.price = price;
-        this.productId = productId;
-        this.userId = userId;
-    }
+//    public CheckoutDto() {}
+//
+//    public CheckoutDto(String productName, Integer productQuantity, Double price, Integer productId) {
+//        this.productName = productName;
+//        this.productQuantity = productQuantity;
+//        this.price = price;
+//        this.productId = productId;
+//        this.userId = userId;
+//    }
 }

@@ -18,35 +18,19 @@ public class Order {
     @SequenceGenerator(name = TABLE_NAME, sequenceName = "t_order_seq")
     private Integer id;
 
-//        @ManyToOne
-//    @JoinColumn(name = "id_user", updatable = false, insertable = false)
-//    private User user;
-//    @Column(name="id_user", nullable = false)
-//    private Integer idUser;
-
-//    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-//    @Column(name="tanggal_ci", nullable = false)
-//    private Date tanggalCi;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name="payment_status", nullable = false)
-    private PaymentStatus paymentStatus;
+    @ManyToOne
+    @JoinColumn(name = "id_user", updatable = false, insertable = false)
+    private User user;
+    @Column(name="id_user", nullable = false)
+    private Integer idUser;
 
     @Column(name="total_cost", nullable = false)
     private Double totalCost;
 
-//    @Column(name="payment_type", nullable = false)
-//    private String tipePayment;
-//
-
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-//    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="batas_tanggal_pembayaran", nullable = false)
-    private Date batasTanggalPembayaran;
+    @Column(name="batas_pembayaran", nullable = false)
+    private Date batasPembayaran;
 
 
-    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "id_user", updatable = false, insertable = false)
-    private List<OrderItems> items;
 
 }
