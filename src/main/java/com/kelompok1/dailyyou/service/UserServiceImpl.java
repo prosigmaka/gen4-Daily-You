@@ -3,6 +3,7 @@ package com.kelompok1.dailyyou.service;
 import com.kelompok1.dailyyou.model.entity.Users;
 import com.kelompok1.dailyyou.model.entity.Role;
 import com.kelompok1.dailyyou.repository.UserRepository;
+import com.kelompok1.dailyyou.repository.RoleRepository;
 import com.kelompok1.dailyyou.model.dto.UserRegistrationDto;
 import com.kelompok1.dailyyou.configuration.exception.CustomException;
 
@@ -23,6 +24,9 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
