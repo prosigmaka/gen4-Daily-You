@@ -1,12 +1,10 @@
 package com.kelompok1.dailyyou.service;
 
+import com.kelompok1.dailyyou.model.dto.AddToCartDto;
 import com.kelompok1.dailyyou.model.entity.Cart;
 import com.kelompok1.dailyyou.model.entity.Product;
 
 public interface CartService {
-
-    Cart save(Cart cart);
-
-//    Cart save(Cart cart, Product product);
+    void saveToCart(Cart cart, AddToCartDto addToCartDto);
 }
 

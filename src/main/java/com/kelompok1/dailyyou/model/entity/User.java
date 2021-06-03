@@ -1,50 +1,45 @@
 package com.kelompok1.dailyyou.model.entity;
 
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.List;
 
-@Entity
-@Table(name = User.TABLE_NAME)
 @Data
-public class User extends CommonEntity {
-    public static final String TABLE_NAME = "t_user";
+@Entity
+@Table(name =  "users")
+public class User {
 
-
+    //id as a primary key
     @Id
-    @Column(name = "id")
-    @GenericGenerator(
-            name = "user-generator",
-            strategy = "com.kelompok1.dailyyou.configuration.MyGenerator",
-            parameters = {
-                    @org.hibernate.annotations.Parameter(
-                            name = "prefix", value = "UID")
-            }
-    )
-    @GeneratedValue(generator = "user-generator")
-    private String id;
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
 
     @Column(name = "username", nullable = false, unique = true)
-    private String userName;
+    private String username;
+
+    @Column(name = "email", nullable = false, unique = true)
+    private String emailUser;
+
+    @Column(name = "address", nullable = false)
+    private String address;
+
+    @Column(name = "phone", nullable = false, unique = true)
+    private String phone;
 
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "enabled")
-    private Boolean enabled;
+    @Column(name="role_id")
+    private Long roleId;
 
-    @Column(name = "token_expired")
-    private Boolean tokenExpired;
-
-    @ManyToMany
-    @JoinTable(
-            name = "users_roles",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "role_id", referencedColumnName = "id"))
-    private List<Role> roles;
+    @ManyToOne
+    @JoinColumn(name = "role_id", insertable = false, updatable = false)
+    private Role roles;
 
 }

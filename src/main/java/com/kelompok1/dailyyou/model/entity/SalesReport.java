@@ -24,12 +24,12 @@ public class SalesReport {
     @Column(name = "id_produk",nullable = false)
     private Integer idProduk;
 
-    @ManyToOne
-    @JoinColumn(name = "id_transaksi", insertable = false, updatable = false, nullable = false)
-    private Transaction transaksi;
-
-    @Column(name = "id_transaksi",nullable = false)
-    private Integer idTransaksi;
+//    @ManyToOne
+//    @JoinColumn(name = "id_transaksi", insertable = false, updatable = false, nullable = false)
+//    private Transaction transaksi;
+//
+//    @Column(name = "id_transaksi",nullable = false)
+//    private Integer idTransaksi;
 
     private Integer tanggalTransaksi;
 

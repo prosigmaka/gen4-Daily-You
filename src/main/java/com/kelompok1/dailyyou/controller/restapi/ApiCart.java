@@ -1,12 +1,19 @@
 package com.kelompok1.dailyyou.controller.restapi;
 
+import com.kelompok1.dailyyou.model.dto.AddToCartDto;
 import com.kelompok1.dailyyou.model.dto.CartDto;
+import com.kelompok1.dailyyou.model.dto.CartItemsDto;
+import com.kelompok1.dailyyou.model.dto.LoginDto;
 import com.kelompok1.dailyyou.model.entity.Cart;
+import com.kelompok1.dailyyou.model.entity.OrderStatus;
 import com.kelompok1.dailyyou.model.entity.Product;
 import com.kelompok1.dailyyou.repository.CartRepository;
+import com.kelompok1.dailyyou.repository.UserRepository;
 import com.kelompok1.dailyyou.service.CartService;
+import com.kelompok1.dailyyou.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,57 +31,67 @@ public class ApiCart {
     @Autowired
     private CartService cartService;
 
-    @GetMapping()
-    public List<CartDto> getListCart() {
-        List<Cart> cartList = cartRepository.findAll();
-        List<CartDto> cartDtos =
-                cartList.stream()
-                        .map(cart -> mapCartToCartDto(cart))
-                        .collect(Collectors.toList());
-        return cartDtos;
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    private Long currentIdUser(){
+        String userName = SecurityContextHolder.getContext().getAuthentication().getName();
+        Long idUser = userRepository.findIdByUserName(userName);
+        return idUser;
     }
 
-    private CartDto mapCartToCartDto(Cart cart) {
-        CartDto cartDto = modelMapper.map(cart, CartDto.class);
-        modelMapper.map(cart.getProduct(), cartDto);
-        cartDto.setId(cart.getId());
-//        cartDto.setProduct(cart.getProduct());
-//        cartDto.setId(cart.getId());
-//        cartDto.setProductQuantity(cart.getProductQuantity());
-//        cartDto.setTotalPrice(cart.getTotalPrice());
-//        cartDto.setIdProduct(cart.getIdProduct());
-//        cartDto.setUserId(cart.getIdUser());
-        return cartDto;
+    @GetMapping("/idUser")
+    public Long getIdUser(LoginDto loginDto){
+        return loginDto.getIdUserLogin();
     }
 
-    @GetMapping("/{id}")
-    public CartDto getCart(@PathVariable Integer id) {
-        Cart cart = cartRepository.findById(id).get();
-        CartDto cartDto = new CartDto();
-        modelMapper.map(cart, cartDto);
-//        modelMapper.map(cart.getProduct(), cartDto);
-
-        return cartDto;
+    @GetMapping
+    public List<CartDto> getAll() {
+        List<Cart> cartList = cartRepository.findAllByIdUserAndStatus(currentIdUser(), String.valueOf(OrderStatus.BELUM_BAYAR));
+        List<CartDto> cartDtooList = cartList
+                .stream()
+                .map(cart -> mapToCartDto(cart))
+                .collect(Collectors.toList());
+        return cartDtooList;
     }
 
-    @PostMapping
-    public CartDto editsaveCart(@RequestBody CartDto cartDto) {
-        Cart cart = modelMapper.map(cartDto, Cart.class);
-        cart.setIdProduct(cartDto.getIdProduct());
-        cart.setIdUser(cartDto.getUserId());;
-        cart = cartService.save(cart);
-        CartDto cartDtoDB = mapCartToCartDto(cart);
-        return cartDtoDB;
+    @PostMapping()
+    public List<AddToCartDto> saveCart(@RequestBody CartItemsDto cartItemsDto){
+        List<AddToCartDto> addToCartDtoList = cartItemsDto.getAddToCart()
+                .stream()
+                .map(cart -> mapToCartDto(cart)).collect(Collectors.toList());
+        return addToCartDtoList;
+    }
+
+
+    private AddToCartDto mapToCartDto(AddToCartDto addToCartDto){
+        AddToCartDto addToCartDto1 = modelMapper.map(addToCartDto, AddToCartDto.class);
+        Cart cart = modelMapper.map(addToCartDto1, Cart.class);
+        cart.setIdUser(currentIdUser());
+        cartService.saveToCart(cart, addToCartDto);
+        return cart;
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
+    public void deleteById(@PathVariable Integer id){
         cartRepository.deleteById(id);
     }
 
-    @DeleteMapping("/all")
-    public void deleteAll() {
+    @DeleteMapping()
+    public void deleteAll(){
         cartRepository.deleteAll();
+    }
+
+
+    private CartDto mapToCartDto(Cart cart){
+        CartDto cartDto = modelMapper.map(cart, CartDto.class);
+        cartDto.setProductName(cart.getProduct().getProductName());
+        cartDto.setPrice(cart.getProduct().getPrice());
+        cartDto.setSubTotalPrice(cart.getSubTotalPrice());
+        return cartDto;
     }
 
 }

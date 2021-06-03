@@ -10,18 +10,13 @@ import java.util.List;
 public class CartDto {
     private Integer id;
     private Integer idProduct;
-    private Integer userId;
+    private Long idUser;
     private Integer productQuantity;
-    private Product product;
-    private Double totalPrice;
+    private String productName;
+    private Double price;
 
-
-    //    private Integer idUser;
-//    private Integer idProduct;
-//    private String productName;
-//    private Integer productQuantity;
-//    private Product product;
-//    private Double totalPrice;
+    private Double subTotalPrice;
+    private String pictureUrl;
 
 }
 
