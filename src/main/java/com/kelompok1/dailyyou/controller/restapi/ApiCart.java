@@ -66,7 +66,6 @@ public class ApiCart {
         return addToCartDtoList;
     }
 
-
     private AddToCartDto mapToCartDto(AddToCartDto addToCartDto){
         AddToCartDto addToCartDto1 = modelMapper.map(addToCartDto, AddToCartDto.class);
         Cart cart = modelMapper.map(addToCartDto1, Cart.class);
